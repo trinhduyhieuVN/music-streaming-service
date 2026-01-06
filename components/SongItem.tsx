@@ -1,9 +1,14 @@
 "use client";
 
 import Image from "next/image";
+import { HiOutlinePlus } from "react-icons/hi";
+import { AiOutlineHeart, AiFillHeart } from "react-icons/ai";
 
 import useLoadImage from "@/hooks/useLoadImage";
 import { Song } from "@/types";
+import useAddToPlaylistModal from "@/hooks/useAddToPlaylistModal";
+import { useUser } from "@/hooks/useUser";
+import LikeButton from "./LikeButton";
 
 import PlayButton from "./PlayButton";
 
@@ -17,6 +22,15 @@ const SongItem: React.FC<SongItemProps> = ({
   onClick
 }) => {
   const imagePath = useLoadImage(data);
+  const addToPlaylistModal = useAddToPlaylistModal();
+  const { user } = useUser();
+
+  const handleAddToPlaylist = (e: React.MouseEvent) => {
+    e.stopPropagation();
+    if (user) {
+      addToPlaylistModal.onOpen(data.id);
+    }
+  };
 
   return ( 
     <div
@@ -71,6 +85,8 @@ const SongItem: React.FC<SongItemProps> = ({
           By {data.author}
         </p>
       </div>
+      
+      {/* Play Button */}
       <div 
         className="
           absolute 
@@ -80,6 +96,33 @@ const SongItem: React.FC<SongItemProps> = ({
       >
         <PlayButton />
       </div>
+
+      {/* Action Buttons - Show on Hover */}
+      {user && (
+        <div className="absolute top-3 right-3 flex gap-2 opacity-0 group-hover:opacity-100 transition">
+          {/* Add to Playlist Button */}
+          <button
+            onClick={handleAddToPlaylist}
+            className="
+              p-2
+              rounded-full
+              bg-neutral-900/80
+              hover:bg-neutral-900
+              hover:scale-110
+              transition
+              text-white
+            "
+            title="Add to playlist"
+          >
+            <HiOutlinePlus size={20} />
+          </button>
+
+          {/* Like Button */}
+          <div className="p-1">
+            <LikeButton songId={data.id} />
+          </div>
+        </div>
+      )}
     </div>
    );
 }

@@ -1,0 +1,262 @@
+<mxfile host="app.diagrams.net">
+  <diagram name="System Overview Use Case" id="overview">
+    <mxGraphModel dx="1300" dy="800" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1100" pageHeight="750" math="0" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        
+        <!-- System Boundary -->
+        <mxCell id="system" value="Spotify Clone System" style="shape=umlFrame;whiteSpace=wrap;html=1;width=140;height=30;boundedLbl=1;verticalAlign=middle;align=left;spacingLeft=5;fillColor=#FFFFFF;strokeColor=#000000;strokeWidth=2;fontSize=14;fontStyle=1;" vertex="1" parent="1">
+          <mxGeometry x="200" y="30" width="680" height="690" as="geometry" />
+        </mxCell>
+        
+        <!-- Actors -->
+        <mxCell id="user" value="User" style="shape=umlActor;verticalLabelPosition=bottom;verticalAlign=top;html=1;fillColor=#FFFFFF;strokeColor=#000000;strokeWidth=2;fontSize=12;" vertex="1" parent="1">
+          <mxGeometry x="50" y="150" width="50" height="80" as="geometry" />
+        </mxCell>
+        
+        <mxCell id="premium" value="Premium User" style="shape=umlActor;verticalLabelPosition=bottom;verticalAlign=top;html=1;fillColor=#FFFFFF;strokeColor=#000000;strokeWidth=2;fontSize=12;" vertex="1" parent="1">
+          <mxGeometry x="50" y="380" width="50" height="80" as="geometry" />
+        </mxCell>
+        
+        <mxCell id="admin" value="Admin" style="shape=umlActor;verticalLabelPosition=bottom;verticalAlign=top;html=1;fillColor=#FFFFFF;strokeColor=#000000;strokeWidth=2;fontSize=12;" vertex="1" parent="1">
+          <mxGeometry x="50" y="580" width="50" height="80" as="geometry" />
+        </mxCell>
+        
+        <mxCell id="supabase" value="Supabase" style="shape=umlActor;verticalLabelPosition=bottom;verticalAlign=top;html=1;fillColor=#FFFFFF;strokeColor=#000000;strokeWidth=2;fontSize=12;" vertex="1" parent="1">
+          <mxGeometry x="970" y="250" width="50" height="80" as="geometry" />
+        </mxCell>
+        
+        <mxCell id="sepay" value="SePay" style="shape=umlActor;verticalLabelPosition=bottom;verticalAlign=top;html=1;fillColor=#FFFFFF;strokeColor=#000000;strokeWidth=2;fontSize=12;" vertex="1" parent="1">
+          <mxGeometry x="970" y="500" width="50" height="80" as="geometry" />
+        </mxCell>
+        
+        <!-- Generalization -->
+        <mxCell id="gen1" value="" style="endArrow=block;html=1;strokeColor=#000000;strokeWidth=1;endFill=0;endSize=12;" edge="1" parent="1" source="premium" target="user">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="gen2" value="" style="endArrow=block;html=1;strokeColor=#000000;strokeWidth=1;endFill=0;endSize=12;" edge="1" parent="1" source="admin" target="user">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        
+        <!-- ===== AUTHENTICATION MODULE ===== -->
+        <mxCell id="uc-register" value="Register" style="ellipse;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#000000;strokeWidth=2;fontSize=12;" vertex="1" parent="1">
+          <mxGeometry x="260" y="60" width="110" height="45" as="geometry" />
+        </mxCell>
+        
+        <mxCell id="uc-login" value="Login" style="ellipse;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#000000;strokeWidth=2;fontSize=12;" vertex="1" parent="1">
+          <mxGeometry x="260" y="130" width="110" height="45" as="geometry" />
+        </mxCell>
+        
+        <mxCell id="uc-logout" value="Logout" style="ellipse;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#000000;strokeWidth=2;fontSize=12;" vertex="1" parent="1">
+          <mxGeometry x="260" y="200" width="110" height="45" as="geometry" />
+        </mxCell>
+        
+        <!-- ===== MUSIC MODULE ===== -->
+        <mxCell id="uc-browse" value="Browse Music" style="ellipse;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#000000;strokeWidth=2;fontSize=12;" vertex="1" parent="1">
+          <mxGeometry x="260" y="280" width="110" height="45" as="geometry" />
+        </mxCell>
+        
+        <mxCell id="uc-play" value="Play Song" style="ellipse;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#000000;strokeWidth=2;fontSize=12;" vertex="1" parent="1">
+          <mxGeometry x="260" y="350" width="110" height="45" as="geometry" />
+        </mxCell>
+        
+        <mxCell id="uc-like" value="Like Song" style="ellipse;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#000000;strokeWidth=2;fontSize=12;" vertex="1" parent="1">
+          <mxGeometry x="260" y="420" width="110" height="45" as="geometry" />
+        </mxCell>
+        
+        <!-- ===== PLAYLIST MODULE ===== -->
+        <mxCell id="uc-create-pl" value="Create Playlist" style="ellipse;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#000000;strokeWidth=2;fontSize=12;" vertex="1" parent="1">
+          <mxGeometry x="260" y="490" width="120" height="45" as="geometry" />
+        </mxCell>
+        
+        <!-- ===== PREMIUM MODULE ===== -->
+        <mxCell id="uc-subscribe" value="Subscribe Premium" style="ellipse;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#000000;strokeWidth=2;fontSize=12;" vertex="1" parent="1">
+          <mxGeometry x="260" y="560" width="130" height="45" as="geometry" />
+        </mxCell>
+        
+        <!-- ===== ADMIN MODULE ===== -->
+        <mxCell id="uc-manage" value="Manage Content" style="ellipse;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#000000;strokeWidth=2;fontSize=12;" vertex="1" parent="1">
+          <mxGeometry x="260" y="630" width="130" height="45" as="geometry" />
+        </mxCell>
+        
+        <!-- ===== SUB USE CASES (Include) ===== -->
+        <mxCell id="uc-validate" value="Validate Input" style="ellipse;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#000000;strokeWidth=1;fontSize=11;" vertex="1" parent="1">
+          <mxGeometry x="500" y="55" width="100" height="40" as="geometry" />
+        </mxCell>
+        
+        <mxCell id="uc-session" value="Manage Session" style="ellipse;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#000000;strokeWidth=1;fontSize=11;" vertex="1" parent="1">
+          <mxGeometry x="500" y="115" width="110" height="40" as="geometry" />
+        </mxCell>
+        
+        <mxCell id="uc-query" value="Query Database" style="ellipse;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#000000;strokeWidth=1;fontSize=11;" vertex="1" parent="1">
+          <mxGeometry x="500" y="175" width="105" height="40" as="geometry" />
+        </mxCell>
+        
+        <mxCell id="uc-stream" value="Stream Audio" style="ellipse;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#000000;strokeWidth=1;fontSize=11;" vertex="1" parent="1">
+          <mxGeometry x="500" y="235" width="100" height="40" as="geometry" />
+        </mxCell>
+        
+        <mxCell id="uc-update" value="Update Database" style="ellipse;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#000000;strokeWidth=1;fontSize=11;" vertex="1" parent="1">
+          <mxGeometry x="500" y="295" width="110" height="40" as="geometry" />
+        </mxCell>
+        
+        <mxCell id="uc-upload" value="Upload File" style="ellipse;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#000000;strokeWidth=1;fontSize=11;" vertex="1" parent="1">
+          <mxGeometry x="500" y="355" width="95" height="40" as="geometry" />
+        </mxCell>
+        
+        <mxCell id="uc-gen-qr" value="Generate QR" style="ellipse;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#000000;strokeWidth=1;fontSize=11;" vertex="1" parent="1">
+          <mxGeometry x="500" y="415" width="100" height="40" as="geometry" />
+        </mxCell>
+        
+        <mxCell id="uc-verify-pay" value="Verify Payment" style="ellipse;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#000000;strokeWidth=1;fontSize=11;" vertex="1" parent="1">
+          <mxGeometry x="500" y="475" width="105" height="40" as="geometry" />
+        </mxCell>
+        
+        <!-- ===== SUB USE CASES (Extend) ===== -->
+        <mxCell id="uc-social" value="Social Login" style="ellipse;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#000000;strokeWidth=1;fontSize=11;" vertex="1" parent="1">
+          <mxGeometry x="680" y="115" width="100" height="40" as="geometry" />
+        </mxCell>
+        
+        <mxCell id="uc-shuffle" value="Shuffle Play" style="ellipse;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#000000;strokeWidth=1;fontSize=11;" vertex="1" parent="1">
+          <mxGeometry x="680" y="235" width="100" height="40" as="geometry" />
+        </mxCell>
+        
+        <mxCell id="uc-download" value="Download Song" style="ellipse;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#000000;strokeWidth=1;fontSize=11;" vertex="1" parent="1">
+          <mxGeometry x="680" y="295" width="110" height="40" as="geometry" />
+        </mxCell>
+        
+        <mxCell id="uc-share" value="Share Playlist" style="ellipse;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#000000;strokeWidth=1;fontSize=11;" vertex="1" parent="1">
+          <mxGeometry x="680" y="355" width="105" height="40" as="geometry" />
+        </mxCell>
+        
+        <mxCell id="uc-promo" value="Apply Promo" style="ellipse;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#000000;strokeWidth=1;fontSize=11;" vertex="1" parent="1">
+          <mxGeometry x="680" y="475" width="100" height="40" as="geometry" />
+        </mxCell>
+        
+        <!-- ===== ACTOR ASSOCIATIONS ===== -->
+        <mxCell id="a1" value="" style="endArrow=none;html=1;strokeColor=#000000;strokeWidth=1;" edge="1" parent="1" source="user" target="uc-register">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="a2" value="" style="endArrow=none;html=1;strokeColor=#000000;strokeWidth=1;" edge="1" parent="1" source="user" target="uc-login">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="a3" value="" style="endArrow=none;html=1;strokeColor=#000000;strokeWidth=1;" edge="1" parent="1" source="user" target="uc-logout">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="a4" value="" style="endArrow=none;html=1;strokeColor=#000000;strokeWidth=1;" edge="1" parent="1" source="user" target="uc-browse">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="a5" value="" style="endArrow=none;html=1;strokeColor=#000000;strokeWidth=1;" edge="1" parent="1" source="user" target="uc-play">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="a6" value="" style="endArrow=none;html=1;strokeColor=#000000;strokeWidth=1;" edge="1" parent="1" source="user" target="uc-like">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="a7" value="" style="endArrow=none;html=1;strokeColor=#000000;strokeWidth=1;" edge="1" parent="1" source="user" target="uc-create-pl">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="a8" value="" style="endArrow=none;html=1;strokeColor=#000000;strokeWidth=1;" edge="1" parent="1" source="user" target="uc-subscribe">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        
+        <mxCell id="a9" value="" style="endArrow=none;html=1;strokeColor=#000000;strokeWidth=1;" edge="1" parent="1" source="premium" target="uc-download">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        
+        <mxCell id="a10" value="" style="endArrow=none;html=1;strokeColor=#000000;strokeWidth=1;" edge="1" parent="1" source="admin" target="uc-manage">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        
+        <mxCell id="a11" value="" style="endArrow=none;html=1;strokeColor=#000000;strokeWidth=1;" edge="1" parent="1" source="supabase" target="uc-validate">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="a12" value="" style="endArrow=none;html=1;strokeColor=#000000;strokeWidth=1;" edge="1" parent="1" source="supabase" target="uc-session">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="a13" value="" style="endArrow=none;html=1;strokeColor=#000000;strokeWidth=1;" edge="1" parent="1" source="supabase" target="uc-query">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="a14" value="" style="endArrow=none;html=1;strokeColor=#000000;strokeWidth=1;" edge="1" parent="1" source="supabase" target="uc-stream">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="a15" value="" style="endArrow=none;html=1;strokeColor=#000000;strokeWidth=1;" edge="1" parent="1" source="supabase" target="uc-update">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="a16" value="" style="endArrow=none;html=1;strokeColor=#000000;strokeWidth=1;" edge="1" parent="1" source="supabase" target="uc-upload">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        
+        <mxCell id="a17" value="" style="endArrow=none;html=1;strokeColor=#000000;strokeWidth=1;" edge="1" parent="1" source="sepay" target="uc-gen-qr">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="a18" value="" style="endArrow=none;html=1;strokeColor=#000000;strokeWidth=1;" edge="1" parent="1" source="sepay" target="uc-verify-pay">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        
+        <!-- ===== INCLUDE RELATIONSHIPS ===== -->
+        <mxCell id="inc1" value="&lt;&lt;include&gt;&gt;" style="endArrow=open;html=1;strokeColor=#000000;strokeWidth=1;dashed=1;endSize=10;fontSize=9;" edge="1" parent="1" source="uc-register" target="uc-validate">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        
+        <mxCell id="inc2" value="&lt;&lt;include&gt;&gt;" style="endArrow=open;html=1;strokeColor=#000000;strokeWidth=1;dashed=1;endSize=10;fontSize=9;" edge="1" parent="1" source="uc-login" target="uc-session">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        
+        <mxCell id="inc3" value="&lt;&lt;include&gt;&gt;" style="endArrow=open;html=1;strokeColor=#000000;strokeWidth=1;dashed=1;endSize=10;fontSize=9;" edge="1" parent="1" source="uc-browse" target="uc-query">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        
+        <mxCell id="inc4" value="&lt;&lt;include&gt;&gt;" style="endArrow=open;html=1;strokeColor=#000000;strokeWidth=1;dashed=1;endSize=10;fontSize=9;" edge="1" parent="1" source="uc-play" target="uc-stream">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        
+        <mxCell id="inc5" value="&lt;&lt;include&gt;&gt;" style="endArrow=open;html=1;strokeColor=#000000;strokeWidth=1;dashed=1;endSize=10;fontSize=9;" edge="1" parent="1" source="uc-like" target="uc-update">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        
+        <mxCell id="inc6" value="&lt;&lt;include&gt;&gt;" style="endArrow=open;html=1;strokeColor=#000000;strokeWidth=1;dashed=1;endSize=10;fontSize=9;" edge="1" parent="1" source="uc-create-pl" target="uc-update">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        
+        <mxCell id="inc7" value="&lt;&lt;include&gt;&gt;" style="endArrow=open;html=1;strokeColor=#000000;strokeWidth=1;dashed=1;endSize=10;fontSize=9;" edge="1" parent="1" source="uc-subscribe" target="uc-gen-qr">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        
+        <mxCell id="inc8" value="&lt;&lt;include&gt;&gt;" style="endArrow=open;html=1;strokeColor=#000000;strokeWidth=1;dashed=1;endSize=10;fontSize=9;" edge="1" parent="1" source="uc-subscribe" target="uc-verify-pay">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        
+        <mxCell id="inc9" value="&lt;&lt;include&gt;&gt;" style="endArrow=open;html=1;strokeColor=#000000;strokeWidth=1;dashed=1;endSize=10;fontSize=9;" edge="1" parent="1" source="uc-manage" target="uc-upload">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        
+        <mxCell id="inc10" value="&lt;&lt;include&gt;&gt;" style="endArrow=open;html=1;strokeColor=#000000;strokeWidth=1;dashed=1;endSize=10;fontSize=9;" edge="1" parent="1" source="uc-manage" target="uc-update">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        
+        <!-- ===== EXTEND RELATIONSHIPS ===== -->
+        <mxCell id="ext1" value="&lt;&lt;extend&gt;&gt;" style="endArrow=open;html=1;strokeColor=#000000;strokeWidth=1;dashed=1;endSize=10;fontSize=9;" edge="1" parent="1" source="uc-social" target="uc-login">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        
+        <mxCell id="ext2" value="&lt;&lt;extend&gt;&gt;" style="endArrow=open;html=1;strokeColor=#000000;strokeWidth=1;dashed=1;endSize=10;fontSize=9;" edge="1" parent="1" source="uc-shuffle" target="uc-play">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        
+        <mxCell id="ext3" value="&lt;&lt;extend&gt;&gt;" style="endArrow=open;html=1;strokeColor=#000000;strokeWidth=1;dashed=1;endSize=10;fontSize=9;" edge="1" parent="1" source="uc-download" target="uc-play">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        
+        <mxCell id="ext4" value="&lt;&lt;extend&gt;&gt;" style="endArrow=open;html=1;strokeColor=#000000;strokeWidth=1;dashed=1;endSize=10;fontSize=9;" edge="1" parent="1" source="uc-share" target="uc-create-pl">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        
+        <mxCell id="ext5" value="&lt;&lt;extend&gt;&gt;" style="endArrow=open;html=1;strokeColor=#000000;strokeWidth=1;dashed=1;endSize=10;fontSize=9;" edge="1" parent="1" source="uc-promo" target="uc-subscribe">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>

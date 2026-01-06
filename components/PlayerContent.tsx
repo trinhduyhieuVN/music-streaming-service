@@ -2,18 +2,22 @@
 
 
 import { useEffect, useState, useCallback } from "react";
-import { BsPauseFill, BsPlayFill } from "react-icons/bs";
+import { BsPauseFill, BsPlayFill, BsShuffle } from "react-icons/bs";
 import { HiSpeakerWave, HiSpeakerXMark } from "react-icons/hi2";
 import { AiFillStepBackward, AiFillStepForward } from "react-icons/ai";
+import { TbRepeat, TbRepeatOnce } from "react-icons/tb";
+import { MdQueueMusic } from "react-icons/md";
 
 import { Song } from "@/types";
 import usePlayer from "@/hooks/usePlayer";
+import { addToListeningHistory } from "@/actions/listeningHistoryActions";
 
 import LikeButton from "./LikeButton";
 import MediaItem from "./MediaItem";
 import Slider from "./Slider";
 import SeekBar from "./SeekBar";
 import useSound from 'use-sound';
+import QueuePanel from "./QueuePanel";
 
 
 interface PlayerContentProps {
@@ -30,6 +34,7 @@ const PlayerContent: React.FC<PlayerContentProps> = ({
   const [isPlaying, setIsPlaying] = useState(false);
   const [currentTime, setCurrentTime] = useState(0);
   const [duration, setDuration] = useState(0);
+  const [showQueue, setShowQueue] = useState(false);
 
   const Icon = isPlaying ? BsPauseFill : BsPlayFill;
   const VolumeIcon = volume === 0 ? HiSpeakerXMark : HiSpeakerWave;
@@ -43,7 +48,11 @@ const PlayerContent: React.FC<PlayerContentProps> = ({
     const nextSong = player.ids[currentIndex + 1];
 
     if (!nextSong) {
-      return player.setId(player.ids[0]);
+      // If repeat all is on, go back to first song
+      if (player.repeatMode === 'all') {
+        return player.setId(player.ids[0]);
+      }
+      return;
     }
 
     player.setId(nextSong);
@@ -64,14 +73,34 @@ const PlayerContent: React.FC<PlayerContentProps> = ({
     player.setId(previousSong);
   }
 
+  const handleShuffle = () => {
+    player.toggleShuffle();
+  }
+
+  const handleRepeat = () => {
+    const modes: Array<'off' | 'all' | 'one'> = ['off', 'all', 'one'];
+    const currentIndex = modes.indexOf(player.repeatMode);
+    const nextMode = modes[(currentIndex + 1) % modes.length];
+    player.setRepeatMode(nextMode);
+  }
+
   const [play, { pause, sound }] = useSound(
     songUrl,
     { 
       volume: volume,
-      onplay: () => setIsPlaying(true),
+      onplay: () => {
+        setIsPlaying(true);
+        // Save to listening history when song starts playing
+        addToListeningHistory(song.id).catch(console.error);
+      },
       onend: () => {
         setIsPlaying(false);
-        onPlayNext();
+        // Handle repeat one
+        if (player.repeatMode === 'one') {
+          play();
+        } else {
+          onPlayNext();
+        }
       },
       onpause: () => setIsPlaying(false),
       onload: () => {
@@ -147,6 +176,16 @@ const PlayerContent: React.FC<PlayerContentProps> = ({
       <div className="flex flex-col items-center justify-center w-full max-w-[722px] mx-auto gap-y-1">
         {/* Playback Controls */}
         <div className="flex items-center gap-x-6">
+          <BsShuffle
+            onClick={handleShuffle}
+            size={18} 
+            className={`cursor-pointer transition ${
+              player.isShuffled 
+                ? 'text-green-500 hover:text-green-400' 
+                : 'text-neutral-400 hover:text-white'
+            }`}
+            title={player.isShuffled ? "Shuffle on" : "Shuffle off"}
+          />
           <AiFillStepBackward
             onClick={onPlayPrevious}
             size={22} 
@@ -154,15 +193,39 @@ const PlayerContent: React.FC<PlayerContentProps> = ({
           />
           <div 
             onClick={handlePlay} 
-            className="flex items-center justify-center h-8 w-8 rounded-full bg-white p-1 cursor-pointer hover:scale-105 transition"
+            className="flex items-center justify-center h-10 w-10 rounded-full bg-white p-1 cursor-pointer hover:scale-110 transition transform active:scale-95"
           >
-            <Icon size={20} className="text-black" />
+            <Icon size={24} className="text-black" />
           </div>
           <AiFillStepForward
             onClick={onPlayNext}
             size={22} 
             className="text-neutral-400 cursor-pointer hover:text-white transition" 
           />
+          {player.repeatMode === 'off' && (
+            <TbRepeat
+              onClick={handleRepeat}
+              size={20}
+              className="text-neutral-400 cursor-pointer hover:text-white transition"
+              title="Repeat off"
+            />
+          )}
+          {player.repeatMode === 'all' && (
+            <TbRepeat
+              onClick={handleRepeat}
+              size={20}
+              className="text-green-500 cursor-pointer hover:text-green-400 transition"
+              title="Repeat all"
+            />
+          )}
+          {player.repeatMode === 'one' && (
+            <TbRepeatOnce
+              onClick={handleRepeat}
+              size={20}
+              className="text-green-500 cursor-pointer hover:text-green-400 transition"
+              title="Repeat one"
+            />
+          )}
         </div>
         
         {/* Progress Bar */}
@@ -177,7 +240,16 @@ const PlayerContent: React.FC<PlayerContentProps> = ({
 
       {/* Right - Volume */}
       <div className="flex w-full justify-end pr-2">
-        <div className="flex items-center gap-x-2 w-[120px]">
+        <div className="flex items-center gap-x-2 w-[160px]">
+          <button
+            onClick={() => setShowQueue(!showQueue)}
+            className={`cursor-pointer transition ${
+              showQueue ? 'text-green-500' : 'text-neutral-400 hover:text-white'
+            }`}
+            title="Queue"
+          >
+            <MdQueueMusic size={22} />
+          </button>
           <VolumeIcon 
             onClick={toggleMute} 
             className="cursor-pointer text-neutral-400 hover:text-white transition" 
@@ -189,6 +261,9 @@ const PlayerContent: React.FC<PlayerContentProps> = ({
           />
         </div>
       </div>
+
+      {/* Queue Panel */}
+      <QueuePanel isOpen={showQueue} onClose={() => setShowQueue(false)} />
     </div>
    );
 }

@@ -49,6 +49,7 @@ export interface Playlist {
   user_id: string;
   is_public: boolean;
   cover_url?: string;
+  color?: string;
   created_at: string;
   // Joined data
   songs?: Song[];

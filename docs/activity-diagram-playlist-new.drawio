@@ -1,0 +1,242 @@
+<mxfile host="app.diagrams.net" modified="2026-01-06T00:00:00.000Z" agent="Draw.io" version="22.0.0" type="device">
+  <diagram name="Playlist Management Activity Diagram" id="activity-diagram">
+    <mxGraphModel dx="1600" dy="900" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="850" pageHeight="1150" math="0" shadow="0">
+      <root>
+        <mxCell id="0"/>
+        <mxCell id="1" parent="0"/>
+        
+        <!-- Swimlanes -->
+        <mxCell id="user-lane" value="User" style="swimlane;startSize=30;fillColor=#ffffff;strokeColor=#000000;fontSize=14;fontStyle=1;html=1;" vertex="1" parent="1">
+          <mxGeometry x="40" y="40" width="280" height="1070" as="geometry"/>
+        </mxCell>
+        
+        <mxCell id="system-lane" value="music stream service" style="swimlane;startSize=30;fillColor=#ffffff;strokeColor=#000000;fontSize=14;fontStyle=1;html=1;" vertex="1" parent="1">
+          <mxGeometry x="320" y="40" width="490" height="1070" as="geometry"/>
+        </mxCell>
+        
+        <!-- Initial State -->
+        <mxCell id="start" value="" style="ellipse;fillColor=#000000;strokeColor=#000000;" vertex="1" parent="user-lane">
+          <mxGeometry x="120" y="50" width="30" height="30" as="geometry"/>
+        </mxCell>
+        
+        <!-- User Activities -->
+        <mxCell id="user-click-create" value="Click &quot;Create Playlist&quot; button" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#000000;fontSize=11;" vertex="1" parent="user-lane">
+          <mxGeometry x="50" y="110" width="170" height="50" as="geometry"/>
+        </mxCell>
+        
+        <mxCell id="user-enter-details" value="Enter playlist name&#xa;&amp; description" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#000000;fontSize=11;" vertex="1" parent="user-lane">
+          <mxGeometry x="50" y="290" width="170" height="50" as="geometry"/>
+        </mxCell>
+        
+        <mxCell id="user-click-create-btn" value="Click &quot;Create&quot; button" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#000000;fontSize=11;" vertex="1" parent="user-lane">
+          <mxGeometry x="50" y="380" width="170" height="50" as="geometry"/>
+        </mxCell>
+        
+        <mxCell id="user-browse-songs" value="Browse songs to add" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#000000;fontSize=11;" vertex="1" parent="user-lane">
+          <mxGeometry x="50" y="690" width="170" height="50" as="geometry"/>
+        </mxCell>
+        
+        <mxCell id="user-add-to-playlist" value="Click &quot;Add to Playlist&quot; button" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#000000;fontSize=11;" vertex="1" parent="user-lane">
+          <mxGeometry x="50" y="790" width="170" height="50" as="geometry"/>
+        </mxCell>
+        
+        <mxCell id="user-view-playlist" value="View playlist with songs" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#000000;fontSize=11;" vertex="1" parent="user-lane">
+          <mxGeometry x="50" y="1000" width="170" height="50" as="geometry"/>
+        </mxCell>
+        
+        <!-- System Activities -->
+        <mxCell id="system-auth-check" value="User logged in?" style="rhombus;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#000000;fontSize=11;" vertex="1" parent="system-lane">
+          <mxGeometry x="180" y="95" width="120" height="80" as="geometry"/>
+        </mxCell>
+        
+        <mxCell id="system-show-auth" value="Show Auth Modal" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#000000;fontSize=11;" vertex="1" parent="system-lane">
+          <mxGeometry x="350" y="110" width="120" height="50" as="geometry"/>
+        </mxCell>
+        
+        <mxCell id="system-open-modal" value="Open PlaylistModal&#xa;(usePlaylistModal.onOpen)" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#000000;fontSize=10;" vertex="1" parent="system-lane">
+          <mxGeometry x="140" y="210" width="200" height="50" as="geometry"/>
+        </mxCell>
+        
+        <mxCell id="system-display-form" value="Display create playlist form" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#000000;fontSize=11;" vertex="1" parent="system-lane">
+          <mxGeometry x="150" y="290" width="180" height="50" as="geometry"/>
+        </mxCell>
+        
+        <mxCell id="system-validate" value="Validate input&#xa;(react-hook-form)" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#000000;fontSize=10;" vertex="1" parent="system-lane">
+          <mxGeometry x="160" y="380" width="160" height="50" as="geometry"/>
+        </mxCell>
+        
+        <mxCell id="system-valid-check" value="Valid?" style="rhombus;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#000000;fontSize=11;" vertex="1" parent="system-lane">
+          <mxGeometry x="190" y="460" width="100" height="60" as="geometry"/>
+        </mxCell>
+        
+        <mxCell id="system-show-error" value="Show validation error" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#000000;fontSize=11;" vertex="1" parent="system-lane">
+          <mxGeometry x="350" y="465" width="120" height="50" as="geometry"/>
+        </mxCell>
+        
+        <mxCell id="system-insert-playlist" value="Insert playlist to Supabase&#xa;(playlists table)" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#000000;fontSize=10;" vertex="1" parent="system-lane">
+          <mxGeometry x="140" y="560" width="200" height="50" as="geometry"/>
+        </mxCell>
+        
+        <mxCell id="system-close-modal" value="Close modal&#xa;router.refresh()" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#000000;fontSize=10;" vertex="1" parent="system-lane">
+          <mxGeometry x="160" y="645" width="160" height="50" as="geometry"/>
+        </mxCell>
+        
+        <mxCell id="system-get-position" value="Get current max position&#xa;in playlist_songs" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#000000;fontSize=10;" vertex="1" parent="system-lane">
+          <mxGeometry x="140" y="790" width="200" height="50" as="geometry"/>
+        </mxCell>
+        
+        <mxCell id="system-insert-song" value="Insert song to playlist_songs&#xa;(playlist_id, song_id, position)" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#000000;fontSize=10;" vertex="1" parent="system-lane">
+          <mxGeometry x="120" y="870" width="240" height="50" as="geometry"/>
+        </mxCell>
+        
+        <mxCell id="system-already-check" value="Already&#xa;in playlist?" style="rhombus;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#000000;fontSize=11;" vertex="1" parent="system-lane">
+          <mxGeometry x="185" y="950" width="110" height="70" as="geometry"/>
+        </mxCell>
+        
+        <mxCell id="system-show-duplicate" value="Show &quot;Song already&#xa;in playlist&quot; error" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#000000;fontSize=10;" vertex="1" parent="system-lane">
+          <mxGeometry x="350" y="960" width="120" height="50" as="geometry"/>
+        </mxCell>
+        
+        <!-- End State -->
+        <mxCell id="end" value="" style="ellipse;html=1;shape=mxgraph.flowchart.start_2;fillColor=#000000;strokeColor=#000000;" vertex="1" parent="user-lane">
+          <mxGeometry x="120" y="925" width="30" height="30" as="geometry"/>
+        </mxCell>
+        
+        <!-- Arrows -->
+        
+        <!-- Start to Click Create -->
+        <mxCell id="arrow-1" value="" style="endArrow=classic;html=1;strokeColor=#000000;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" edge="1" parent="1" source="start" target="user-click-create">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+        
+        <!-- Click Create to Auth Check -->
+        <mxCell id="arrow-2" value="" style="endArrow=classic;html=1;strokeColor=#000000;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" edge="1" parent="1" source="user-click-create" target="system-auth-check">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+        
+        <!-- Auth Check to Show Auth (No) -->
+        <mxCell id="arrow-3" value="No" style="endArrow=classic;html=1;strokeColor=#000000;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" edge="1" parent="1" source="system-auth-check" target="system-show-auth">
+          <mxGeometry x="-0.2" relative="1" as="geometry">
+            <mxPoint x="-10" y="-10" as="offset"/>
+          </mxGeometry>
+        </mxCell>
+        
+        <!-- Auth Check to Open Modal (Yes) -->
+        <mxCell id="arrow-4" value="Yes" style="endArrow=classic;html=1;strokeColor=#000000;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" edge="1" parent="1" source="system-auth-check" target="system-open-modal">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="10" y="10" as="offset"/>
+          </mxGeometry>
+        </mxCell>
+        
+        <!-- Open Modal to Display Form -->
+        <mxCell id="arrow-5" value="" style="endArrow=classic;html=1;strokeColor=#000000;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" edge="1" parent="1" source="system-open-modal" target="system-display-form">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+        
+        <!-- Display Form to Enter Details -->
+        <mxCell id="arrow-6" value="" style="endArrow=classic;html=1;strokeColor=#000000;exitX=0;exitY=0.5;exitDx=0;exitDy=0;entryX=1;entryY=0.5;entryDx=0;entryDy=0;" edge="1" parent="1" source="system-display-form" target="user-enter-details">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+        
+        <!-- Enter Details to Click Create Button -->
+        <mxCell id="arrow-7" value="" style="endArrow=classic;html=1;strokeColor=#000000;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" edge="1" parent="1" source="user-enter-details" target="user-click-create-btn">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+        
+        <!-- Click Create Button to Validate -->
+        <mxCell id="arrow-8" value="" style="endArrow=classic;html=1;strokeColor=#000000;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" edge="1" parent="1" source="user-click-create-btn" target="system-validate">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+        
+        <!-- Validate to Valid Check -->
+        <mxCell id="arrow-9" value="" style="endArrow=classic;html=1;strokeColor=#000000;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" edge="1" parent="1" source="system-validate" target="system-valid-check">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+        
+        <!-- Valid Check to Show Error (Invalid) -->
+        <mxCell id="arrow-10" value="Invalid" style="endArrow=classic;html=1;strokeColor=#000000;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" edge="1" parent="1" source="system-valid-check" target="system-show-error">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="-5" y="-10" as="offset"/>
+          </mxGeometry>
+        </mxCell>
+        
+        <!-- Show Error back to Enter Details -->
+        <mxCell id="arrow-11" value="" style="endArrow=classic;html=1;strokeColor=#000000;exitX=0.5;exitY=0;exitDx=0;exitDy=0;" edge="1" parent="1" source="system-show-error">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="290" y="355" as="targetPoint"/>
+            <Array as="points">
+              <mxPoint x="730" y="355"/>
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        
+        <!-- Valid Check to Insert Playlist (Valid) -->
+        <mxCell id="arrow-12" value="Valid" style="endArrow=classic;html=1;strokeColor=#000000;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" edge="1" parent="1" source="system-valid-check" target="system-insert-playlist">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="10" y="10" as="offset"/>
+          </mxGeometry>
+        </mxCell>
+        
+        <!-- Insert Playlist to Close Modal -->
+        <mxCell id="arrow-13" value="" style="endArrow=classic;html=1;strokeColor=#000000;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" edge="1" parent="1" source="system-insert-playlist" target="system-close-modal">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+        
+        <!-- Close Modal to Browse Songs -->
+        <mxCell id="arrow-14" value="" style="endArrow=classic;html=1;strokeColor=#000000;exitX=0;exitY=0.5;exitDx=0;exitDy=0;entryX=1;entryY=0.5;entryDx=0;entryDy=0;" edge="1" parent="1" source="system-close-modal" target="user-browse-songs">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+        
+        <!-- Browse Songs to Add to Playlist -->
+        <mxCell id="arrow-15" value="" style="endArrow=classic;html=1;strokeColor=#000000;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" edge="1" parent="1" source="user-browse-songs" target="user-add-to-playlist">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+        
+        <!-- Add to Playlist to Get Position -->
+        <mxCell id="arrow-16" value="" style="endArrow=classic;html=1;strokeColor=#000000;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" edge="1" parent="1" source="user-add-to-playlist" target="system-get-position">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+        
+        <!-- Get Position to Insert Song -->
+        <mxCell id="arrow-17" value="" style="endArrow=classic;html=1;strokeColor=#000000;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" edge="1" parent="1" source="system-get-position" target="system-insert-song">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+        
+        <!-- Insert Song to Already Check -->
+        <mxCell id="arrow-18" value="" style="endArrow=classic;html=1;strokeColor=#000000;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" edge="1" parent="1" source="system-insert-song" target="system-already-check">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+        
+        <!-- Already Check to Show Duplicate (Yes) -->
+        <mxCell id="arrow-19" value="Yes" style="endArrow=classic;html=1;strokeColor=#000000;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" edge="1" parent="1" source="system-already-check" target="system-show-duplicate">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="-5" y="-10" as="offset"/>
+          </mxGeometry>
+        </mxCell>
+        
+        <!-- Already Check to End (No) -->
+        <mxCell id="arrow-20" value="No" style="endArrow=classic;html=1;strokeColor=#000000;exitX=0;exitY=0.5;exitDx=0;exitDy=0;entryX=1;entryY=0.5;entryDx=0;entryDy=0;" edge="1" parent="1" source="system-already-check" target="end">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="10" y="10" as="offset"/>
+          </mxGeometry>
+        </mxCell>
+        
+        <!-- Show Duplicate back to Browse Songs -->
+        <mxCell id="arrow-21" value="" style="endArrow=classic;html=1;strokeColor=#000000;exitX=0.5;exitY=0;exitDx=0;exitDy=0;" edge="1" parent="1" source="system-show-duplicate">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="290" y="755" as="targetPoint"/>
+            <Array as="points">
+              <mxPoint x="730" y="755"/>
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        
+        <!-- End to View Playlist -->
+        <mxCell id="arrow-22" value="" style="endArrow=classic;html=1;strokeColor=#000000;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" edge="1" parent="1" source="end" target="user-view-playlist">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+        
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>

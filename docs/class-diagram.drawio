@@ -1,0 +1,461 @@
+<mxfile host="app.diagrams.net">
+  <diagram name="Class Diagram" id="class">
+    <mxGraphModel dx="1600" dy="1000" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1400" pageHeight="1100" math="0" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        
+        <!-- ==================== USER CLASS ==================== -->
+        <mxCell id="user" value="User" style="swimlane;fontStyle=1;align=center;verticalAlign=top;childLayout=stackLayout;horizontal=1;startSize=26;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLast=0;collapsible=0;marginBottom=0;fillColor=#FFFFFF;strokeColor=#000000;strokeWidth=2;fontSize=12;" vertex="1" parent="1">
+          <mxGeometry x="40" y="300" width="200" height="190" as="geometry" />
+        </mxCell>
+        <mxCell id="user-attr" value="- id: UUID&#xa;- email: String&#xa;- first_name: String&#xa;- last_name: String&#xa;- avatar_url: String&#xa;- created_at: Timestamp" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;fontSize=11;" vertex="1" parent="user">
+          <mxGeometry y="26" width="200" height="90" as="geometry" />
+        </mxCell>
+        <mxCell id="user-line" value="" style="line;strokeWidth=1;fillColor=none;align=left;verticalAlign=middle;spacingTop=-1;spacingLeft=3;spacingRight=3;rotatable=0;labelPosition=right;points=[];portConstraint=eastwest;strokeColor=#000000;" vertex="1" parent="user">
+          <mxGeometry y="116" width="200" height="8" as="geometry" />
+        </mxCell>
+        <mxCell id="user-ops" value="+ register()&#xa;+ login()&#xa;+ logout()&#xa;+ updateProfile()&#xa;+ getDetails()" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;fontSize=11;" vertex="1" parent="user">
+          <mxGeometry y="124" width="200" height="66" as="geometry" />
+        </mxCell>
+        
+        <!-- ==================== ARTIST CLASS ==================== -->
+        <mxCell id="artist" value="Artist" style="swimlane;fontStyle=1;align=center;verticalAlign=top;childLayout=stackLayout;horizontal=1;startSize=26;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLast=0;collapsible=0;marginBottom=0;fillColor=#FFFFFF;strokeColor=#000000;strokeWidth=2;fontSize=12;" vertex="1" parent="1">
+          <mxGeometry x="320" y="40" width="180" height="170" as="geometry" />
+        </mxCell>
+        <mxCell id="artist-attr" value="- id: UUID&#xa;- name: String&#xa;- image_path: String&#xa;- bio: Text&#xa;- created_at: Timestamp" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;fontSize=11;" vertex="1" parent="artist">
+          <mxGeometry y="26" width="180" height="76" as="geometry" />
+        </mxCell>
+        <mxCell id="artist-line" value="" style="line;strokeWidth=1;fillColor=none;align=left;verticalAlign=middle;spacingTop=-1;spacingLeft=3;spacingRight=3;rotatable=0;labelPosition=right;points=[];portConstraint=eastwest;strokeColor=#000000;" vertex="1" parent="artist">
+          <mxGeometry y="102" width="180" height="8" as="geometry" />
+        </mxCell>
+        <mxCell id="artist-ops" value="+ create()&#xa;+ update()&#xa;+ delete()&#xa;+ getSongs()" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;fontSize=11;" vertex="1" parent="artist">
+          <mxGeometry y="110" width="180" height="60" as="geometry" />
+        </mxCell>
+        
+        <!-- ==================== ALBUM CLASS ==================== -->
+        <mxCell id="album" value="Album" style="swimlane;fontStyle=1;align=center;verticalAlign=top;childLayout=stackLayout;horizontal=1;startSize=26;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLast=0;collapsible=0;marginBottom=0;fillColor=#FFFFFF;strokeColor=#000000;strokeWidth=2;fontSize=12;" vertex="1" parent="1">
+          <mxGeometry x="560" y="40" width="180" height="180" as="geometry" />
+        </mxCell>
+        <mxCell id="album-attr" value="- id: UUID&#xa;- title: String&#xa;- artist_id: UUID&#xa;- image_path: String&#xa;- release_date: Date&#xa;- created_at: Timestamp" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;fontSize=11;" vertex="1" parent="album">
+          <mxGeometry y="26" width="180" height="86" as="geometry" />
+        </mxCell>
+        <mxCell id="album-line" value="" style="line;strokeWidth=1;fillColor=none;align=left;verticalAlign=middle;spacingTop=-1;spacingLeft=3;spacingRight=3;rotatable=0;labelPosition=right;points=[];portConstraint=eastwest;strokeColor=#000000;" vertex="1" parent="album">
+          <mxGeometry y="112" width="180" height="8" as="geometry" />
+        </mxCell>
+        <mxCell id="album-ops" value="+ create()&#xa;+ update()&#xa;+ delete()&#xa;+ getSongs()" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;fontSize=11;" vertex="1" parent="album">
+          <mxGeometry y="120" width="180" height="60" as="geometry" />
+        </mxCell>
+        
+        <!-- ==================== SONG CLASS ==================== -->
+        <mxCell id="song" value="Song" style="swimlane;fontStyle=1;align=center;verticalAlign=top;childLayout=stackLayout;horizontal=1;startSize=26;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLast=0;collapsible=0;marginBottom=0;fillColor=#FFFFFF;strokeColor=#000000;strokeWidth=2;fontSize=12;" vertex="1" parent="1">
+          <mxGeometry x="560" y="280" width="180" height="240" as="geometry" />
+        </mxCell>
+        <mxCell id="song-attr" value="- id: UUID&#xa;- user_id: UUID&#xa;- title: String&#xa;- author: String&#xa;- song_path: String&#xa;- image_path: String&#xa;- album_id: UUID&#xa;- artist_id: UUID&#xa;- genre: String&#xa;- duration: Integer&#xa;- play_count: Integer&#xa;- created_at: Timestamp" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;fontSize=11;" vertex="1" parent="song">
+          <mxGeometry y="26" width="180" height="150" as="geometry" />
+        </mxCell>
+        <mxCell id="song-line" value="" style="line;strokeWidth=1;fillColor=none;align=left;verticalAlign=middle;spacingTop=-1;spacingLeft=3;spacingRight=3;rotatable=0;labelPosition=right;points=[];portConstraint=eastwest;strokeColor=#000000;" vertex="1" parent="song">
+          <mxGeometry y="176" width="180" height="8" as="geometry" />
+        </mxCell>
+        <mxCell id="song-ops" value="+ create()&#xa;+ update()&#xa;+ delete()&#xa;+ play()" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;fontSize=11;" vertex="1" parent="song">
+          <mxGeometry y="184" width="180" height="56" as="geometry" />
+        </mxCell>
+        
+        <!-- ==================== PLAYLIST CLASS ==================== -->
+        <mxCell id="playlist" value="Playlist" style="swimlane;fontStyle=1;align=center;verticalAlign=top;childLayout=stackLayout;horizontal=1;startSize=26;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLast=0;collapsible=0;marginBottom=0;fillColor=#FFFFFF;strokeColor=#000000;strokeWidth=2;fontSize=12;" vertex="1" parent="1">
+          <mxGeometry x="300" y="300" width="180" height="210" as="geometry" />
+        </mxCell>
+        <mxCell id="playlist-attr" value="- id: UUID&#xa;- user_id: UUID&#xa;- title: String&#xa;- description: Text&#xa;- image_path: String&#xa;- is_public: Boolean&#xa;- created_at: Timestamp&#xa;- updated_at: Timestamp" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;fontSize=11;" vertex="1" parent="playlist">
+          <mxGeometry y="26" width="180" height="110" as="geometry" />
+        </mxCell>
+        <mxCell id="playlist-line" value="" style="line;strokeWidth=1;fillColor=none;align=left;verticalAlign=middle;spacingTop=-1;spacingLeft=3;spacingRight=3;rotatable=0;labelPosition=right;points=[];portConstraint=eastwest;strokeColor=#000000;" vertex="1" parent="playlist">
+          <mxGeometry y="136" width="180" height="8" as="geometry" />
+        </mxCell>
+        <mxCell id="playlist-ops" value="+ create()&#xa;+ update()&#xa;+ delete()&#xa;+ addSong()&#xa;+ removeSong()" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;fontSize=11;" vertex="1" parent="playlist">
+          <mxGeometry y="144" width="180" height="66" as="geometry" />
+        </mxCell>
+        
+        <!-- ==================== PLAYLIST_SONG CLASS ==================== -->
+        <mxCell id="playlist_song" value="PlaylistSong" style="swimlane;fontStyle=1;align=center;verticalAlign=top;childLayout=stackLayout;horizontal=1;startSize=26;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLast=0;collapsible=0;marginBottom=0;fillColor=#FFFFFF;strokeColor=#000000;strokeWidth=2;fontSize=12;" vertex="1" parent="1">
+          <mxGeometry x="420" y="580" width="160" height="150" as="geometry" />
+        </mxCell>
+        <mxCell id="playlist_song-attr" value="- id: UUID&#xa;- playlist_id: UUID&#xa;- song_id: UUID&#xa;- position: Integer&#xa;- added_at: Timestamp" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;fontSize=11;" vertex="1" parent="playlist_song">
+          <mxGeometry y="26" width="160" height="76" as="geometry" />
+        </mxCell>
+        <mxCell id="playlist_song-line" value="" style="line;strokeWidth=1;fillColor=none;align=left;verticalAlign=middle;spacingTop=-1;spacingLeft=3;spacingRight=3;rotatable=0;labelPosition=right;points=[];portConstraint=eastwest;strokeColor=#000000;" vertex="1" parent="playlist_song">
+          <mxGeometry y="102" width="160" height="8" as="geometry" />
+        </mxCell>
+        <mxCell id="playlist_song-ops" value="+ add()&#xa;+ remove()&#xa;+ reorder()" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;fontSize=11;" vertex="1" parent="playlist_song">
+          <mxGeometry y="110" width="160" height="40" as="geometry" />
+        </mxCell>
+        
+        <!-- ==================== LIKED_SONG CLASS ==================== -->
+        <mxCell id="liked_song" value="LikedSong" style="swimlane;fontStyle=1;align=center;verticalAlign=top;childLayout=stackLayout;horizontal=1;startSize=26;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLast=0;collapsible=0;marginBottom=0;fillColor=#FFFFFF;strokeColor=#000000;strokeWidth=2;fontSize=12;" vertex="1" parent="1">
+          <mxGeometry x="40" y="580" width="160" height="140" as="geometry" />
+        </mxCell>
+        <mxCell id="liked_song-attr" value="- id: UUID&#xa;- user_id: UUID&#xa;- song_id: UUID&#xa;- created_at: Timestamp" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;fontSize=11;" vertex="1" parent="liked_song">
+          <mxGeometry y="26" width="160" height="66" as="geometry" />
+        </mxCell>
+        <mxCell id="liked_song-line" value="" style="line;strokeWidth=1;fillColor=none;align=left;verticalAlign=middle;spacingTop=-1;spacingLeft=3;spacingRight=3;rotatable=0;labelPosition=right;points=[];portConstraint=eastwest;strokeColor=#000000;" vertex="1" parent="liked_song">
+          <mxGeometry y="92" width="160" height="8" as="geometry" />
+        </mxCell>
+        <mxCell id="liked_song-ops" value="+ like()&#xa;+ unlike()" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;fontSize=11;" vertex="1" parent="liked_song">
+          <mxGeometry y="100" width="160" height="40" as="geometry" />
+        </mxCell>
+        
+        <!-- ==================== LISTENING_HISTORY CLASS ==================== -->
+        <mxCell id="listening_history" value="ListeningHistory" style="swimlane;fontStyle=1;align=center;verticalAlign=top;childLayout=stackLayout;horizontal=1;startSize=26;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLast=0;collapsible=0;marginBottom=0;fillColor=#FFFFFF;strokeColor=#000000;strokeWidth=2;fontSize=12;" vertex="1" parent="1">
+          <mxGeometry x="220" y="580" width="160" height="140" as="geometry" />
+        </mxCell>
+        <mxCell id="listening_history-attr" value="- id: UUID&#xa;- user_id: UUID&#xa;- song_id: UUID&#xa;- played_at: Timestamp" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;fontSize=11;" vertex="1" parent="listening_history">
+          <mxGeometry y="26" width="160" height="66" as="geometry" />
+        </mxCell>
+        <mxCell id="listening_history-line" value="" style="line;strokeWidth=1;fillColor=none;align=left;verticalAlign=middle;spacingTop=-1;spacingLeft=3;spacingRight=3;rotatable=0;labelPosition=right;points=[];portConstraint=eastwest;strokeColor=#000000;" vertex="1" parent="listening_history">
+          <mxGeometry y="92" width="160" height="8" as="geometry" />
+        </mxCell>
+        <mxCell id="listening_history-ops" value="+ record()&#xa;+ getHistory()" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;fontSize=11;" vertex="1" parent="listening_history">
+          <mxGeometry y="100" width="160" height="40" as="geometry" />
+        </mxCell>
+        
+        <!-- ==================== PRODUCT CLASS ==================== -->
+        <mxCell id="product" value="Product" style="swimlane;fontStyle=1;align=center;verticalAlign=top;childLayout=stackLayout;horizontal=1;startSize=26;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLast=0;collapsible=0;marginBottom=0;fillColor=#FFFFFF;strokeColor=#000000;strokeWidth=2;fontSize=12;" vertex="1" parent="1">
+          <mxGeometry x="820" y="40" width="180" height="170" as="geometry" />
+        </mxCell>
+        <mxCell id="product-attr" value="- id: String&#xa;- active: Boolean&#xa;- name: String&#xa;- description: Text&#xa;- image: String&#xa;- metadata: JSON" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;fontSize=11;" vertex="1" parent="product">
+          <mxGeometry y="26" width="180" height="86" as="geometry" />
+        </mxCell>
+        <mxCell id="product-line" value="" style="line;strokeWidth=1;fillColor=none;align=left;verticalAlign=middle;spacingTop=-1;spacingLeft=3;spacingRight=3;rotatable=0;labelPosition=right;points=[];portConstraint=eastwest;strokeColor=#000000;" vertex="1" parent="product">
+          <mxGeometry y="112" width="180" height="8" as="geometry" />
+        </mxCell>
+        <mxCell id="product-ops" value="+ create()&#xa;+ update()&#xa;+ getActive()" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;fontSize=11;" vertex="1" parent="product">
+          <mxGeometry y="120" width="180" height="50" as="geometry" />
+        </mxCell>
+        
+        <!-- ==================== PRICE CLASS ==================== -->
+        <mxCell id="price" value="Price" style="swimlane;fontStyle=1;align=center;verticalAlign=top;childLayout=stackLayout;horizontal=1;startSize=26;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLast=0;collapsible=0;marginBottom=0;fillColor=#FFFFFF;strokeColor=#000000;strokeWidth=2;fontSize=12;" vertex="1" parent="1">
+          <mxGeometry x="1060" y="40" width="180" height="210" as="geometry" />
+        </mxCell>
+        <mxCell id="price-attr" value="- id: String&#xa;- product_id: String&#xa;- active: Boolean&#xa;- description: Text&#xa;- unit_amount: BigInt&#xa;- currency: String&#xa;- type: String&#xa;- interval: String&#xa;- interval_count: Integer&#xa;- trial_period_days: Integer" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;fontSize=11;" vertex="1" parent="price">
+          <mxGeometry y="26" width="180" height="130" as="geometry" />
+        </mxCell>
+        <mxCell id="price-line" value="" style="line;strokeWidth=1;fillColor=none;align=left;verticalAlign=middle;spacingTop=-1;spacingLeft=3;spacingRight=3;rotatable=0;labelPosition=right;points=[];portConstraint=eastwest;strokeColor=#000000;" vertex="1" parent="price">
+          <mxGeometry y="156" width="180" height="8" as="geometry" />
+        </mxCell>
+        <mxCell id="price-ops" value="+ create()&#xa;+ update()&#xa;+ getByProduct()" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;fontSize=11;" vertex="1" parent="price">
+          <mxGeometry y="164" width="180" height="46" as="geometry" />
+        </mxCell>
+        
+        <!-- ==================== CUSTOMER CLASS ==================== -->
+        <mxCell id="customer" value="Customer" style="swimlane;fontStyle=1;align=center;verticalAlign=top;childLayout=stackLayout;horizontal=1;startSize=26;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLast=0;collapsible=0;marginBottom=0;fillColor=#FFFFFF;strokeColor=#000000;strokeWidth=2;fontSize=12;" vertex="1" parent="1">
+          <mxGeometry x="40" y="40" width="180" height="130" as="geometry" />
+        </mxCell>
+        <mxCell id="customer-attr" value="- id: UUID&#xa;- stripe_customer_id: String" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;fontSize=11;" vertex="1" parent="customer">
+          <mxGeometry y="26" width="180" height="46" as="geometry" />
+        </mxCell>
+        <mxCell id="customer-line" value="" style="line;strokeWidth=1;fillColor=none;align=left;verticalAlign=middle;spacingTop=-1;spacingLeft=3;spacingRight=3;rotatable=0;labelPosition=right;points=[];portConstraint=eastwest;strokeColor=#000000;" vertex="1" parent="customer">
+          <mxGeometry y="72" width="180" height="8" as="geometry" />
+        </mxCell>
+        <mxCell id="customer-ops" value="+ create()&#xa;+ getByUserId()" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;fontSize=11;" vertex="1" parent="customer">
+          <mxGeometry y="80" width="180" height="50" as="geometry" />
+        </mxCell>
+        
+        <!-- ==================== SUBSCRIPTION CLASS ==================== -->
+        <mxCell id="subscription" value="Subscription" style="swimlane;fontStyle=1;align=center;verticalAlign=top;childLayout=stackLayout;horizontal=1;startSize=26;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLast=0;collapsible=0;marginBottom=0;fillColor=#FFFFFF;strokeColor=#000000;strokeWidth=2;fontSize=12;" vertex="1" parent="1">
+          <mxGeometry x="820" y="280" width="200" height="260" as="geometry" />
+        </mxCell>
+        <mxCell id="subscription-attr" value="- id: String&#xa;- user_id: UUID&#xa;- status: String&#xa;- price_id: String&#xa;- quantity: Integer&#xa;- cancel_at_period_end: Boolean&#xa;- created: Timestamp&#xa;- current_period_start: Timestamp&#xa;- current_period_end: Timestamp&#xa;- ended_at: Timestamp&#xa;- canceled_at: Timestamp" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;fontSize=11;" vertex="1" parent="subscription">
+          <mxGeometry y="26" width="200" height="150" as="geometry" />
+        </mxCell>
+        <mxCell id="subscription-line" value="" style="line;strokeWidth=1;fillColor=none;align=left;verticalAlign=middle;spacingTop=-1;spacingLeft=3;spacingRight=3;rotatable=0;labelPosition=right;points=[];portConstraint=eastwest;strokeColor=#000000;" vertex="1" parent="subscription">
+          <mxGeometry y="176" width="200" height="8" as="geometry" />
+        </mxCell>
+        <mxCell id="subscription-ops" value="+ create()&#xa;+ cancel()&#xa;+ renew()&#xa;+ getByUserId()&#xa;+ checkStatus()" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;fontSize=11;" vertex="1" parent="subscription">
+          <mxGeometry y="184" width="200" height="76" as="geometry" />
+        </mxCell>
+        
+        <!-- ==================== PAYMENT CLASS ==================== -->
+        <mxCell id="payment" value="Payment" style="swimlane;fontStyle=1;align=center;verticalAlign=top;childLayout=stackLayout;horizontal=1;startSize=26;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLast=0;collapsible=0;marginBottom=0;fillColor=#FFFFFF;strokeColor=#000000;strokeWidth=2;fontSize=12;" vertex="1" parent="1">
+          <mxGeometry x="1060" y="280" width="200" height="280" as="geometry" />
+        </mxCell>
+        <mxCell id="payment-attr" value="- id: UUID&#xa;- user_id: UUID&#xa;- plan_id: String&#xa;- amount: Integer&#xa;- transaction_code: String&#xa;- status: String&#xa;- sepay_transaction_id: String&#xa;- sepay_reference_code: String&#xa;- paid_amount: Integer&#xa;- paid_at: Timestamp&#xa;- note: Text&#xa;- expires_at: Timestamp&#xa;- created_at: Timestamp" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;fontSize=11;" vertex="1" parent="payment">
+          <mxGeometry y="26" width="200" height="170" as="geometry" />
+        </mxCell>
+        <mxCell id="payment-line" value="" style="line;strokeWidth=1;fillColor=none;align=left;verticalAlign=middle;spacingTop=-1;spacingLeft=3;spacingRight=3;rotatable=0;labelPosition=right;points=[];portConstraint=eastwest;strokeColor=#000000;" vertex="1" parent="payment">
+          <mxGeometry y="196" width="200" height="8" as="geometry" />
+        </mxCell>
+        <mxCell id="payment-ops" value="+ create()&#xa;+ updateStatus()&#xa;+ verify()&#xa;+ getByUserId()&#xa;+ checkExpiry()" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;fontSize=11;" vertex="1" parent="payment">
+          <mxGeometry y="204" width="200" height="76" as="geometry" />
+        </mxCell>
+        
+        <!-- ==================== RELATIONSHIPS ==================== -->
+        
+        <!-- Customer - User (1-1) -->
+        <mxCell id="rel1" value="" style="endArrow=none;html=1;strokeColor=#000000;strokeWidth=1;" edge="1" parent="1">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="130" y="170" as="sourcePoint" />
+            <mxPoint x="130" y="300" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="rel1-label1" value="1" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;fontSize=10;" vertex="1" parent="1">
+          <mxGeometry x="135" y="175" width="20" height="20" as="geometry" />
+        </mxCell>
+        <mxCell id="rel1-label2" value="1" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;fontSize=10;" vertex="1" parent="1">
+          <mxGeometry x="135" y="275" width="20" height="20" as="geometry" />
+        </mxCell>
+        
+        <!-- User - Playlist (1-*) -->
+        <mxCell id="rel2" value="" style="endArrow=none;html=1;strokeColor=#000000;strokeWidth=1;" edge="1" parent="1">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="240" y="395" as="sourcePoint" />
+            <mxPoint x="300" y="395" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="rel2-label1" value="1" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;fontSize=10;" vertex="1" parent="1">
+          <mxGeometry x="245" y="375" width="20" height="20" as="geometry" />
+        </mxCell>
+        <mxCell id="rel2-label2" value="*" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;fontSize=10;" vertex="1" parent="1">
+          <mxGeometry x="285" y="375" width="20" height="20" as="geometry" />
+        </mxCell>
+        
+        <!-- User - Song (1-*) -->
+        <mxCell id="rel3" value="" style="endArrow=none;html=1;strokeColor=#000000;strokeWidth=1;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" edge="1" parent="1">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="240" y="450" as="sourcePoint" />
+            <mxPoint x="560" y="400" as="targetPoint" />
+            <Array as="points">
+              <mxPoint x="270" y="450" />
+              <mxPoint x="270" y="400" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="rel3-label1" value="1" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;fontSize=10;" vertex="1" parent="1">
+          <mxGeometry x="245" y="430" width="20" height="20" as="geometry" />
+        </mxCell>
+        <mxCell id="rel3-label2" value="*" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;fontSize=10;" vertex="1" parent="1">
+          <mxGeometry x="535" y="380" width="20" height="20" as="geometry" />
+        </mxCell>
+        
+        <!-- User - LikedSong (1-*) -->
+        <mxCell id="rel4" value="" style="endArrow=none;html=1;strokeColor=#000000;strokeWidth=1;" edge="1" parent="1">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="120" y="490" as="sourcePoint" />
+            <mxPoint x="120" y="580" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="rel4-label1" value="1" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;fontSize=10;" vertex="1" parent="1">
+          <mxGeometry x="125" y="495" width="20" height="20" as="geometry" />
+        </mxCell>
+        <mxCell id="rel4-label2" value="*" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;fontSize=10;" vertex="1" parent="1">
+          <mxGeometry x="125" y="555" width="20" height="20" as="geometry" />
+        </mxCell>
+        
+        <!-- User - ListeningHistory (1-*) -->
+        <mxCell id="rel5" value="" style="endArrow=none;html=1;strokeColor=#000000;strokeWidth=1;" edge="1" parent="1">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="180" y="490" as="sourcePoint" />
+            <mxPoint x="300" y="580" as="targetPoint" />
+            <Array as="points">
+              <mxPoint x="180" y="550" />
+              <mxPoint x="300" y="550" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="rel5-label1" value="1" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;fontSize=10;" vertex="1" parent="1">
+          <mxGeometry x="185" y="495" width="20" height="20" as="geometry" />
+        </mxCell>
+        <mxCell id="rel5-label2" value="*" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;fontSize=10;" vertex="1" parent="1">
+          <mxGeometry x="305" y="555" width="20" height="20" as="geometry" />
+        </mxCell>
+        
+        <!-- User - Subscription (1-*) -->
+        <mxCell id="rel6" value="" style="endArrow=none;html=1;strokeColor=#000000;strokeWidth=1;" edge="1" parent="1">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="140" y="300" as="sourcePoint" />
+            <mxPoint x="820" y="410" as="targetPoint" />
+            <Array as="points">
+              <mxPoint x="140" y="260" />
+              <mxPoint x="790" y="260" />
+              <mxPoint x="790" y="410" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="rel6-label1" value="1" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;fontSize=10;" vertex="1" parent="1">
+          <mxGeometry x="145" y="255" width="20" height="20" as="geometry" />
+        </mxCell>
+        <mxCell id="rel6-label2" value="*" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;fontSize=10;" vertex="1" parent="1">
+          <mxGeometry x="795" y="390" width="20" height="20" as="geometry" />
+        </mxCell>
+        
+        <!-- User - Payment (1-*) -->
+        <mxCell id="rel7" value="" style="endArrow=none;html=1;strokeColor=#000000;strokeWidth=1;" edge="1" parent="1">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="160" y="300" as="sourcePoint" />
+            <mxPoint x="1060" y="420" as="targetPoint" />
+            <Array as="points">
+              <mxPoint x="160" y="240" />
+              <mxPoint x="1040" y="240" />
+              <mxPoint x="1040" y="420" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="rel7-label1" value="1" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;fontSize=10;" vertex="1" parent="1">
+          <mxGeometry x="165" y="235" width="20" height="20" as="geometry" />
+        </mxCell>
+        <mxCell id="rel7-label2" value="*" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;fontSize=10;" vertex="1" parent="1">
+          <mxGeometry x="1042" y="400" width="20" height="20" as="geometry" />
+        </mxCell>
+        
+        <!-- Artist - Album (1-*) -->
+        <mxCell id="rel8" value="" style="endArrow=none;html=1;strokeColor=#000000;strokeWidth=1;" edge="1" parent="1">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="500" y="125" as="sourcePoint" />
+            <mxPoint x="560" y="125" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="rel8-label1" value="1" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;fontSize=10;" vertex="1" parent="1">
+          <mxGeometry x="505" y="105" width="20" height="20" as="geometry" />
+        </mxCell>
+        <mxCell id="rel8-label2" value="*" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;fontSize=10;" vertex="1" parent="1">
+          <mxGeometry x="540" y="105" width="20" height="20" as="geometry" />
+        </mxCell>
+        
+        <!-- Artist - Song (1-*) -->
+        <mxCell id="rel9" value="" style="endArrow=none;html=1;strokeColor=#000000;strokeWidth=1;" edge="1" parent="1">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="410" y="210" as="sourcePoint" />
+            <mxPoint x="605" y="280" as="targetPoint" />
+            <Array as="points">
+              <mxPoint x="410" y="250" />
+              <mxPoint x="605" y="250" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="rel9-label1" value="1" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;fontSize=10;" vertex="1" parent="1">
+          <mxGeometry x="400" y="215" width="20" height="20" as="geometry" />
+        </mxCell>
+        <mxCell id="rel9-label2" value="*" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;fontSize=10;" vertex="1" parent="1">
+          <mxGeometry x="590" y="255" width="20" height="20" as="geometry" />
+        </mxCell>
+        
+        <!-- Album - Song (1-*) -->
+        <mxCell id="rel10" value="" style="endArrow=none;html=1;strokeColor=#000000;strokeWidth=1;" edge="1" parent="1">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="695" y="220" as="sourcePoint" />
+            <mxPoint x="695" y="280" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="rel10-label1" value="1" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;fontSize=10;" vertex="1" parent="1">
+          <mxGeometry x="700" y="225" width="20" height="20" as="geometry" />
+        </mxCell>
+        <mxCell id="rel10-label2" value="*" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;fontSize=10;" vertex="1" parent="1">
+          <mxGeometry x="700" y="255" width="20" height="20" as="geometry" />
+        </mxCell>
+        
+        <!-- Product - Price (1-*) -->
+        <mxCell id="rel11" value="" style="endArrow=none;html=1;strokeColor=#000000;strokeWidth=1;" edge="1" parent="1">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="1000" y="125" as="sourcePoint" />
+            <mxPoint x="1060" y="125" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="rel11-label1" value="1" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;fontSize=10;" vertex="1" parent="1">
+          <mxGeometry x="1005" y="105" width="20" height="20" as="geometry" />
+        </mxCell>
+        <mxCell id="rel11-label2" value="*" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;fontSize=10;" vertex="1" parent="1">
+          <mxGeometry x="1040" y="105" width="20" height="20" as="geometry" />
+        </mxCell>
+        
+        <!-- Price - Subscription (1-*) -->
+        <mxCell id="rel12" value="" style="endArrow=none;html=1;strokeColor=#000000;strokeWidth=1;" edge="1" parent="1">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="1020" y="350" as="sourcePoint" />
+            <mxPoint x="1150" y="250" as="targetPoint" />
+            <Array as="points">
+              <mxPoint x="1150" y="350" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="rel12-label1" value="1" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;fontSize=10;" vertex="1" parent="1">
+          <mxGeometry x="1135" y="255" width="20" height="20" as="geometry" />
+        </mxCell>
+        <mxCell id="rel12-label2" value="*" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;fontSize=10;" vertex="1" parent="1">
+          <mxGeometry x="1025" y="330" width="20" height="20" as="geometry" />
+        </mxCell>
+        
+        <!-- Playlist - PlaylistSong (1-*) -->
+        <mxCell id="rel13" value="" style="endArrow=none;html=1;strokeColor=#000000;strokeWidth=1;" edge="1" parent="1">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="390" y="510" as="sourcePoint" />
+            <mxPoint x="460" y="580" as="targetPoint" />
+            <Array as="points">
+              <mxPoint x="390" y="555" />
+              <mxPoint x="460" y="555" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="rel13-label1" value="1" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;fontSize=10;" vertex="1" parent="1">
+          <mxGeometry x="375" y="515" width="20" height="20" as="geometry" />
+        </mxCell>
+        <mxCell id="rel13-label2" value="*" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;fontSize=10;" vertex="1" parent="1">
+          <mxGeometry x="445" y="555" width="20" height="20" as="geometry" />
+        </mxCell>
+        
+        <!-- Song - PlaylistSong (*-1) -->
+        <mxCell id="rel14" value="" style="endArrow=none;html=1;strokeColor=#000000;strokeWidth=1;" edge="1" parent="1">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="650" y="520" as="sourcePoint" />
+            <mxPoint x="540" y="580" as="targetPoint" />
+            <Array as="points">
+              <mxPoint x="650" y="555" />
+              <mxPoint x="540" y="555" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="rel14-label1" value="1" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;fontSize=10;" vertex="1" parent="1">
+          <mxGeometry x="635" y="525" width="20" height="20" as="geometry" />
+        </mxCell>
+        <mxCell id="rel14-label2" value="*" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;fontSize=10;" vertex="1" parent="1">
+          <mxGeometry x="545" y="555" width="20" height="20" as="geometry" />
+        </mxCell>
+        
+        <!-- Song - LikedSong (1-*) -->
+        <mxCell id="rel15" value="" style="endArrow=none;html=1;strokeColor=#000000;strokeWidth=1;" edge="1" parent="1">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="560" y="480" as="sourcePoint" />
+            <mxPoint x="200" y="650" as="targetPoint" />
+            <Array as="points">
+              <mxPoint x="530" y="480" />
+              <mxPoint x="530" y="750" />
+              <mxPoint x="200" y="750" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="rel15-label1" value="1" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;fontSize=10;" vertex="1" parent="1">
+          <mxGeometry x="535" y="460" width="20" height="20" as="geometry" />
+        </mxCell>
+        <mxCell id="rel15-label2" value="*" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;fontSize=10;" vertex="1" parent="1">
+          <mxGeometry x="205" y="720" width="20" height="20" as="geometry" />
+        </mxCell>
+        
+        <!-- Song - ListeningHistory (1-*) -->
+        <mxCell id="rel16" value="" style="endArrow=none;html=1;strokeColor=#000000;strokeWidth=1;" edge="1" parent="1">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="600" y="520" as="sourcePoint" />
+            <mxPoint x="380" y="650" as="targetPoint" />
+            <Array as="points">
+              <mxPoint x="600" y="770" />
+              <mxPoint x="380" y="770" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="rel16-label1" value="1" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;fontSize=10;" vertex="1" parent="1">
+          <mxGeometry x="585" y="525" width="20" height="20" as="geometry" />
+        </mxCell>
+        <mxCell id="rel16-label2" value="*" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;fontSize=10;" vertex="1" parent="1">
+          <mxGeometry x="385" y="740" width="20" height="20" as="geometry" />
+        </mxCell>
+        
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>

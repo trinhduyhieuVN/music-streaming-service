@@ -3,8 +3,10 @@
 import Image from "next/image";
 import { useRouter } from "next/navigation";
 import { FaUserAlt } from "react-icons/fa";
+import { useMemo } from "react";
 
 import { Artist } from "@/types";
+import ArtistAvatar from "./ArtistAvatar";
 
 interface ArtistItemProps {
   data: Artist;
@@ -12,6 +14,11 @@ interface ArtistItemProps {
 
 const ArtistItem: React.FC<ArtistItemProps> = ({ data }) => {
   const router = useRouter();
+
+  // Generate initials for artist
+  const initials = useMemo(() => {
+    return data.name.trim().toUpperCase().substring(0, 2);
+  }, [data.name]);
 
   const handleClick = () => {
     router.push(`/artist/${data.id}`);
@@ -37,19 +44,12 @@ const ArtistItem: React.FC<ArtistItemProps> = ({ data }) => {
         p-3
       "
     >
-      <div className="relative aspect-square w-full h-full rounded-full overflow-hidden bg-neutral-800">
-        {data.avatar_url ? (
-          <Image
-            className="object-cover"
-            src={data.avatar_url}
-            fill
-            alt={data.name}
-          />
-        ) : (
-          <div className="flex items-center justify-center w-full h-full">
-            <FaUserAlt className="text-neutral-400" size={40} />
-          </div>
-        )}
+      <div className="relative w-full aspect-square flex items-center justify-center">
+        <ArtistAvatar 
+          artistName={data.name}
+          initials={initials}
+          size="lg"
+        />
       </div>
       <div className="flex flex-col items-start w-full pt-4 gap-y-1">
         <p className="font-semibold truncate w-full text-center">

@@ -6,6 +6,7 @@ import getSongsByArtistId from "@/actions/getSongsByArtistId";
 
 import Header from "@/components/Header";
 import ArtistContent from "./components/ArtistContent";
+import ArtistAvatar from "@/components/ArtistAvatar";
 
 interface ArtistPageProps {
   params: {
@@ -16,6 +17,9 @@ interface ArtistPageProps {
 const ArtistPage = async ({ params }: ArtistPageProps) => {
   const artist = await getArtistById(params.artistId);
   const songs = await getSongsByArtistId(params.artistId);
+
+  // Generate initials for artist
+  const initials = artist?.name.trim().toUpperCase().substring(0, 2) || '??';
 
   if (!artist) {
     return (
@@ -36,17 +40,12 @@ const ArtistPage = async ({ params }: ArtistPageProps) => {
       <Header>
         <div className="mt-20">
           <div className="flex flex-col md:flex-row items-center gap-x-5">
-            <div className="relative h-32 w-32 lg:h-44 lg:w-44 rounded-full overflow-hidden bg-neutral-800 flex items-center justify-center">
-              {artist.avatar_url ? (
-                <Image
-                  fill
-                  src={artist.avatar_url}
-                  alt={artist.name}
-                  className="object-cover"
-                />
-              ) : (
-                <FaUserAlt className="text-neutral-400" size={60} />
-              )}
+            <div className="relative h-32 w-32 lg:h-44 lg:w-44 flex items-center justify-center">
+              <ArtistAvatar 
+                artistName={artist.name}
+                initials={initials}
+                size="xl"
+              />
             </div>
             <div className="flex flex-col gap-y-2 mt-4 md:mt-0">
               <p className="hidden md:block font-semibold text-sm">Artist</p>

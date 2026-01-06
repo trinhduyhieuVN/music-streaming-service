@@ -55,7 +55,7 @@ const SubscribeModal = () => {
       setTimeLeft(diff);
 
       if (diff === 0) {
-        toast.error('Đã hết thời gian thanh toán');
+        toast.error('Payment time has expired');
         setStep('select-plan');
       }
     }, 1000);
@@ -64,17 +64,43 @@ const SubscribeModal = () => {
   }, [paymentData, step]);
 
   // Check payment status
-  const checkPaymentStatus = useCallback(async () => {
+  const checkPaymentStatus = useCallback(async (showPendingMessage = false) => {
     if (!paymentData) return;
 
     try {
+      // Nếu người dùng click button, gọi verify-payment API để kiểm tra trực tiếp từ SePay
+      if (showPendingMessage) {
+        const verifyRes = await fetch('/api/sepay/verify-payment', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ paymentId: paymentData.id })
+        });
+        const verifyData = await verifyRes.json();
+
+        if (verifyData.status === 'completed') {
+          setStep('success');
+          toast.success('Payment successful! 🎉');
+          setTimeout(() => {
+            window.location.reload();
+          }, 3000);
+          return;
+        } else if (verifyData.status === 'expired') {
+          toast.error('Payment time has expired');
+          setStep('select-plan');
+          return;
+        } else {
+          toast.error('Payment not successful. Please transfer the correct amount and content.');
+          return;
+        }
+      }
+
+      // Auto-check: chỉ kiểm tra status trong database
       const res = await fetch(`/api/sepay/check-status?paymentId=${paymentData.id}`);
       const data = await res.json();
 
       if (data.payment?.status === 'completed') {
         setStep('success');
-        toast.success('Thanh toán thành công! 🎉');
-        // Refresh page sau 3s
+        toast.success('Payment successful! 🎉');
         setTimeout(() => {
           window.location.reload();
         }, 3000);
@@ -84,14 +110,17 @@ const SubscribeModal = () => {
       }
     } catch (error) {
       console.error('Check status error:', error);
+      if (showPendingMessage) {
+        toast.error('Không thể kiểm tra trạng thái thanh toán. Vui lòng thử lại.');
+      }
     }
   }, [paymentData]);
 
-  // Auto check payment status every 5 seconds
+  // Auto check payment status every 5 seconds (không hiển thị thông báo pending)
   useEffect(() => {
     if (step !== 'payment' || !paymentData) return;
 
-    const interval = setInterval(checkPaymentStatus, 5000);
+    const interval = setInterval(() => checkPaymentStatus(false), 5000);
     return () => clearInterval(interval);
   }, [step, paymentData, checkPaymentStatus]);
 
@@ -122,7 +151,7 @@ const SubscribeModal = () => {
       setPaymentData(data.payment);
       setStep('payment');
     } catch (error) {
-      toast.error('Có lỗi xảy ra');
+      toast.error('An error occurred');
     } finally {
       setIsLoading(false);
     }
@@ -132,7 +161,7 @@ const SubscribeModal = () => {
   const copyToClipboard = (text: string, label: string) => {
     navigator.clipboard.writeText(text);
     setCopied(true);
-    toast.success(`Đã sao chép ${label}`);
+    toast.success(`Copied ${label}`);
     setTimeout(() => setCopied(false), 2000);
   };
 
@@ -147,7 +176,7 @@ const SubscribeModal = () => {
   const renderPlanSelection = () => (
     <div className="space-y-4">
       <p className="text-neutral-400 text-center mb-6">
-        Chọn gói Premium phù hợp với bạn
+        Choose the Premium plan that suits you
       </p>
       
       {PREMIUM_PLANS.map((plan) => (
@@ -164,7 +193,7 @@ const SubscribeModal = () => {
         >
           {'popular' in plan && plan.popular && (
             <span className="absolute -top-3 left-4 bg-green-500 text-black text-xs font-bold px-2 py-1 rounded">
-              PHỔ BIẾN
+              POPULAR
             </span>
           )}
           
@@ -175,7 +204,7 @@ const SubscribeModal = () => {
             </div>
             <div className="text-right">
               <p className="text-white font-bold text-xl">{plan.priceFormatted}</p>
-              <p className="text-neutral-400 text-sm">/{plan.interval === 'month' ? 'tháng' : 'năm'}</p>
+              <p className="text-neutral-400 text-sm">/{plan.interval === 'month' ? 'month' : 'year'}</p>
               {'saveText' in plan && (
                 <p className="text-green-400 text-xs mt-1">{plan.saveText}</p>
               )}
@@ -206,44 +235,44 @@ const SubscribeModal = () => {
     );
 
     return (
-      <div className="space-y-4">
-        {/* Timer */}
-        <div className="flex items-center justify-center gap-2 text-yellow-400">
-          <FiClock />
-          <span>Còn lại: {formatTime(timeLeft)}</span>
+      <div className="space-y-3">
+        {/* Timer - moved to top and more prominent */}
+        <div className="flex items-center justify-center gap-2 text-yellow-400 bg-yellow-400/10 py-2 px-3 rounded-lg">
+          <FiClock className="text-lg" />
+          <span className="font-semibold">Time remaining: {formatTime(timeLeft)}</span>
         </div>
 
-        {/* QR Code */}
+        {/* QR Code - smaller */}
         <div className="flex justify-center">
-          <div className="bg-white p-4 rounded-lg">
+          <div className="bg-white p-3 rounded-lg">
             <Image
               src={qrUrl}
-              alt="QR Code thanh toán"
-              width={200}
-              height={200}
+              alt="Payment QR Code"
+              width={180}
+              height={180}
               className="rounded"
             />
           </div>
         </div>
 
         {/* Bank info */}
-        <div className="bg-neutral-800 rounded-lg p-4 space-y-3">
-          <h4 className="text-white font-semibold flex items-center gap-2">
-            <BsBank /> Thông tin chuyển khoản
+        <div className="bg-neutral-800 rounded-lg p-3 space-y-2">
+          <h4 className="text-white font-semibold flex items-center gap-2 text-sm">
+            <BsBank /> Bank Transfer Information
           </h4>
           
-          <div className="space-y-2">
+          <div className="space-y-1.5">
             <div className="flex justify-between items-center">
-              <span className="text-neutral-400">Ngân hàng</span>
+              <span className="text-neutral-400">Bank</span>
               <span className="text-white font-medium">{BANK_CONFIG.bankName}</span>
             </div>
             
             <div className="flex justify-between items-center">
-              <span className="text-neutral-400">Số tài khoản</span>
+              <span className="text-neutral-400">Account Number</span>
               <div className="flex items-center gap-2">
                 <span className="text-white font-medium">{BANK_CONFIG.accountNumber}</span>
                 <button
-                  onClick={() => copyToClipboard(BANK_CONFIG.accountNumber, 'số tài khoản')}
+                  onClick={() => copyToClipboard(BANK_CONFIG.accountNumber, 'account number')}
                   className="text-green-400 hover:text-green-300"
                 >
                   <FiCopy />
@@ -252,11 +281,11 @@ const SubscribeModal = () => {
             </div>
 
             <div className="flex justify-between items-center">
-              <span className="text-neutral-400">Số tiền</span>
+              <span className="text-neutral-400">Amount</span>
               <div className="flex items-center gap-2">
                 <span className="text-green-400 font-bold">{formatVND(paymentData.amount)}</span>
                 <button
-                  onClick={() => copyToClipboard(paymentData.amount.toString(), 'số tiền')}
+                  onClick={() => copyToClipboard(paymentData.amount.toString(), 'amount')}
                   className="text-green-400 hover:text-green-300"
                 >
                   <FiCopy />
@@ -264,13 +293,13 @@ const SubscribeModal = () => {
               </div>
             </div>
 
-            <div className="flex justify-between items-center">
-              <span className="text-neutral-400">Nội dung CK</span>
+            <div className="flex justify-between items-center bg-yellow-400/10 -mx-3 px-3 py-2">
+              <span className="text-yellow-400 font-medium text-sm">Transfer Content</span>
               <div className="flex items-center gap-2">
-                <span className="text-yellow-400 font-mono text-sm">{paymentData.transactionCode}</span>
+                <span className="text-yellow-400 font-mono font-bold">{paymentData.transactionCode}</span>
                 <button
-                  onClick={() => copyToClipboard(paymentData.transactionCode, 'nội dung')}
-                  className="text-green-400 hover:text-green-300"
+                  onClick={() => copyToClipboard(paymentData.transactionCode, 'content')}
+                  className="text-yellow-300 hover:text-yellow-200"
                 >
                   <FiCopy />
                 </button>
@@ -279,17 +308,17 @@ const SubscribeModal = () => {
           </div>
         </div>
 
-        {/* Warning */}
-        <p className="text-orange-400 text-sm text-center">
-          ⚠️ Vui lòng nhập đúng nội dung chuyển khoản để được kích hoạt tự động
+        {/* Warning - more compact */}
+        <p className="text-orange-400 text-xs text-center">
+          ⚠️ Enter the correct transfer content for automatic activation
         </p>
 
         {/* Check status button */}
         <Button
-          onClick={checkPaymentStatus}
+          onClick={() => checkPaymentStatus(true)}
           className="w-full flex items-center justify-center gap-2"
         >
-          <FiRefreshCw /> Kiểm tra thanh toán
+          <FiRefreshCw /> Check Payment Status
         </Button>
 
         {/* Back button */}
@@ -297,7 +326,7 @@ const SubscribeModal = () => {
           onClick={() => setStep('select-plan')}
           className="w-full text-neutral-400 hover:text-white text-sm"
         >
-          ← Chọn gói khác
+          ← Choose another plan
         </button>
       </div>
     );
@@ -307,11 +336,11 @@ const SubscribeModal = () => {
   const renderSuccess = () => (
     <div className="text-center space-y-4">
       <div className="text-6xl">🎉</div>
-      <h3 className="text-white text-xl font-bold">Thanh toán thành công!</h3>
+      <h3 className="text-white text-xl font-bold">Payment Successful!</h3>
       <p className="text-neutral-400">
-        Bạn đã nâng cấp lên {selectedPlan?.name}. Hãy tận hưởng âm nhạc không giới hạn!
+        You have upgraded to {selectedPlan?.name}. Enjoy unlimited music!
       </p>
-      <p className="text-sm text-neutral-500">Trang sẽ tự động làm mới...</p>
+      <p className="text-sm text-neutral-500">Page will automatically refresh...</p>
     </div>
   );
 
@@ -320,14 +349,14 @@ const SubscribeModal = () => {
     return (
       <Modal
         title="Spotify Premium"
-        description="Bạn đã là thành viên Premium"
+        description="You are already a Premium member"
         isOpen={subscribeModal.isOpen}
         onChange={onChange}
       >
         <div className="text-center space-y-4">
           <div className="text-4xl">👑</div>
           <p className="text-neutral-400">
-            Cảm ơn bạn đã đăng ký Premium!
+            Thank you for subscribing to Premium!
           </p>
         </div>
       </Modal>
@@ -336,12 +365,12 @@ const SubscribeModal = () => {
 
   return (
     <Modal
-      title={step === 'success' ? '✨ Thành công!' : '🎵 Nâng cấp Premium'}
+      title={step === 'success' ? '✨ Success!' : '🎵 Upgrade Premium'}
       description={
         step === 'select-plan' 
-          ? 'Nghe nhạc không giới hạn, không quảng cáo' 
+          ? 'Unlimited music, ad-free listening' 
           : step === 'payment'
-          ? 'Quét mã QR hoặc chuyển khoản theo thông tin bên dưới'
+          ? 'Scan QR code or transfer according to the information below'
           : ''
       }
       isOpen={subscribeModal.isOpen}

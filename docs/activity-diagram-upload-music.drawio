@@ -1,0 +1,278 @@
+<mxfile host="app.diagrams.net" modified="2026-01-06T00:00:00.000Z" agent="Draw.io" version="22.0.0" type="device">
+  <diagram name="Upload Music Activity Diagram" id="upload-music-activity">
+    <mxGraphModel dx="1200" dy="800" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="800" pageHeight="1400" math="0" shadow="0">
+      <root>
+        <mxCell id="0"/>
+        <mxCell id="1" parent="0"/>
+        
+        <!-- Swimlanes -->
+        <mxCell id="lane-user" value="Artist / Admin" style="swimlane;startSize=25;fillColor=#ffffff;strokeColor=#000000;fontSize=12;fontStyle=1;html=1;" vertex="1" parent="1">
+          <mxGeometry x="40" y="10" width="240" height="1350" as="geometry"/>
+        </mxCell>
+        
+        <mxCell id="lane-system" value="music stream service" style="swimlane;startSize=25;fillColor=#ffffff;strokeColor=#000000;fontSize=12;fontStyle=1;html=1;" vertex="1" parent="1">
+          <mxGeometry x="280" y="10" width="480" height="1350" as="geometry"/>
+        </mxCell>
+        
+        <!-- Start State -->
+        <mxCell id="start" value="" style="ellipse;fillColor=#000000;strokeColor=#000000;" vertex="1" parent="lane-user">
+          <mxGeometry x="105" y="45" width="30" height="30" as="geometry"/>
+        </mxCell>
+        
+        <!-- User Actions -->
+        <mxCell id="u-click-upload" value="Click &quot;+&quot; Upload button" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#000000;fontSize=11;" vertex="1" parent="lane-user">
+          <mxGeometry x="30" y="100" width="180" height="40" as="geometry"/>
+        </mxCell>
+        
+        <mxCell id="u-fill-info" value="Fill song information&#xa;(title, artist, genre)" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#000000;fontSize=11;" vertex="1" parent="lane-user">
+          <mxGeometry x="30" y="310" width="180" height="50" as="geometry"/>
+        </mxCell>
+        
+        <mxCell id="u-select-song" value="Select song file (.mp3)" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#000000;fontSize=11;" vertex="1" parent="lane-user">
+          <mxGeometry x="30" y="380" width="180" height="40" as="geometry"/>
+        </mxCell>
+        
+        <mxCell id="u-select-image" value="Select cover image" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#000000;fontSize=11;" vertex="1" parent="lane-user">
+          <mxGeometry x="30" y="440" width="180" height="40" as="geometry"/>
+        </mxCell>
+        
+        <mxCell id="u-click-create" value="Click &quot;Create&quot; button" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#000000;fontSize=11;" vertex="1" parent="lane-user">
+          <mxGeometry x="30" y="500" width="180" height="40" as="geometry"/>
+        </mxCell>
+        
+        <mxCell id="u-view-song" value="View uploaded song&#xa;in library" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#000000;fontSize=11;" vertex="1" parent="lane-user">
+          <mxGeometry x="30" y="1200" width="180" height="50" as="geometry"/>
+        </mxCell>
+        
+        <!-- System Actions -->
+        <mxCell id="s-check-auth" value="User logged in?" style="rhombus;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#000000;fontSize=11;" vertex="1" parent="lane-system">
+          <mxGeometry x="130" y="90" width="120" height="60" as="geometry"/>
+        </mxCell>
+        
+        <mxCell id="s-show-auth" value="Show Auth Modal" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#000000;fontSize=11;" vertex="1" parent="lane-system">
+          <mxGeometry x="330" y="100" width="130" height="40" as="geometry"/>
+        </mxCell>
+        
+        <mxCell id="s-open-modal" value="Open UploadModal&#xa;(useUploadModal.onOpen)" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#000000;fontSize=10;" vertex="1" parent="lane-system">
+          <mxGeometry x="120" y="190" width="180" height="50" as="geometry"/>
+        </mxCell>
+        
+        <mxCell id="s-display-form" value="Display upload form&#xa;(react-hook-form)" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#000000;fontSize=10;" vertex="1" parent="lane-system">
+          <mxGeometry x="130" y="310" width="160" height="50" as="geometry"/>
+        </mxCell>
+        
+        <mxCell id="s-validate" value="Validate all fields" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#000000;fontSize=11;" vertex="1" parent="lane-system">
+          <mxGeometry x="140" y="560" width="140" height="40" as="geometry"/>
+        </mxCell>
+        
+        <mxCell id="s-valid-check" value="All fields&#xa;valid?" style="rhombus;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#000000;fontSize=11;" vertex="1" parent="lane-system">
+          <mxGeometry x="150" y="630" width="120" height="70" as="geometry"/>
+        </mxCell>
+        
+        <mxCell id="s-show-missing" value="Show &quot;Missing fields&quot;&#xa;error" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#000000;fontSize=10;" vertex="1" parent="lane-system">
+          <mxGeometry x="330" y="640" width="130" height="50" as="geometry"/>
+        </mxCell>
+        
+        <mxCell id="s-find-artist" value="findOrCreateArtist()&#xa;(check artists table)" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#000000;fontSize=10;" vertex="1" parent="lane-system">
+          <mxGeometry x="130" y="730" width="160" height="50" as="geometry"/>
+        </mxCell>
+        
+        <mxCell id="s-upload-song" value="Upload song to&#xa;Supabase Storage (Songs bucket)" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#000000;fontSize=10;" vertex="1" parent="lane-system">
+          <mxGeometry x="115" y="810" width="190" height="50" as="geometry"/>
+        </mxCell>
+        
+        <mxCell id="s-song-check" value="Song upload&#xa;success?" style="rhombus;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#000000;fontSize=10;" vertex="1" parent="lane-system">
+          <mxGeometry x="150" y="885" width="120" height="70" as="geometry"/>
+        </mxCell>
+        
+        <mxCell id="s-show-song-error" value="Show &quot;Failed song&#xa;upload&quot; error" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#000000;fontSize=10;" vertex="1" parent="lane-system">
+          <mxGeometry x="330" y="895" width="130" height="50" as="geometry"/>
+        </mxCell>
+        
+        <mxCell id="s-upload-image" value="Upload image to&#xa;Supabase Storage (image bucket)" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#000000;fontSize=10;" vertex="1" parent="lane-system">
+          <mxGeometry x="115" y="985" width="190" height="50" as="geometry"/>
+        </mxCell>
+        
+        <mxCell id="s-image-check" value="Image upload&#xa;success?" style="rhombus;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#000000;fontSize=10;" vertex="1" parent="lane-system">
+          <mxGeometry x="150" y="1055" width="120" height="70" as="geometry"/>
+        </mxCell>
+        
+        <mxCell id="s-show-image-error" value="Show &quot;Failed image&#xa;upload&quot; error" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#000000;fontSize=10;" vertex="1" parent="lane-system">
+          <mxGeometry x="330" y="1065" width="130" height="50" as="geometry"/>
+        </mxCell>
+        
+        <mxCell id="s-insert-record" value="Insert record to songs table&#xa;(user_id, title, author, paths,&#xa;artist_id, genre)" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#000000;fontSize=10;" vertex="1" parent="lane-system">
+          <mxGeometry x="115" y="1155" width="190" height="60" as="geometry"/>
+        </mxCell>
+        
+        <mxCell id="s-close-modal" value="Close modal&#xa;router.refresh()&#xa;Show success toast" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#000000;fontSize=10;" vertex="1" parent="lane-system">
+          <mxGeometry x="130" y="1245" width="160" height="60" as="geometry"/>
+        </mxCell>
+        
+        <!-- End State -->
+        <mxCell id="end" value="" style="ellipse;html=1;shape=doubleEllipse;fillColor=#ffffff;strokeColor=#000000;" vertex="1" parent="lane-system">
+          <mxGeometry x="195" y="1320" width="30" height="30" as="geometry"/>
+        </mxCell>
+        
+        <!-- Arrows -->
+        
+        <!-- Start to Click Upload -->
+        <mxCell id="a1" value="" style="endArrow=classic;html=1;strokeColor=#000000;" edge="1" parent="1" source="start" target="u-click-upload">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+        
+        <!-- Click Upload to Check Auth -->
+        <mxCell id="a2" value="" style="endArrow=classic;html=1;strokeColor=#000000;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" edge="1" parent="1" source="u-click-upload" target="s-check-auth">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+        
+        <!-- Check Auth No to Show Auth -->
+        <mxCell id="a3" value="No" style="endArrow=classic;html=1;strokeColor=#000000;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" edge="1" parent="1" source="s-check-auth" target="s-show-auth">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint as="offset"/>
+          </mxGeometry>
+        </mxCell>
+        
+        <!-- Check Auth Yes to Open Modal -->
+        <mxCell id="a4" value="Yes" style="endArrow=classic;html=1;strokeColor=#000000;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" edge="1" parent="1" source="s-check-auth" target="s-open-modal">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint as="offset"/>
+          </mxGeometry>
+        </mxCell>
+        
+        <!-- Open Modal to Fill Info -->
+        <mxCell id="a5" value="" style="endArrow=classic;html=1;strokeColor=#000000;exitX=0;exitY=0.5;exitDx=0;exitDy=0;entryX=1;entryY=0;entryDx=0;entryDy=0;" edge="1" parent="1" source="s-open-modal" target="u-fill-info">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="260" y="225"/>
+              <mxPoint x="260" y="320"/>
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        
+        <!-- Open Modal to Display Form -->
+        <mxCell id="a6" value="" style="endArrow=classic;html=1;strokeColor=#000000;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" edge="1" parent="1" source="s-open-modal" target="s-display-form">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+        
+        <!-- Fill Info to Select Song -->
+        <mxCell id="a7" value="" style="endArrow=classic;html=1;strokeColor=#000000;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" edge="1" parent="1" source="u-fill-info" target="u-select-song">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+        
+        <!-- Select Song to Select Image -->
+        <mxCell id="a8" value="" style="endArrow=classic;html=1;strokeColor=#000000;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" edge="1" parent="1" source="u-select-song" target="u-select-image">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+        
+        <!-- Select Image to Click Create -->
+        <mxCell id="a9" value="" style="endArrow=classic;html=1;strokeColor=#000000;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" edge="1" parent="1" source="u-select-image" target="u-click-create">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+        
+        <!-- Click Create to Validate -->
+        <mxCell id="a10" value="" style="endArrow=classic;html=1;strokeColor=#000000;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" edge="1" parent="1" source="u-click-create" target="s-validate">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+        
+        <!-- Validate to Valid Check -->
+        <mxCell id="a11" value="" style="endArrow=classic;html=1;strokeColor=#000000;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" edge="1" parent="1" source="s-validate" target="s-valid-check">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+        
+        <!-- Valid Check Invalid to Show Missing -->
+        <mxCell id="a12" value="Invalid" style="endArrow=classic;html=1;strokeColor=#000000;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" edge="1" parent="1" source="s-valid-check" target="s-show-missing">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+        
+        <!-- Show Missing back to Fill Info -->
+        <mxCell id="a13" value="" style="endArrow=classic;html=1;strokeColor=#000000;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=1;entryY=0.5;entryDx=0;entryDy=0;" edge="1" parent="1" source="s-show-missing" target="u-fill-info">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="740" y="675"/>
+              <mxPoint x="740" y="345"/>
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        
+        <!-- Valid Check Valid to Find Artist -->
+        <mxCell id="a14" value="Valid" style="endArrow=classic;html=1;strokeColor=#000000;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" edge="1" parent="1" source="s-valid-check" target="s-find-artist">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+        
+        <!-- Find Artist to Upload Song -->
+        <mxCell id="a15" value="" style="endArrow=classic;html=1;strokeColor=#000000;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" edge="1" parent="1" source="s-find-artist" target="s-upload-song">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+        
+        <!-- Upload Song to Song Check -->
+        <mxCell id="a16" value="" style="endArrow=classic;html=1;strokeColor=#000000;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" edge="1" parent="1" source="s-upload-song" target="s-song-check">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+        
+        <!-- Song Check Failed to Show Error -->
+        <mxCell id="a17" value="Failed" style="endArrow=classic;html=1;strokeColor=#000000;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" edge="1" parent="1" source="s-song-check" target="s-show-song-error">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+        
+        <!-- Show Song Error back to Fill Info -->
+        <mxCell id="a18" value="" style="endArrow=classic;html=1;strokeColor=#000000;exitX=1;exitY=0.5;exitDx=0;exitDy=0;" edge="1" parent="1" source="s-show-song-error">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="250" y="345" as="targetPoint"/>
+            <Array as="points">
+              <mxPoint x="740" y="930"/>
+              <mxPoint x="740" y="345"/>
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        
+        <!-- Song Check Success to Upload Image -->
+        <mxCell id="a19" value="Success" style="endArrow=classic;html=1;strokeColor=#000000;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" edge="1" parent="1" source="s-song-check" target="s-upload-image">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+        
+        <!-- Upload Image to Image Check -->
+        <mxCell id="a20" value="" style="endArrow=classic;html=1;strokeColor=#000000;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" edge="1" parent="1" source="s-upload-image" target="s-image-check">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+        
+        <!-- Image Check Failed to Show Error -->
+        <mxCell id="a21" value="Failed" style="endArrow=classic;html=1;strokeColor=#000000;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" edge="1" parent="1" source="s-image-check" target="s-show-image-error">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+        
+        <!-- Show Image Error back to Fill Info -->
+        <mxCell id="a22" value="" style="endArrow=classic;html=1;strokeColor=#000000;exitX=1;exitY=0.5;exitDx=0;exitDy=0;" edge="1" parent="1" source="s-show-image-error">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="250" y="345" as="targetPoint"/>
+            <Array as="points">
+              <mxPoint x="740" y="1100"/>
+              <mxPoint x="740" y="345"/>
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        
+        <!-- Image Check Success to Insert Record -->
+        <mxCell id="a23" value="Success" style="endArrow=classic;html=1;strokeColor=#000000;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" edge="1" parent="1" source="s-image-check" target="s-insert-record">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+        
+        <!-- Insert Record to Close Modal -->
+        <mxCell id="a24" value="" style="endArrow=classic;html=1;strokeColor=#000000;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" edge="1" parent="1" source="s-insert-record" target="s-close-modal">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+        
+        <!-- Close Modal to View Song -->
+        <mxCell id="a25" value="" style="endArrow=classic;html=1;strokeColor=#000000;exitX=0;exitY=0.5;exitDx=0;exitDy=0;entryX=1;entryY=0.5;entryDx=0;entryDy=0;" edge="1" parent="1" source="s-close-modal" target="u-view-song">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+        
+        <!-- Close Modal to End -->
+        <mxCell id="a26" value="" style="endArrow=classic;html=1;strokeColor=#000000;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" edge="1" parent="1" source="s-close-modal" target="end">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+        
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>

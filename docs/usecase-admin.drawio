@@ -1,0 +1,263 @@
+<mxfile host="app.diagrams.net">
+  <diagram name="Admin Use Case" id="admin">
+    <mxGraphModel dx="1400" dy="900" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1100" pageHeight="850" math="0" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        
+        <!-- System Boundary -->
+        <mxCell id="system" value="Admin Module" style="shape=umlFrame;whiteSpace=wrap;html=1;width=110;height=30;boundedLbl=1;verticalAlign=middle;align=left;spacingLeft=5;fillColor=#FFFFFF;strokeColor=#000000;strokeWidth=2;fontSize=14;fontStyle=1;" vertex="1" parent="1">
+          <mxGeometry x="180" y="30" width="720" height="790" as="geometry" />
+        </mxCell>
+        
+        <!-- Actors -->
+        <mxCell id="admin" value="Admin" style="shape=umlActor;verticalLabelPosition=bottom;verticalAlign=top;html=1;fillColor=#FFFFFF;strokeColor=#000000;strokeWidth=2;fontSize=12;" vertex="1" parent="1">
+          <mxGeometry x="50" y="350" width="50" height="80" as="geometry" />
+        </mxCell>
+        
+        <mxCell id="supabase" value="Supabase" style="shape=umlActor;verticalLabelPosition=bottom;verticalAlign=top;html=1;fillColor=#FFFFFF;strokeColor=#000000;strokeWidth=2;fontSize=12;" vertex="1" parent="1">
+          <mxGeometry x="1000" y="350" width="50" height="80" as="geometry" />
+        </mxCell>
+        
+        <!-- Main Use Cases -->
+        <mxCell id="uc1" value="Manage Songs" style="ellipse;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#000000;strokeWidth=2;fontSize=12;" vertex="1" parent="1">
+          <mxGeometry x="230" y="60" width="120" height="50" as="geometry" />
+        </mxCell>
+        
+        <mxCell id="uc2" value="Manage Artists" style="ellipse;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#000000;strokeWidth=2;fontSize=12;" vertex="1" parent="1">
+          <mxGeometry x="230" y="140" width="120" height="50" as="geometry" />
+        </mxCell>
+        
+        <mxCell id="uc3" value="Manage Albums" style="ellipse;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#000000;strokeWidth=2;fontSize=12;" vertex="1" parent="1">
+          <mxGeometry x="230" y="220" width="120" height="50" as="geometry" />
+        </mxCell>
+        
+        <mxCell id="uc4" value="Manage Users" style="ellipse;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#000000;strokeWidth=2;fontSize=12;" vertex="1" parent="1">
+          <mxGeometry x="230" y="300" width="120" height="50" as="geometry" />
+        </mxCell>
+        
+        <mxCell id="uc5" value="View Dashboard" style="ellipse;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#000000;strokeWidth=2;fontSize=12;" vertex="1" parent="1">
+          <mxGeometry x="230" y="380" width="120" height="50" as="geometry" />
+        </mxCell>
+        
+        <mxCell id="uc6" value="Manage Premium" style="ellipse;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#000000;strokeWidth=2;fontSize=12;" vertex="1" parent="1">
+          <mxGeometry x="230" y="460" width="120" height="50" as="geometry" />
+        </mxCell>
+        
+        <!-- Sub Use Cases (Include) -->
+        <mxCell id="uc7" value="Add Song" style="ellipse;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#000000;strokeWidth=1;fontSize=11;" vertex="1" parent="1">
+          <mxGeometry x="450" y="50" width="90" height="40" as="geometry" />
+        </mxCell>
+        
+        <mxCell id="uc8" value="Edit Song" style="ellipse;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#000000;strokeWidth=1;fontSize=11;" vertex="1" parent="1">
+          <mxGeometry x="560" y="50" width="90" height="40" as="geometry" />
+        </mxCell>
+        
+        <mxCell id="uc9" value="Delete Song" style="ellipse;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#000000;strokeWidth=1;fontSize=11;" vertex="1" parent="1">
+          <mxGeometry x="670" y="50" width="90" height="40" as="geometry" />
+        </mxCell>
+        
+        <mxCell id="uc10" value="Add Artist" style="ellipse;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#000000;strokeWidth=1;fontSize=11;" vertex="1" parent="1">
+          <mxGeometry x="450" y="110" width="90" height="40" as="geometry" />
+        </mxCell>
+        
+        <mxCell id="uc11" value="Edit Artist" style="ellipse;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#000000;strokeWidth=1;fontSize=11;" vertex="1" parent="1">
+          <mxGeometry x="560" y="110" width="90" height="40" as="geometry" />
+        </mxCell>
+        
+        <mxCell id="uc12" value="Delete Artist" style="ellipse;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#000000;strokeWidth=1;fontSize=11;" vertex="1" parent="1">
+          <mxGeometry x="670" y="110" width="90" height="40" as="geometry" />
+        </mxCell>
+        
+        <mxCell id="uc13" value="Add Album" style="ellipse;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#000000;strokeWidth=1;fontSize=11;" vertex="1" parent="1">
+          <mxGeometry x="450" y="170" width="90" height="40" as="geometry" />
+        </mxCell>
+        
+        <mxCell id="uc14" value="Edit Album" style="ellipse;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#000000;strokeWidth=1;fontSize=11;" vertex="1" parent="1">
+          <mxGeometry x="560" y="170" width="90" height="40" as="geometry" />
+        </mxCell>
+        
+        <mxCell id="uc15" value="Delete Album" style="ellipse;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#000000;strokeWidth=1;fontSize=11;" vertex="1" parent="1">
+          <mxGeometry x="670" y="170" width="90" height="40" as="geometry" />
+        </mxCell>
+        
+        <mxCell id="uc16" value="View Users" style="ellipse;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#000000;strokeWidth=1;fontSize=11;" vertex="1" parent="1">
+          <mxGeometry x="450" y="230" width="90" height="40" as="geometry" />
+        </mxCell>
+        
+        <mxCell id="uc17" value="Edit User" style="ellipse;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#000000;strokeWidth=1;fontSize=11;" vertex="1" parent="1">
+          <mxGeometry x="560" y="230" width="90" height="40" as="geometry" />
+        </mxCell>
+        
+        <mxCell id="uc18" value="Delete User" style="ellipse;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#000000;strokeWidth=1;fontSize=11;" vertex="1" parent="1">
+          <mxGeometry x="670" y="230" width="90" height="40" as="geometry" />
+        </mxCell>
+        
+        <mxCell id="uc19" value="View Statistics" style="ellipse;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#000000;strokeWidth=1;fontSize=11;" vertex="1" parent="1">
+          <mxGeometry x="450" y="290" width="100" height="40" as="geometry" />
+        </mxCell>
+        
+        <mxCell id="uc20" value="Generate Reports" style="ellipse;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#000000;strokeWidth=1;fontSize=11;" vertex="1" parent="1">
+          <mxGeometry x="570" y="290" width="110" height="40" as="geometry" />
+        </mxCell>
+        
+        <!-- Include Sub Use Cases for operations -->
+        <mxCell id="uc21" value="Upload File" style="ellipse;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#000000;strokeWidth=1;fontSize=11;" vertex="1" parent="1">
+          <mxGeometry x="780" y="120" width="90" height="40" as="geometry" />
+        </mxCell>
+        
+        <mxCell id="uc22" value="Update Database" style="ellipse;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#000000;strokeWidth=1;fontSize=11;" vertex="1" parent="1">
+          <mxGeometry x="780" y="180" width="100" height="40" as="geometry" />
+        </mxCell>
+        
+        <mxCell id="uc23" value="Delete from Database" style="ellipse;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#000000;strokeWidth=1;fontSize=10;" vertex="1" parent="1">
+          <mxGeometry x="775" y="240" width="110" height="40" as="geometry" />
+        </mxCell>
+        
+        <mxCell id="uc24" value="Fetch Analytics" style="ellipse;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#000000;strokeWidth=1;fontSize=11;" vertex="1" parent="1">
+          <mxGeometry x="780" y="300" width="100" height="40" as="geometry" />
+        </mxCell>
+        
+        <!-- Extend Use Cases -->
+        <mxCell id="uc25" value="Bulk Import Songs" style="ellipse;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#000000;strokeWidth=1;fontSize=11;" vertex="1" parent="1">
+          <mxGeometry x="230" y="540" width="110" height="45" as="geometry" />
+        </mxCell>
+        
+        <mxCell id="uc26" value="Export Data" style="ellipse;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#000000;strokeWidth=1;fontSize=11;" vertex="1" parent="1">
+          <mxGeometry x="370" y="540" width="100" height="45" as="geometry" />
+        </mxCell>
+        
+        <mxCell id="uc27" value="Backup Database" style="ellipse;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#000000;strokeWidth=1;fontSize=11;" vertex="1" parent="1">
+          <mxGeometry x="500" y="540" width="110" height="45" as="geometry" />
+        </mxCell>
+        
+        <mxCell id="uc28" value="Send Notification" style="ellipse;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#000000;strokeWidth=1;fontSize=11;" vertex="1" parent="1">
+          <mxGeometry x="640" y="540" width="110" height="45" as="geometry" />
+        </mxCell>
+        
+        <!-- Actor Associations -->
+        <mxCell id="a1" value="" style="endArrow=none;html=1;strokeColor=#000000;strokeWidth=1;" edge="1" parent="1" source="admin" target="uc1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="a2" value="" style="endArrow=none;html=1;strokeColor=#000000;strokeWidth=1;" edge="1" parent="1" source="admin" target="uc2">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="a3" value="" style="endArrow=none;html=1;strokeColor=#000000;strokeWidth=1;" edge="1" parent="1" source="admin" target="uc3">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="a4" value="" style="endArrow=none;html=1;strokeColor=#000000;strokeWidth=1;" edge="1" parent="1" source="admin" target="uc4">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="a5" value="" style="endArrow=none;html=1;strokeColor=#000000;strokeWidth=1;" edge="1" parent="1" source="admin" target="uc5">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="a6" value="" style="endArrow=none;html=1;strokeColor=#000000;strokeWidth=1;" edge="1" parent="1" source="admin" target="uc6">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        
+        <mxCell id="a7" value="" style="endArrow=none;html=1;strokeColor=#000000;strokeWidth=1;" edge="1" parent="1" source="supabase" target="uc21">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="a8" value="" style="endArrow=none;html=1;strokeColor=#000000;strokeWidth=1;" edge="1" parent="1" source="supabase" target="uc22">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="a9" value="" style="endArrow=none;html=1;strokeColor=#000000;strokeWidth=1;" edge="1" parent="1" source="supabase" target="uc23">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="a10" value="" style="endArrow=none;html=1;strokeColor=#000000;strokeWidth=1;" edge="1" parent="1" source="supabase" target="uc24">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        
+        <!-- Include Relationships for Manage Songs -->
+        <mxCell id="inc1" value="&lt;&lt;include&gt;&gt;" style="endArrow=open;html=1;strokeColor=#000000;strokeWidth=1;dashed=1;endSize=10;fontSize=9;" edge="1" parent="1" source="uc1" target="uc7">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="inc2" value="&lt;&lt;include&gt;&gt;" style="endArrow=open;html=1;strokeColor=#000000;strokeWidth=1;dashed=1;endSize=10;fontSize=9;" edge="1" parent="1" source="uc1" target="uc8">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="inc3" value="&lt;&lt;include&gt;&gt;" style="endArrow=open;html=1;strokeColor=#000000;strokeWidth=1;dashed=1;endSize=10;fontSize=9;" edge="1" parent="1" source="uc1" target="uc9">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        
+        <!-- Include Relationships for Manage Artists -->
+        <mxCell id="inc4" value="&lt;&lt;include&gt;&gt;" style="endArrow=open;html=1;strokeColor=#000000;strokeWidth=1;dashed=1;endSize=10;fontSize=9;" edge="1" parent="1" source="uc2" target="uc10">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="inc5" value="&lt;&lt;include&gt;&gt;" style="endArrow=open;html=1;strokeColor=#000000;strokeWidth=1;dashed=1;endSize=10;fontSize=9;" edge="1" parent="1" source="uc2" target="uc11">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="inc6" value="&lt;&lt;include&gt;&gt;" style="endArrow=open;html=1;strokeColor=#000000;strokeWidth=1;dashed=1;endSize=10;fontSize=9;" edge="1" parent="1" source="uc2" target="uc12">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        
+        <!-- Include Relationships for Manage Albums -->
+        <mxCell id="inc7" value="&lt;&lt;include&gt;&gt;" style="endArrow=open;html=1;strokeColor=#000000;strokeWidth=1;dashed=1;endSize=10;fontSize=9;" edge="1" parent="1" source="uc3" target="uc13">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="inc8" value="&lt;&lt;include&gt;&gt;" style="endArrow=open;html=1;strokeColor=#000000;strokeWidth=1;dashed=1;endSize=10;fontSize=9;" edge="1" parent="1" source="uc3" target="uc14">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="inc9" value="&lt;&lt;include&gt;&gt;" style="endArrow=open;html=1;strokeColor=#000000;strokeWidth=1;dashed=1;endSize=10;fontSize=9;" edge="1" parent="1" source="uc3" target="uc15">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        
+        <!-- Include Relationships for Manage Users -->
+        <mxCell id="inc10" value="&lt;&lt;include&gt;&gt;" style="endArrow=open;html=1;strokeColor=#000000;strokeWidth=1;dashed=1;endSize=10;fontSize=9;" edge="1" parent="1" source="uc4" target="uc16">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="inc11" value="&lt;&lt;include&gt;&gt;" style="endArrow=open;html=1;strokeColor=#000000;strokeWidth=1;dashed=1;endSize=10;fontSize=9;" edge="1" parent="1" source="uc4" target="uc17">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="inc12" value="&lt;&lt;include&gt;&gt;" style="endArrow=open;html=1;strokeColor=#000000;strokeWidth=1;dashed=1;endSize=10;fontSize=9;" edge="1" parent="1" source="uc4" target="uc18">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        
+        <!-- Include Relationships for Dashboard -->
+        <mxCell id="inc13" value="&lt;&lt;include&gt;&gt;" style="endArrow=open;html=1;strokeColor=#000000;strokeWidth=1;dashed=1;endSize=10;fontSize=9;" edge="1" parent="1" source="uc5" target="uc19">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="inc14" value="&lt;&lt;include&gt;&gt;" style="endArrow=open;html=1;strokeColor=#000000;strokeWidth=1;dashed=1;endSize=10;fontSize=9;" edge="1" parent="1" source="uc5" target="uc20">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        
+        <!-- Include for Add operations to Upload -->
+        <mxCell id="inc15" value="&lt;&lt;include&gt;&gt;" style="endArrow=open;html=1;strokeColor=#000000;strokeWidth=1;dashed=1;endSize=10;fontSize=9;" edge="1" parent="1" source="uc7" target="uc21">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        
+        <!-- Include for Edit operations to Update -->
+        <mxCell id="inc16" value="&lt;&lt;include&gt;&gt;" style="endArrow=open;html=1;strokeColor=#000000;strokeWidth=1;dashed=1;endSize=10;fontSize=9;" edge="1" parent="1" source="uc8" target="uc22">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        
+        <!-- Include for Delete operations to Delete -->
+        <mxCell id="inc17" value="&lt;&lt;include&gt;&gt;" style="endArrow=open;html=1;strokeColor=#000000;strokeWidth=1;dashed=1;endSize=10;fontSize=9;" edge="1" parent="1" source="uc9" target="uc23">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        
+        <!-- Include for Statistics to Fetch Analytics -->
+        <mxCell id="inc18" value="&lt;&lt;include&gt;&gt;" style="endArrow=open;html=1;strokeColor=#000000;strokeWidth=1;dashed=1;endSize=10;fontSize=9;" edge="1" parent="1" source="uc19" target="uc24">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        
+        <!-- Extend Relationships -->
+        <mxCell id="ext1" value="&lt;&lt;extend&gt;&gt;" style="endArrow=open;html=1;strokeColor=#000000;strokeWidth=1;dashed=1;endSize=10;fontSize=9;" edge="1" parent="1" source="uc25" target="uc1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        
+        <mxCell id="ext2" value="&lt;&lt;extend&gt;&gt;" style="endArrow=open;html=1;strokeColor=#000000;strokeWidth=1;dashed=1;endSize=10;fontSize=9;" edge="1" parent="1" source="uc26" target="uc5">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        
+        <mxCell id="ext3" value="&lt;&lt;extend&gt;&gt;" style="endArrow=open;html=1;strokeColor=#000000;strokeWidth=1;dashed=1;endSize=10;fontSize=9;" edge="1" parent="1" source="uc27" target="uc5">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        
+        <mxCell id="ext4" value="&lt;&lt;extend&gt;&gt;" style="endArrow=open;html=1;strokeColor=#000000;strokeWidth=1;dashed=1;endSize=10;fontSize=9;" edge="1" parent="1" source="uc28" target="uc4">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>

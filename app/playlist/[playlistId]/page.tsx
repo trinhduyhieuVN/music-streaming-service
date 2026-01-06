@@ -5,6 +5,7 @@ import getPlaylistById from "@/actions/getPlaylistById";
 
 import Header from "@/components/Header";
 import PlaylistContent from "./components/PlaylistContent";
+import DeletePlaylistButton from "./components/DeletePlaylistButton";
 
 interface PlaylistPageProps {
   params: {
@@ -34,7 +35,7 @@ const PlaylistPage = async ({ params }: PlaylistPageProps) => {
       <Header>
         <div className="mt-20">
           <div className="flex flex-col md:flex-row items-center gap-x-5">
-            <div className="relative h-32 w-32 lg:h-44 lg:w-44 rounded-md overflow-hidden bg-gradient-to-br from-purple-700 to-blue-300 flex items-center justify-center">
+            <div className={`relative h-32 w-32 lg:h-44 lg:w-44 rounded-md overflow-hidden ${playlist.cover_url ? '' : `bg-gradient-to-br ${playlist.color || 'from-purple-700 to-blue-300'}`} flex items-center justify-center`}>
               {playlist.cover_url ? (
                 <Image
                   fill
@@ -60,6 +61,9 @@ const PlaylistPage = async ({ params }: PlaylistPageProps) => {
                 {playlist.song_count || 0} songs
               </p>
             </div>
+          </div>
+          <div className="mt-4">
+            <DeletePlaylistButton playlistId={playlist.id} userId={playlist.user_id} />
           </div>
         </div>
       </Header>

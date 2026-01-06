@@ -1,0 +1,233 @@
+<mxfile host="app.diagrams.net" modified="2026-01-06T00:00:00.000Z" agent="5.0" version="22.1.16" etag="draw.io">
+  <diagram name="Play Music Activity" id="activity-play-music">
+    <mxGraphModel dx="1434" dy="844" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        
+        <!-- Swimlane: USER -->
+        <mxCell id="swimlane-user" value="User" style="swimlane;startSize=40;fillColor=#ffffff;strokeColor=#000000;fontStyle=1;fontSize=14;" parent="1" vertex="1">
+          <mxGeometry x="40" y="40" width="280" height="1100" as="geometry" />
+        </mxCell>
+        
+        <!-- Start Point -->
+        <mxCell id="start" value="" style="ellipse;whiteSpace=wrap;html=1;aspect=fixed;fillColor=#000000;strokeColor=#000000;" parent="swimlane-user" vertex="1">
+          <mxGeometry x="120" y="60" width="30" height="30" as="geometry" />
+        </mxCell>
+        
+        <!-- Click on a song to play -->
+        <mxCell id="user-click-song" value="Click on a song to play" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#000000;" parent="swimlane-user" vertex="1">
+          <mxGeometry x="60" y="120" width="150" height="60" as="geometry" />
+        </mxCell>
+        
+        <!-- Arrow: start to click -->
+        <mxCell id="arrow-start-click" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#000000;endArrow=classic;" parent="swimlane-user" source="start" target="user-click-song" edge="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        
+        <!-- Listen to music -->
+        <mxCell id="user-listen" value="Listen to music" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#000000;" parent="swimlane-user" vertex="1">
+          <mxGeometry x="60" y="710" width="150" height="60" as="geometry" />
+        </mxCell>
+        
+        <!-- Control playback -->
+        <mxCell id="user-control" value="Control playback&#xa;(Play/Pause/Next/Previous)" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#000000;" parent="swimlane-user" vertex="1">
+          <mxGeometry x="60" y="810" width="150" height="70" as="geometry" />
+        </mxCell>
+        
+        <!-- Arrow: listen to control -->
+        <mxCell id="arrow-listen-control" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#000000;endArrow=classic;" parent="swimlane-user" source="user-listen" target="user-control" edge="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        
+        <!-- Swimlane: MUSIC STREAM SERVICE -->
+        <mxCell id="swimlane-system" value="Music Stream Service" style="swimlane;startSize=40;fillColor=#f5f5f5;strokeColor=#000000;fontStyle=1;fontSize=14;" parent="1" vertex="1">
+          <mxGeometry x="320" y="40" width="480" height="1100" as="geometry" />
+        </mxCell>
+        
+        <!-- useOnPlay hook triggered -->
+        <mxCell id="system-useonplay" value="useOnPlay() hook triggered" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#000000;" parent="swimlane-system" vertex="1">
+          <mxGeometry x="40" y="120" width="160" height="60" as="geometry" />
+        </mxCell>
+        
+        <!-- Decision: User logged in? -->
+        <mxCell id="decision-auth" value="User logged in?" style="rhombus;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#000000;" parent="swimlane-system" vertex="1">
+          <mxGeometry x="60" y="220" width="120" height="100" as="geometry" />
+        </mxCell>
+        
+        <!-- Arrow: useonplay to auth -->
+        <mxCell id="arrow-useonplay-auth" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#000000;endArrow=classic;" parent="swimlane-system" source="system-useonplay" target="decision-auth" edge="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        
+        <!-- Show Auth Modal -->
+        <mxCell id="system-auth-modal" value="Show Auth Modal" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#000000;" parent="swimlane-system" vertex="1">
+          <mxGeometry x="280" y="240" width="140" height="60" as="geometry" />
+        </mxCell>
+        
+        <!-- Arrow: auth No -->
+        <mxCell id="arrow-auth-no" value="No" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#000000;endArrow=classic;" parent="swimlane-system" source="decision-auth" target="system-auth-modal" edge="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        
+        <!-- player.setId() setIds() -->
+        <mxCell id="system-player-set" value="player.setId()&#xa;player.setIds()&#xa;(set playlist)" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#000000;" parent="swimlane-system" vertex="1">
+          <mxGeometry x="50" y="360" width="140" height="70" as="geometry" />
+        </mxCell>
+        
+        <!-- Arrow: auth Yes -->
+        <mxCell id="arrow-auth-yes" value="Yes" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#000000;endArrow=classic;" parent="swimlane-system" source="decision-auth" target="system-player-set" edge="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        
+        <!-- Arrow: auth modal to player set (user logs in) -->
+        <mxCell id="arrow-modal-player" value="User logs in" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#000000;endArrow=classic;dashed=1;" parent="swimlane-system" source="system-auth-modal" target="system-player-set" edge="1">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="350" y="340" />
+              <mxPoint x="240" y="340" />
+              <mxPoint x="240" y="395" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        
+        <!-- useLoadSongUrl -->
+        <mxCell id="system-load-url" value="useLoadSongUrl&#xa;(Get URL from&#xa;Supabase Storage)" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#000000;" parent="swimlane-system" vertex="1">
+          <mxGeometry x="50" y="470" width="140" height="70" as="geometry" />
+        </mxCell>
+        
+        <!-- Arrow: player set to load url -->
+        <mxCell id="arrow-player-url" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#000000;endArrow=classic;" parent="swimlane-system" source="system-player-set" target="system-load-url" edge="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        
+        <!-- Decision: Song URL valid? -->
+        <mxCell id="decision-url-valid" value="Song URL&#xa;valid?" style="rhombus;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#000000;" parent="swimlane-system" vertex="1">
+          <mxGeometry x="70" y="580" width="100" height="90" as="geometry" />
+        </mxCell>
+        
+        <!-- Arrow: load url to decision -->
+        <mxCell id="arrow-url-decision" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#000000;endArrow=classic;" parent="swimlane-system" source="system-load-url" target="decision-url-valid" edge="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        
+        <!-- Display error message -->
+        <mxCell id="system-error" value="Display error&#xa;message" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#000000;" parent="swimlane-system" vertex="1">
+          <mxGeometry x="280" y="595" width="130" height="60" as="geometry" />
+        </mxCell>
+        
+        <!-- Arrow: url invalid -->
+        <mxCell id="arrow-url-no" value="No" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#000000;endArrow=classic;" parent="swimlane-system" source="decision-url-valid" target="system-error" edge="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        
+        <!-- Initialize useSound hook -->
+        <mxCell id="system-init-sound" value="Initialize useSound&#xa;hook with song URL" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#000000;" parent="swimlane-system" vertex="1">
+          <mxGeometry x="50" y="710" width="140" height="60" as="geometry" />
+        </mxCell>
+        
+        <!-- Arrow: url valid -->
+        <mxCell id="arrow-url-yes" value="Valid" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#000000;endArrow=classic;" parent="swimlane-system" source="decision-url-valid" target="system-init-sound" edge="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        
+        <!-- Arrow: error to init (retry) -->
+        <mxCell id="arrow-error-init" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#000000;endArrow=classic;dashed=1;" parent="swimlane-system" source="system-error" target="system-init-sound" edge="1">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="345" y="700" />
+              <mxPoint x="240" y="700" />
+              <mxPoint x="240" y="740" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        
+        <!-- Render PlayerContent -->
+        <mxCell id="system-render-player" value="Render PlayerContent&#xa;component" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#000000;" parent="swimlane-system" vertex="1">
+          <mxGeometry x="250" y="710" width="140" height="60" as="geometry" />
+        </mxCell>
+        
+        <!-- Arrow: init to render -->
+        <mxCell id="arrow-init-render" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#000000;endArrow=classic;" parent="swimlane-system" source="system-init-sound" target="system-render-player" edge="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        
+        <!-- sound.play() Auto-play -->
+        <mxCell id="system-autoplay" value="sound.play()&#xa;Auto-play" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#000000;" parent="swimlane-system" vertex="1">
+          <mxGeometry x="250" y="810" width="140" height="60" as="geometry" />
+        </mxCell>
+        
+        <!-- Arrow: render to autoplay -->
+        <mxCell id="arrow-render-autoplay" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#000000;endArrow=classic;" parent="swimlane-system" source="system-render-player" target="system-autoplay" edge="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        
+        <!-- Decision: Song ended? -->
+        <mxCell id="decision-song-end" value="Song ended?" style="rhombus;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#000000;" parent="swimlane-system" vertex="1">
+          <mxGeometry x="265" y="910" width="110" height="90" as="geometry" />
+        </mxCell>
+        
+        <!-- Arrow: autoplay to decision -->
+        <mxCell id="arrow-autoplay-decision" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#000000;endArrow=classic;" parent="swimlane-system" source="system-autoplay" target="decision-song-end" edge="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        
+        <!-- onPlayNext() -->
+        <mxCell id="system-play-next" value="onPlayNext()&#xa;(play next song&#xa;in playlist)" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#000000;" parent="swimlane-system" vertex="1">
+          <mxGeometry x="80" y="925" width="130" height="60" as="geometry" />
+        </mxCell>
+        
+        <!-- Arrow: song ended yes -->
+        <mxCell id="arrow-end-yes" value="Yes" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#000000;endArrow=classic;" parent="swimlane-system" source="decision-song-end" target="system-play-next" edge="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        
+        <!-- End Point (No/Stop) -->
+        <mxCell id="end-stop" value="" style="ellipse;whiteSpace=wrap;html=1;aspect=fixed;fillColor=#000000;strokeColor=#000000;" parent="swimlane-system" vertex="1">
+          <mxGeometry x="305" y="1030" width="30" height="30" as="geometry" />
+        </mxCell>
+        
+        <!-- Arrow: song ended no -->
+        <mxCell id="arrow-end-no" value="No/Stop" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#000000;endArrow=classic;" parent="swimlane-system" source="decision-song-end" target="end-stop" edge="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        
+        <!-- End Point (after play next) -->
+        <mxCell id="end-next" value="" style="ellipse;whiteSpace=wrap;html=1;aspect=fixed;fillColor=#000000;strokeColor=#000000;" parent="swimlane-system" vertex="1">
+          <mxGeometry x="130" y="1030" width="30" height="30" as="geometry" />
+        </mxCell>
+        
+        <!-- Arrow: play next to end -->
+        <mxCell id="arrow-next-end" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#000000;endArrow=classic;" parent="swimlane-system" source="system-play-next" target="end-next" edge="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        
+        <!-- Cross-swimlane arrows -->
+        
+        <!-- Arrow: user click to system useonplay -->
+        <mxCell id="arrow-click-system" value="Trigger" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#000000;endArrow=classic;" parent="1" source="user-click-song" target="system-useonplay" edge="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        
+        <!-- Arrow: render player to user listen -->
+        <mxCell id="arrow-render-listen" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#000000;endArrow=classic;" parent="1" source="system-render-player" target="user-listen" edge="1">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="500" y="780" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        
+        <!-- Arrow: user control to system autoplay (user action) -->
+        <mxCell id="arrow-control-autoplay" value="User action" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#000000;endArrow=classic;dashed=1;" parent="1" source="user-control" target="system-autoplay" edge="1">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="240" y="880" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>

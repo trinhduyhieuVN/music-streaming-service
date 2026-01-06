@@ -14,6 +14,7 @@ import { useUser } from "@/hooks/useUser";
 import usePlayer from "@/hooks/usePlayer";
 
 import Button from "./Button";
+import PremiumBadge from "./PremiumBadge";
 
 interface HeaderProps {
   children: React.ReactNode;
@@ -29,7 +30,7 @@ const Header: React.FC<HeaderProps> = ({
   const authModal = useAuthModal();
 
   const supabaseClient = useSupabaseClient();
-  const { user } = useUser();
+  const { user, subscription } = useUser();
 
   const handleLogout = async () => {
     const { error } = await supabaseClient.auth.signOut();
@@ -121,6 +122,14 @@ const Header: React.FC<HeaderProps> = ({
         <div className="flex justify-between items-center gap-x-4">
           {user ? (
             <div className="flex gap-x-4 items-center">
+              {/* Premium Badge */}
+              {subscription && (
+                <PremiumBadge 
+                  planId={(subscription as any)?.plan_id} 
+                  size="md" 
+                  showLabel 
+                />
+              )}
               <Button 
                 onClick={handleLogout} 
                 className="bg-white px-6 py-2"
@@ -129,9 +138,15 @@ const Header: React.FC<HeaderProps> = ({
               </Button>
               <Button 
                 onClick={() => router.push('/account')} 
-                className="bg-white"
+                className="bg-white relative"
               >
                 <FaUserAlt />
+                {/* Mini badge on avatar */}
+                {subscription && (
+                  <span className="absolute -top-1 -right-1">
+                    <PremiumBadge planId={(subscription as any)?.plan_id} size="sm" />
+                  </span>
+                )}
               </Button>
             </div>
           ) : (

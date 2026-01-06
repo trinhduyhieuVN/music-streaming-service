@@ -25,7 +25,11 @@ A modern, full-featured music streaming platform built with Next.js 13, React, S
 ### 👤 User Features
 - Authentication (Email/Password, OAuth)
 - Personal library with uploaded songs
-- Listening history tracking
+- **Listening History** - Automatically track and view recently played songs
+  - Auto-save when playing songs
+  - Grouped by date (Today, Yesterday, specific dates)
+  - Real-time updates
+  - Quick replay from history
 - Premium subscription system
 
 ### 💳 Payment Integration (Vietnam)

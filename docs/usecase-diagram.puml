@@ -1,0 +1,152 @@
+@startuml Music Streaming Service - Use Case Diagram
+
+' Actors
+actor "User" as User
+actor "Guest" as Guest
+actor "Premium User" as Premium
+actor "Admin" as Admin
+actor "Payment System\n(SePay)" as PaymentSystem
+
+' System boundary
+rectangle "Music Streaming Service" {
+  
+  ' Use Case 1: Authentication
+  package "Authentication" {
+    usecase "Sign Up" as UC1
+    usecase "Login" as UC2
+    usecase "Logout" as UC3
+    usecase "OAuth Login\n(Google, GitHub)" as UC4
+  }
+  
+  ' Use Case 2: Play Music
+  package "Music Player" {
+    usecase "Play/Pause Song" as UC5
+    usecase "Next/Previous Track" as UC6
+    usecase "Adjust Volume" as UC7
+    usecase "Seek Progress" as UC8
+    usecase "View Queue" as UC9
+    usecase "Add to Queue" as UC10
+  }
+  
+  ' Use Case 3: Library Management
+  package "Library Management" {
+    usecase "Upload Song" as UC11
+    usecase "Create Playlist" as UC12
+    usecase "Edit Playlist" as UC13
+    usecase "Add Song to Playlist" as UC14
+    usecase "Remove Song from Playlist" as UC15
+    usecase "Like/Unlike Song" as UC16
+    usecase "View Liked Songs" as UC17
+    usecase "Delete Song" as UC18
+  }
+  
+  ' Use Case 4: Browse & Search
+  package "Browse & Search" {
+    usecase "Search Songs" as UC19
+    usecase "Browse by Album" as UC20
+    usecase "Browse by Artist" as UC21
+    usecase "Browse by Genre" as UC22
+    usecase "Advanced Search" as UC23
+    usecase "View Listening History" as UC24
+  }
+  
+  ' Use Case 5: Premium Subscription
+  package "Premium Subscription" {
+    usecase "View Premium Plans" as UC25
+    usecase "Subscribe Premium" as UC26
+    usecase "Generate QR Payment" as UC27
+    usecase "Process Payment" as UC28
+    usecase "Activate Subscription" as UC29
+    usecase "Cancel Subscription" as UC30
+  }
+  
+  ' Admin features
+  package "Admin" {
+    usecase "Manage Users" as UC31
+    usecase "Manage Content" as UC32
+    usecase "View Analytics" as UC33
+  }
+}
+
+' Relationships - Guest
+Guest --> UC1
+Guest --> UC2
+Guest --> UC4
+Guest --> UC19
+Guest --> UC20
+Guest --> UC21
+Guest --> UC22
+Guest --> UC25
+
+' Relationships - User (authenticated)
+User --> UC2
+User --> UC3
+User --> UC5
+User --> UC6
+User --> UC7
+User --> UC8
+User --> UC9
+User --> UC10
+User --> UC11
+User --> UC12
+User --> UC13
+User --> UC14
+User --> UC15
+User --> UC16
+User --> UC17
+User --> UC18
+User --> UC19
+User --> UC20
+User --> UC21
+User --> UC22
+User --> UC23
+User --> UC24
+User --> UC25
+User --> UC26
+
+' Relationships - Premium User
+Premium --|> User
+Premium --> UC29
+Premium --> UC30
+
+' Relationships - Admin
+Admin --|> User
+Admin --> UC31
+Admin --> UC32
+Admin --> UC33
+
+' Include relationships
+UC26 .> UC27 : <<include>>
+UC27 .> UC28 : <<include>>
+UC28 .> UC29 : <<include>>
+
+UC12 .> UC14 : <<include>>
+UC19 .> UC5 : <<extend>>
+UC20 .> UC5 : <<extend>>
+
+' External system
+PaymentSystem --> UC28
+
+' Notes
+note right of UC11
+  Upload includes:
+  - Song file (MP3, etc.)
+  - Metadata (title, artist, album, genre)
+  - Cover image
+end note
+
+note right of UC26
+  Payment via SePay:
+  - VietQR
+  - Bank Transfer
+  - Auto activation via webhook
+end note
+
+note right of UC5
+  Player features:
+  - Continuous playback
+  - Cross-page persistence
+  - Real-time progress
+end note
+
+@enduml

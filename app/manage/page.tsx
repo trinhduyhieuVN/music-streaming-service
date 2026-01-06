@@ -4,19 +4,23 @@ import { useEffect, useState } from "react";
 import { useRouter } from "next/navigation";
 import { useSupabaseClient } from "@supabase/auth-helpers-react";
 import { toast } from "react-hot-toast";
-import { FiEdit2, FiMusic, FiCheck, FiX } from "react-icons/fi";
+import { FiEdit2, FiMusic, FiCheck, FiX, FiLock, FiTrash2 } from "react-icons/fi";
 
 import { useUser } from "@/hooks/useUser";
 import Header from "@/components/Header";
 import useEditSongModal from "@/hooks/useEditSongModal";
+import useDeleteSong from "@/hooks/useDeleteSong";
 import { GENRE_NAMES } from "@/constants/genres";
 import { Song } from "@/types";
+import useIsAdmin from "@/hooks/useIsAdmin";
 
 const ManagePage = () => {
   const router = useRouter();
   const { user, isLoading: userLoading } = useUser();
   const supabaseClient = useSupabaseClient();
   const editSongModal = useEditSongModal();
+  const { isAdmin } = useIsAdmin();
+  const { deleteSong, isDeleting } = useDeleteSong();
   
   const [songs, setSongs] = useState<Song[]>([]);
   const [loading, setLoading] = useState(true);
@@ -24,16 +28,26 @@ const ManagePage = () => {
   const [bulkGenre, setBulkGenre] = useState("");
   const [filter, setFilter] = useState<"all" | "no-genre">("all");
 
-  // Fetch all songs
+  // Handle delete song
+  const handleDeleteSong = async (song: Song) => {
+    if (confirm(`Are you sure you want to delete "${song.title}"? This action cannot be undone.`)) {
+      const success = await deleteSong(song.id);
+      if (success) {
+        setSongs(prev => prev.filter(s => s.id !== song.id));
+        setSelectedSongs(prev => prev.filter(id => id !== song.id));
+      }
+    }
+  };
+
+  // Fetch all songs (admin gets all songs, not just their own)
   useEffect(() => {
     const fetchSongs = async () => {
-      if (!user) return;
+      if (!user || !isAdmin) return;
       
       setLoading(true);
       const { data, error } = await supabaseClient
         .from('songs')
         .select('*')
-        .eq('user_id', user.id)
         .order('created_at', { ascending: false });
 
       if (error) {
@@ -45,17 +59,37 @@ const ManagePage = () => {
       setLoading(false);
     };
 
-    if (user) {
+    if (user && isAdmin) {
       fetchSongs();
     }
-  }, [user, supabaseClient]);
+  }, [user, supabaseClient, isAdmin]);
 
-  // Redirect if not logged in
+  // Redirect if not logged in or not admin
   useEffect(() => {
-    if (!userLoading && !user) {
+    if (!userLoading && (!user || !isAdmin)) {
       router.push('/');
     }
-  }, [user, userLoading, router]);
+  }, [user, userLoading, isAdmin, router]);
+
+  // Show access denied if not admin
+  if (!userLoading && user && !isAdmin) {
+    return (
+      <div className="bg-neutral-900 rounded-lg h-full w-full overflow-hidden overflow-y-auto">
+        <Header>
+          <div className="mb-2">
+            <h1 className="text-white text-3xl font-semibold flex items-center gap-x-2">
+              <FiLock />
+              Access Denied
+            </h1>
+            <p className="text-neutral-400 mt-2">
+              You don't have permission to access this page.
+              Only administrators can manage songs.
+            </p>
+          </div>
+        </Header>
+      </div>
+    );
+  }
 
   const filteredSongs = filter === "no-genre" 
     ? songs.filter(song => !song.genre) 
@@ -296,13 +330,21 @@ const ManagePage = () => {
                     ))}
                   </select>
                 </div>
-                <div className="col-span-1 flex items-center">
+                <div className="col-span-1 flex items-center gap-1">
                   <button
                     onClick={() => editSongModal.onOpen(song)}
                     className="p-2 text-neutral-400 hover:text-white hover:bg-neutral-700 rounded-full transition"
                     title="Edit song"
                   >
                     <FiEdit2 className="w-4 h-4" />
+                  </button>
+                  <button
+                    onClick={() => handleDeleteSong(song)}
+                    disabled={isDeleting}
+                    className="p-2 text-neutral-400 hover:text-red-500 hover:bg-red-600/20 rounded-full transition disabled:opacity-50 disabled:cursor-not-allowed"
+                    title="Delete song"
+                  >
+                    <FiTrash2 className="w-4 h-4" />
                   </button>
                 </div>
               </div>

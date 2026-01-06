@@ -1,0 +1,165 @@
+<mxfile host="app.diagrams.net" modified="2026-01-06T00:00:00.000Z" agent="Draw.io" version="22.0.0" type="device">
+  <diagram name="Subscription State Diagram" id="subscription-state">
+    <mxGraphModel dx="1200" dy="700" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1100" pageHeight="550" math="0" shadow="0">
+      <root>
+        <mxCell id="0"/>
+        <mxCell id="1" parent="0"/>
+        
+        <!-- Start State -->
+        <mxCell id="start" value="" style="ellipse;fillColor=#000000;strokeColor=#000000;" vertex="1" parent="1">
+          <mxGeometry x="40" y="220" width="30" height="30" as="geometry"/>
+        </mxCell>
+        
+        <!-- States -->
+        <mxCell id="free" value="Free User" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#000000;fontSize=12;" vertex="1" parent="1">
+          <mxGeometry x="120" y="215" width="110" height="40" as="geometry"/>
+        </mxCell>
+        
+        <mxCell id="selecting" value="Selecting Plan" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#000000;fontSize=12;" vertex="1" parent="1">
+          <mxGeometry x="290" y="215" width="110" height="40" as="geometry"/>
+        </mxCell>
+        
+        <mxCell id="processing" value="Processing&#xa;Payment" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#000000;fontSize=11;" vertex="1" parent="1">
+          <mxGeometry x="460" y="215" width="110" height="40" as="geometry"/>
+        </mxCell>
+        
+        <mxCell id="active" value="Premium Active" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#000000;fontSize=12;" vertex="1" parent="1">
+          <mxGeometry x="640" y="215" width="120" height="40" as="geometry"/>
+        </mxCell>
+        
+        <mxCell id="expired" value="Expired" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#000000;fontSize=12;" vertex="1" parent="1">
+          <mxGeometry x="640" y="350" width="120" height="40" as="geometry"/>
+        </mxCell>
+        
+        <mxCell id="cancelled" value="Cancelled" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#000000;fontSize=12;" vertex="1" parent="1">
+          <mxGeometry x="460" y="350" width="110" height="40" as="geometry"/>
+        </mxCell>
+        
+        <mxCell id="payment-fail" value="Payment&#xa;Failed" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#000000;fontSize=10;" vertex="1" parent="1">
+          <mxGeometry x="480" y="90" width="70" height="40" as="geometry"/>
+        </mxCell>
+        
+        <!-- End State -->
+        <mxCell id="end" value="" style="ellipse;html=1;shape=doubleEllipse;fillColor=#ffffff;strokeColor=#000000;" vertex="1" parent="1">
+          <mxGeometry x="840" y="220" width="30" height="30" as="geometry"/>
+        </mxCell>
+        
+        <!-- Transitions -->
+        
+        <!-- Start to Free -->
+        <mxCell id="t1" value="" style="endArrow=classic;html=1;strokeColor=#000000;" edge="1" parent="1" source="start" target="free">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+        
+        <!-- Free to Selecting -->
+        <mxCell id="t2" value="clicks Subscribe" style="endArrow=classic;html=1;strokeColor=#000000;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;fontSize=10;" edge="1" parent="1" source="free" target="selecting">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint y="-10" as="offset"/>
+          </mxGeometry>
+        </mxCell>
+        
+        <!-- Selecting to Processing -->
+        <mxCell id="t3" value="selects plan" style="endArrow=classic;html=1;strokeColor=#000000;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;fontSize=10;" edge="1" parent="1" source="selecting" target="processing">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint y="-10" as="offset"/>
+          </mxGeometry>
+        </mxCell>
+        
+        <!-- Selecting to Free (cancel) -->
+        <mxCell id="t4" value="cancels" style="endArrow=classic;html=1;strokeColor=#000000;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0.5;entryY=1;entryDx=0;entryDy=0;fontSize=10;" edge="1" parent="1" source="selecting" target="free">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="345" y="300"/>
+              <mxPoint x="175" y="300"/>
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        
+        <!-- Processing to Payment Failed -->
+        <mxCell id="t5" value="payment error" style="endArrow=classic;html=1;strokeColor=#000000;exitX=0.5;exitY=0;exitDx=0;exitDy=0;entryX=0.5;entryY=1;entryDx=0;entryDy=0;fontSize=10;" edge="1" parent="1" source="processing" target="payment-fail">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+        
+        <!-- Payment Failed to Selecting -->
+        <mxCell id="t6" value="retry payment" style="endArrow=classic;html=1;strokeColor=#000000;exitX=0;exitY=0.5;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;fontSize=10;" edge="1" parent="1" source="payment-fail" target="selecting">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="345" y="110"/>
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        
+        <!-- Processing to Active -->
+        <mxCell id="t7" value="payment success" style="endArrow=classic;html=1;strokeColor=#000000;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;fontSize=10;" edge="1" parent="1" source="processing" target="active">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint y="-10" as="offset"/>
+          </mxGeometry>
+        </mxCell>
+        
+        <!-- Active to Expired -->
+        <mxCell id="t8" value="subscription period ends" style="endArrow=classic;html=1;strokeColor=#000000;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;fontSize=10;" edge="1" parent="1" source="active" target="expired">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="10" as="offset"/>
+          </mxGeometry>
+        </mxCell>
+        
+        <!-- Active to Cancelled -->
+        <mxCell id="t9" value="user cancels subscription" style="endArrow=classic;html=1;strokeColor=#000000;exitX=0;exitY=1;exitDx=0;exitDy=0;entryX=1;entryY=0;entryDx=0;entryDy=0;fontSize=9;" edge="1" parent="1" source="active" target="cancelled">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="600" y="310"/>
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        
+        <!-- Cancelled to Free -->
+        <mxCell id="t10" value="returns to free tier" style="endArrow=classic;html=1;strokeColor=#000000;exitX=0;exitY=0.5;exitDx=0;exitDy=0;entryX=0.5;entryY=1;entryDx=0;entryDy=0;fontSize=10;" edge="1" parent="1" source="cancelled" target="free">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="175" y="370"/>
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        
+        <!-- Expired to Free -->
+        <mxCell id="t11" value="grace period ends" style="endArrow=classic;html=1;strokeColor=#000000;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=1;entryY=1;entryDx=0;entryDy=0;fontSize=10;" edge="1" parent="1" source="expired" target="free">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="700" y="450"/>
+              <mxPoint x="175" y="450"/>
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        
+        <!-- Expired to Processing (renew) -->
+        <mxCell id="t12" value="renews subscription" style="endArrow=classic;html=1;strokeColor=#000000;exitX=0;exitY=0.5;exitDx=0;exitDy=0;entryX=0.5;entryY=1;entryDx=0;entryDy=0;fontSize=10;" edge="1" parent="1" source="expired" target="processing">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="515" y="370"/>
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        
+        <!-- Active to End -->
+        <mxCell id="t13" value="account deleted" style="endArrow=classic;html=1;strokeColor=#000000;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;fontSize=10;" edge="1" parent="1" source="active" target="end">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint y="-10" as="offset"/>
+          </mxGeometry>
+        </mxCell>
+        
+        <!-- Active to Active (auto-renew) -->
+        <mxCell id="t14" value="auto-renews" style="endArrow=classic;html=1;strokeColor=#000000;fontSize=10;" edge="1" parent="1">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="730" y="215" as="sourcePoint"/>
+            <mxPoint x="680" y="215" as="targetPoint"/>
+            <Array as="points">
+              <mxPoint x="730" y="175"/>
+              <mxPoint x="680" y="175"/>
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>

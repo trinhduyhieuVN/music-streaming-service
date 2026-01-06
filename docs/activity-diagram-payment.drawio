@@ -1,0 +1,336 @@
+<mxfile host="65bd71144e">
+  <diagram name="Payment & Subscription" id="payment-activity">
+    <mxGraphModel dx="1422" dy="794" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="850" pageHeight="1100" math="0" shadow="0">
+      <root>
+        <mxCell id="0"/>
+        <mxCell id="1" parent="0"/>
+        
+        <mxCell id="swimlane-user" value="User" style="swimlane;horizontal=1;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#000000;fontStyle=1;startSize=30;" vertex="1" parent="1">
+          <mxGeometry x="40" y="40" width="280" height="1080" as="geometry"/>
+        </mxCell>
+        
+        <!-- Start Point -->
+        <mxCell id="start" value="" style="ellipse;whiteSpace=wrap;html=1;aspect=fixed;fillColor=#000000;strokeColor=#000000;" parent="swimlane-user" vertex="1">
+          <mxGeometry x="135" y="60" width="30" height="30" as="geometry" />
+        </mxCell>
+        
+        <!-- Select Premium Plan -->
+        <mxCell id="user-select-plan" value="Select Premium Plan&#xa;(Monthly/Yearly)" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#000000;" parent="swimlane-user" vertex="1">
+          <mxGeometry x="75" y="120" width="150" height="60" as="geometry" />
+        </mxCell>
+        
+        <!-- Arrow: start to select -->
+        <mxCell id="arrow-start-select" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#000000;endArrow=classic;" parent="swimlane-user" source="start" target="user-select-plan" edge="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        
+        <!-- View payment info -->
+        <mxCell id="user-view-payment" value="View payment info&#xa;(QR code, bank details,&#xa;transaction code)" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#000000;" parent="swimlane-user" vertex="1">
+          <mxGeometry x="75" y="400" width="150" height="80" as="geometry" />
+        </mxCell>
+        
+        <!-- Open Banking App -->
+        <mxCell id="user-open-bank" value="Open Banking App" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#000000;" parent="swimlane-user" vertex="1">
+          <mxGeometry x="75" y="520" width="150" height="60" as="geometry" />
+        </mxCell>
+        
+        <!-- Arrow: view to open -->
+        <mxCell id="arrow-view-open" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#000000;endArrow=classic;" parent="swimlane-user" source="user-view-payment" target="user-open-bank" edge="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        
+        <!-- Scan QR or Enter details -->
+        <mxCell id="user-scan-qr" value="Scan QR Code OR&#xa;Enter bank transfer&#xa;details manually" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#000000;" parent="swimlane-user" vertex="1">
+          <mxGeometry x="75" y="620" width="150" height="80" as="geometry" />
+        </mxCell>
+        
+        <!-- Arrow: open to scan -->
+        <mxCell id="arrow-open-scan" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#000000;endArrow=classic;" parent="swimlane-user" source="user-open-bank" target="user-scan-qr" edge="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        
+        <!-- Complete Transfer -->
+        <mxCell id="user-transfer" value="Complete Transfer&#xa;(với đúng nội dung CK)" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#000000;" parent="swimlane-user" vertex="1">
+          <mxGeometry x="75" y="740" width="150" height="60" as="geometry" />
+        </mxCell>
+        
+        <!-- Arrow: scan to transfer -->
+        <mxCell id="arrow-scan-transfer" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#000000;endArrow=classic;" parent="swimlane-user" source="user-scan-qr" target="user-transfer" edge="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        
+        <!-- Wait for confirmation -->
+        <mxCell id="user-wait" value="Wait for confirmation&#xa;(auto-check every 5s)" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#000000;" parent="swimlane-user" vertex="1">
+          <mxGeometry x="75" y="840" width="150" height="60" as="geometry" />
+        </mxCell>
+        
+        <!-- Arrow: transfer to wait -->
+        <mxCell id="arrow-transfer-wait" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#000000;endArrow=classic;" parent="swimlane-user" source="user-transfer" target="user-wait" edge="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        
+        <!-- Subscription Activated -->
+        <mxCell id="user-activated" value="Subscription Activated&#xa;Successfully!&#xa;(Page auto-refresh)" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#000000;" parent="swimlane-user" vertex="1">
+          <mxGeometry x="75" y="1100" width="150" height="80" as="geometry" />
+        </mxCell>
+        
+        <!-- Swimlane: MUSIC STREAM SERVICE -->
+        <mxCell id="swimlane-system" value="Music Stream Service" style="swimlane;startSize=40;fillColor=#f5f5f5;strokeColor=#000000;fontStyle=1;fontSize=14;" parent="1" vertex="1">
+          <mxGeometry x="340" y="40" width="470" height="1200" as="geometry" />
+        </mxCell>
+        
+        <!-- Check user logged in -->
+        <mxCell id="system-check-user" value="Check user&#xa;logged in?" style="rhombus;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#000000;" parent="swimlane-system" vertex="1">
+          <mxGeometry x="70" y="110" width="120" height="80" as="geometry" />
+        </mxCell>
+        
+        <!-- Show Auth Modal -->
+        <mxCell id="system-auth" value="Show Auth Modal" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#000000;" parent="swimlane-system" vertex="1">
+          <mxGeometry x="280" y="120" width="130" height="60" as="geometry" />
+        </mxCell>
+        
+        <!-- Arrow: not logged -->
+        <mxCell id="arrow-not-logged" value="No" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#000000;endArrow=classic;" parent="swimlane-system" source="system-check-user" target="system-auth" edge="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        
+        <!-- Check already subscribed -->
+        <mxCell id="system-check-sub" value="Already&#xa;subscribed?" style="rhombus;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#000000;" parent="swimlane-system" vertex="1">
+          <mxGeometry x="70" y="230" width="120" height="80" as="geometry" />
+        </mxCell>
+        
+        <!-- Arrow: logged yes -->
+        <mxCell id="arrow-logged-yes" value="Yes" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#000000;endArrow=classic;" parent="swimlane-system" source="system-check-user" target="system-check-sub" edge="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        
+        <!-- Show already premium -->
+        <mxCell id="system-already" value="Show &quot;Already Premium&quot;&#xa;message" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#000000;" parent="swimlane-system" vertex="1">
+          <mxGeometry x="280" y="240" width="140" height="60" as="geometry" />
+        </mxCell>
+        
+        <!-- Arrow: already sub -->
+        <mxCell id="arrow-already" value="Yes" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#000000;endArrow=classic;" parent="swimlane-system" source="system-check-sub" target="system-already" edge="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        
+        <!-- Display plan selection -->
+        <mxCell id="system-display-plans" value="Display Premium Plans&#xa;(Monthly 2.000₫,&#xa;Yearly 29.000₫)" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#000000;" parent="swimlane-system" vertex="1">
+          <mxGeometry x="50" y="350" width="160" height="80" as="geometry" />
+        </mxCell>
+        
+        <!-- Arrow: not sub -->
+        <mxCell id="arrow-not-sub" value="No" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#000000;endArrow=classic;" parent="swimlane-system" source="system-check-sub" target="system-display-plans" edge="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        
+        <!-- Create payment record -->
+        <mxCell id="system-create-payment" value="Create payment record&#xa;in payments table&#xa;(status: pending,&#xa;transaction_code)" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#000000;" parent="swimlane-system" vertex="1">
+          <mxGeometry x="240" y="355" width="170" height="90" as="geometry" />
+        </mxCell>
+        
+        <!-- Generate VietQR Code -->
+        <mxCell id="system-generate-qr" value="Generate VietQR Code&#xa;with MB Bank Account&#xa;+ Amount + Transaction&#xa;Code" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#000000;" parent="swimlane-system" vertex="1">
+          <mxGeometry x="50" y="470" width="160" height="90" as="geometry" />
+        </mxCell>
+        
+        <!-- Arrow: create to generate -->
+        <mxCell id="arrow-create-generate" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#000000;endArrow=classic;" parent="swimlane-system" source="system-create-payment" target="system-generate-qr" edge="1">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="325" y="480" />
+              <mxPoint x="230" y="480" />
+              <mxPoint x="230" y="515" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        
+        <!-- Display QR & bank details -->
+        <mxCell id="system-display-qr" value="Display QR Code,&#xa;Bank Info, Transfer&#xa;Amount, Content" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#000000;" parent="swimlane-system" vertex="1">
+          <mxGeometry x="240" y="480" width="160" height="70" as="geometry" />
+        </mxCell>
+        
+        <!-- Arrow: generate to display -->
+        <mxCell id="arrow-generate-display" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#000000;endArrow=classic;" parent="swimlane-system" source="system-generate-qr" target="system-display-qr" edge="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        
+        <!-- Listen for webhook -->
+        <mxCell id="system-listen-webhook" value="Listen for SePay&#xa;Webhook from Bank&#xa;(/api/sepay/webhook)" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#000000;" parent="swimlane-system" vertex="1">
+          <mxGeometry x="60" y="725" width="140" height="90" as="geometry" />
+        </mxCell>
+        
+        <!-- Receive webhook -->
+        <mxCell id="system-receive-webhook" value="Receive bank&#xa;transaction webhook&#xa;(transaction data)" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#000000;" parent="swimlane-system" vertex="1">
+          <mxGeometry x="250" y="740" width="140" height="60" as="geometry" />
+        </mxCell>
+        
+        <!-- Arrow: listen to receive -->
+        <mxCell id="arrow-listen-receive" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#000000;endArrow=classic;" parent="swimlane-system" source="system-listen-webhook" target="system-receive-webhook" edge="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        
+        <!-- Parse transaction code -->
+        <mxCell id="system-parse-code" value="Parse transaction code&#xa;from transfer content" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#000000;" parent="swimlane-system" vertex="1">
+          <mxGeometry x="60" y="850" width="140" height="60" as="geometry" />
+        </mxCell>
+        
+        <!-- Arrow: receive to parse -->
+        <mxCell id="arrow-receive-parse" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#000000;endArrow=classic;" parent="swimlane-system" source="system-receive-webhook" target="system-parse-code" edge="1">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="320" y="830" />
+              <mxPoint x="230" y="830" />
+              <mxPoint x="230" y="880" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        
+        <!-- Find payment record -->
+        <mxCell id="system-find-payment" value="Find payment record&#xa;by transaction_code&#xa;(status: pending)" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#000000;" parent="swimlane-system" vertex="1">
+          <mxGeometry x="250" y="850" width="150" height="70" as="geometry" />
+        </mxCell>
+        
+        <!-- Arrow: parse to find -->
+        <mxCell id="arrow-parse-find" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#000000;endArrow=classic;" parent="swimlane-system" source="system-parse-code" target="system-find-payment" edge="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        
+        <!-- Validate amount -->
+        <mxCell id="decision-amount" value="Transfer&#xa;amount ≥&#xa;expected?" style="rhombus;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#000000;" parent="swimlane-system" vertex="1">
+          <mxGeometry x="80" y="950" width="100" height="90" as="geometry" />
+        </mxCell>
+        
+        <!-- Arrow: find to validate -->
+        <mxCell id="arrow-find-validate" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#000000;endArrow=classic;" parent="swimlane-system" source="system-find-payment" target="decision-amount" edge="1">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="325" y="940" />
+              <mxPoint x="230" y="940" />
+              <mxPoint x="230" y="995" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        
+        <!-- Mark failed -->
+        <mxCell id="system-failed" value="Mark payment failed&#xa;(insufficient amount)" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#000000;" parent="swimlane-system" vertex="1">
+          <mxGeometry x="260" y="965" width="140" height="60" as="geometry" />
+        </mxCell>
+        
+        <!-- Arrow: insufficient -->
+        <mxCell id="arrow-insufficient" value="No" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#000000;endArrow=classic;" parent="swimlane-system" source="decision-amount" target="system-failed" edge="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        
+        <!-- Update payment completed -->
+        <mxCell id="system-update-payment" value="Update payment status&#xa;to completed&#xa;(save transaction details)" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#000000;" parent="swimlane-system" vertex="1">
+          <mxGeometry x="50" y="1070" width="160" height="80" as="geometry" />
+        </mxCell>
+        
+        <!-- Arrow: valid amount -->
+        <mxCell id="arrow-valid-amount" value="Yes" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#000000;endArrow=classic;" parent="swimlane-system" source="decision-amount" target="system-update-payment" edge="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        
+        <!-- Create/Update subscription -->
+        <mxCell id="system-subscription" value="Create OR Extend&#xa;subscription in&#xa;subscriptions table&#xa;(status: active)" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#000000;" parent="swimlane-system" vertex="1">
+          <mxGeometry x="250" y="1075" width="150" height="90" as="geometry" />
+        </mxCell>
+        
+        <!-- Arrow: update to sub -->
+        <mxCell id="arrow-update-sub" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#000000;endArrow=classic;" parent="swimlane-system" source="system-update-payment" target="system-subscription" edge="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        
+        <!-- Update user status -->
+        <mxCell id="system-update-user" value="Update user status&#xa;to Premium&#xa;(useUser hook refresh)" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#000000;" parent="swimlane-system" vertex="1">
+          <mxGeometry x="60" y="600" width="140" height="80" as="geometry" />
+        </mxCell>
+        
+        <!-- Arrow: sub to user status (loop back) -->
+        <mxCell id="arrow-sub-user" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#000000;endArrow=classic;" parent="swimlane-system" source="system-subscription" target="system-update-user" edge="1">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="20" y="1120" />
+              <mxPoint x="20" y="640" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        
+        <!-- End Point -->
+        <mxCell id="end" value="" style="ellipse;whiteSpace=wrap;html=1;aspect=fixed;fillColor=#000000;strokeColor=#000000;" parent="swimlane-system" vertex="1">
+          <mxGeometry x="305" y="1185" width="30" height="30" as="geometry" />
+        </mxCell>
+        
+        <!-- Arrow: sub to end -->
+        <mxCell id="arrow-sub-end" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#000000;endArrow=classic;" parent="swimlane-system" source="system-subscription" target="end" edge="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        
+        <!-- Cross-swimlane arrows -->
+        
+        <!-- Arrow: user select to system check -->
+        <mxCell id="arrow-select-check" value="Trigger" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#000000;endArrow=classic;" parent="1" source="user-select-plan" target="system-check-user" edge="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        
+        <!-- Arrow: display plans to user (loop back) -->
+        <mxCell id="arrow-plans-user" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#000000;endArrow=classic;" parent="1" source="system-display-plans" target="user-select-plan" edge="1">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="360" y="390" />
+              <mxPoint x="360" y="210" />
+              <mxPoint x="300" y="210" />
+              <mxPoint x="300" y="180" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        
+        <!-- Arrow: user select plan to create payment -->
+        <mxCell id="arrow-select-create" value="Select plan" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#000000;endArrow=classic;" parent="1" source="user-select-plan" target="system-create-payment" edge="1">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="300" y="150" />
+              <mxPoint x="300" y="340" />
+              <mxPoint name="point1" x="565" y="340" />
+              <mxPoint x="565" y="400" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        
+        <!-- Arrow: display QR to user view -->
+        <mxCell id="arrow-qr-view" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#000000;endArrow=classic;" parent="1" source="system-display-qr" target="user-view-payment" edge="1">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="540" y="515" />
+              <mxPoint x="540" y="490" />
+              <mxPoint x="320" y="490" />
+              <mxPoint x="320" y="440" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        
+        <!-- Arrow: user transfer to system listen -->
+        <mxCell id="arrow-transfer-listen" value="Bank processes" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#000000;endArrow=classic;" parent="1" source="user-transfer" target="system-listen-webhook" edge="1">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="300" y="810" />
+              <mxPoint x="300" y="770" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        
+        <!-- Arrow: update user status to user activated -->
+        <mxCell id="arrow-status-activated" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#000000;endArrow=classic;" parent="1" source="system-update-user" target="user-activated" edge="1">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="300" y="680" />
+              <mxPoint x="300" y="1140" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>

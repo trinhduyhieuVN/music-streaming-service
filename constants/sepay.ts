@@ -2,56 +2,59 @@
 // SEPAY CONFIGURATION
 // =============================================
 
-// Thông tin tài khoản ngân hàng nhận thanh toán
+// Bank account information for receiving payments
 export const BANK_CONFIG = {
-  bankId: 'MB', // Mã ngân hàng MB Bank
+  bankId: 'MB', // MB Bank code
   bankName: 'MB Bank',
   accountNumber: '0342722059',
-  accountName: 'MUSIC PREMIUM', // Tên hiển thị
-  template: 'compact2', // Template QR VietQR
+  accountName: 'MUSIC PREMIUM', // Display name
+  template: 'compact2', // VietQR template
 };
 
-// Gói Premium
+// Premium Plans
 export const PREMIUM_PLANS = [
   {
     id: 'monthly',
     name: 'Premium Monthly',
-    description: 'Nghe nhạc không giới hạn trong 1 tháng',
+    description: 'Unlimited music for 1 month',
     price: 2000, // 2,000 VND
     priceFormatted: '2.000₫',
     interval: 'month',
     intervalCount: 1,
     features: [
-      'Nghe nhạc không quảng cáo',
-      'Phát nhạc chất lượng cao',
-      'Nghe offline',
-      'Bỏ qua bài không giới hạn',
+      'Ad-free music',
+      'High quality audio',
+      'Offline listening',
+      'Unlimited skips',
     ],
   },
   {
     id: 'yearly',
     name: 'Premium Yearly',
-    description: 'Nghe nhạc không giới hạn trong 1 năm',
+    description: 'Unlimited music for 1 year',
     price: 29000, // 29,000 VND
     priceFormatted: '29.000₫',
     interval: 'year',
     intervalCount: 1,
-    popular: true, // Đánh dấu gói phổ biến
-    saveText: 'Tiết kiệm 5.000₫',
+    popular: true, // Mark as popular plan
+    saveText: 'Save 5.000₫',
     features: [
-      'Tất cả tính năng Premium Monthly',
-      'Tiết kiệm 5.000₫ so với mua theo tháng',
-      'Ưu tiên hỗ trợ',
+      'All Premium Monthly features',
+      'Save 5.000₫ compared to monthly',
+      'Priority support',
     ],
   },
 ] as const;
 
 export type PlanId = typeof PREMIUM_PLANS[number]['id'];
 
-// Hàm tạo mã giao dịch unique
+// Function to generate unique transaction code
+// Format: SP + [M/Y] + [8 characters from userId] + [timestamp base36]
+// Only use letters and numbers to ensure compatibility with bank transfer content
 export const generateTransactionCode = (userId: string, planId: string): string => {
   const timestamp = Date.now().toString(36).toUpperCase();
-  const userShort = userId.slice(0, 8).toUpperCase();
+  // Remove hyphens from UUID to ensure code is alphanumeric only
+  const userShort = userId.replace(/-/g, '').slice(0, 8).toUpperCase();
   return `SP${planId.toUpperCase().slice(0, 1)}${userShort}${timestamp}`;
 };
 

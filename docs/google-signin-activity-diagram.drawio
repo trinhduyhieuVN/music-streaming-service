@@ -1,0 +1,442 @@
+<mxfile host="app.diagrams.net" modified="2026-01-06T12:00:00.000Z" agent="draw.io" version="22.0.0" type="device">
+  <diagram name="Google Sign-in Authentication Flow" id="google-signin-auth-flow">
+    <mxGraphModel dx="1434" dy="780" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1600" pageHeight="1200" math="0" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        
+        <!-- Swimlane Container -->
+        <!-- User Swimlane -->
+        <mxCell id="swimlane-user" value="User" style="swimlane;fontStyle=1;childLayout=stackLayout;horizontal=1;startSize=30;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLast=0;collapsible=0;marginBottom=0;fillColor=#dae8fc;strokeColor=#6c8ebf;swimlaneFillColor=#ffffff;" vertex="1" parent="1">
+          <mxGeometry x="40" y="40" width="320" height="1080" as="geometry" />
+        </mxCell>
+        
+        <!-- Music Stream Service Swimlane -->
+        <mxCell id="swimlane-service" value="Music Stream Service" style="swimlane;fontStyle=1;childLayout=stackLayout;horizontal=1;startSize=30;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLast=0;collapsible=0;marginBottom=0;fillColor=#d5e8d4;strokeColor=#82b366;swimlaneFillColor=#ffffff;" vertex="1" parent="1">
+          <mxGeometry x="360" y="40" width="320" height="1080" as="geometry" />
+        </mxCell>
+        
+        <!-- Google OAuth Swimlane -->
+        <mxCell id="swimlane-google" value="Google OAuth" style="swimlane;fontStyle=1;childLayout=stackLayout;horizontal=1;startSize=30;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLast=0;collapsible=0;marginBottom=0;fillColor=#fff2cc;strokeColor=#d6b656;swimlaneFillColor=#ffffff;" vertex="1" parent="1">
+          <mxGeometry x="680" y="40" width="320" height="1080" as="geometry" />
+        </mxCell>
+        
+        <!-- Supabase Swimlane -->
+        <mxCell id="swimlane-supabase" value="Supabase" style="swimlane;fontStyle=1;childLayout=stackLayout;horizontal=1;startSize=30;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLast=0;collapsible=0;marginBottom=0;fillColor=#e1d5e7;strokeColor=#9673a6;swimlaneFillColor=#ffffff;" vertex="1" parent="1">
+          <mxGeometry x="1000" y="40" width="320" height="1080" as="geometry" />
+        </mxCell>
+        
+        <!-- ===== START NODE ===== -->
+        <mxCell id="start-node" value="" style="ellipse;whiteSpace=wrap;html=1;aspect=fixed;fillColor=#000000;strokeColor=#000000;" vertex="1" parent="1">
+          <mxGeometry x="185" y="80" width="30" height="30" as="geometry" />
+        </mxCell>
+        
+        <!-- ===== USER LANE ACTIVITIES ===== -->
+        <!-- User initiates sign-in -->
+        <mxCell id="user-initiates" value="User initiates&#xa;sign-in" style="rounded=1;whiteSpace=wrap;html=1;absoluteArcSize=1;arcSize=14;strokeWidth=2;fillColor=#dae8fc;strokeColor=#6c8ebf;" vertex="1" parent="1">
+          <mxGeometry x="130" y="140" width="140" height="50" as="geometry" />
+        </mxCell>
+        
+        <!-- Arrow: Start to User initiates -->
+        <mxCell id="flow-1" value="" style="endArrow=classic;html=1;rounded=0;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" edge="1" parent="1" source="start-node" target="user-initiates">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        
+        <!-- User clicks Sign in with Google button -->
+        <mxCell id="user-clicks-google" value="Click &quot;Sign in with&#xa;Google&quot; button" style="rounded=1;whiteSpace=wrap;html=1;absoluteArcSize=1;arcSize=14;strokeWidth=2;fillColor=#dae8fc;strokeColor=#6c8ebf;" vertex="1" parent="1">
+          <mxGeometry x="130" y="220" width="140" height="50" as="geometry" />
+        </mxCell>
+        
+        <!-- Arrow: User initiates to clicks button -->
+        <mxCell id="flow-2" value="" style="endArrow=classic;html=1;rounded=0;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" edge="1" parent="1" source="user-initiates" target="user-clicks-google">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        
+        <!-- ===== MUSIC STREAM SERVICE ACTIVITIES ===== -->
+        <!-- Presents sign-in interface -->
+        <mxCell id="service-presents-ui" value="Present sign-in&#xa;interface" style="rounded=1;whiteSpace=wrap;html=1;absoluteArcSize=1;arcSize=14;strokeWidth=2;fillColor=#d5e8d4;strokeColor=#82b366;" vertex="1" parent="1">
+          <mxGeometry x="450" y="140" width="140" height="50" as="geometry" />
+        </mxCell>
+        
+        <!-- Arrow: User clicks to Service presents (horizontal) -->
+        <mxCell id="flow-3" value="" style="endArrow=classic;html=1;rounded=0;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" edge="1" parent="1" source="user-clicks-google" target="service-presents-ui">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="270" y="245" as="sourcePoint" />
+            <mxPoint x="450" y="165" as="targetPoint" />
+            <Array as="points">
+              <mxPoint x="330" y="245" />
+              <mxPoint x="330" y="165" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        
+        <!-- Initiate OAuth redirect -->
+        <mxCell id="service-oauth-redirect" value="Initiate OAuth&#xa;redirect to Google" style="rounded=1;whiteSpace=wrap;html=1;absoluteArcSize=1;arcSize=14;strokeWidth=2;fillColor=#d5e8d4;strokeColor=#82b366;" vertex="1" parent="1">
+          <mxGeometry x="450" y="220" width="140" height="50" as="geometry" />
+        </mxCell>
+        
+        <!-- Arrow: Presents UI to OAuth redirect -->
+        <mxCell id="flow-4" value="" style="endArrow=classic;html=1;rounded=0;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" edge="1" parent="1" source="service-presents-ui" target="service-oauth-redirect">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        
+        <!-- ===== GOOGLE OAUTH ACTIVITIES ===== -->
+        <!-- Display Google login page -->
+        <mxCell id="google-login-page" value="Display Google&#xa;login page" style="rounded=1;whiteSpace=wrap;html=1;absoluteArcSize=1;arcSize=14;strokeWidth=2;fillColor=#fff2cc;strokeColor=#d6b656;" vertex="1" parent="1">
+          <mxGeometry x="770" y="220" width="140" height="50" as="geometry" />
+        </mxCell>
+        
+        <!-- Arrow: Service OAuth redirect to Google login page -->
+        <mxCell id="flow-5" value="" style="endArrow=classic;html=1;rounded=0;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" edge="1" parent="1" source="service-oauth-redirect" target="google-login-page">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        
+        <!-- User redirected to Google -->
+        <mxCell id="user-redirected" value="Redirected to&#xa;Google login page" style="rounded=1;whiteSpace=wrap;html=1;absoluteArcSize=1;arcSize=14;strokeWidth=2;fillColor=#dae8fc;strokeColor=#6c8ebf;" vertex="1" parent="1">
+          <mxGeometry x="130" y="310" width="140" height="50" as="geometry" />
+        </mxCell>
+        
+        <!-- Arrow: Google login page to User redirected (back arrow) -->
+        <mxCell id="flow-6" value="" style="endArrow=classic;html=1;rounded=0;exitX=0;exitY=1;exitDx=0;exitDy=0;entryX=1;entryY=0;entryDx=0;entryDy=0;" edge="1" parent="1" source="google-login-page" target="user-redirected">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="700" y="280" />
+              <mxPoint x="700" y="310" />
+              <mxPoint x="270" y="310" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        
+        <!-- User enters credentials -->
+        <mxCell id="user-enters-creds" value="Enter Google&#xa;credentials" style="rounded=1;whiteSpace=wrap;html=1;absoluteArcSize=1;arcSize=14;strokeWidth=2;fillColor=#dae8fc;strokeColor=#6c8ebf;" vertex="1" parent="1">
+          <mxGeometry x="130" y="390" width="140" height="50" as="geometry" />
+        </mxCell>
+        
+        <!-- Arrow: User redirected to enters credentials -->
+        <mxCell id="flow-7" value="" style="endArrow=classic;html=1;rounded=0;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" edge="1" parent="1" source="user-redirected" target="user-enters-creds">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        
+        <!-- Google validates credentials -->
+        <mxCell id="google-validates" value="Validate user&#xa;credentials" style="rounded=1;whiteSpace=wrap;html=1;absoluteArcSize=1;arcSize=14;strokeWidth=2;fillColor=#fff2cc;strokeColor=#d6b656;" vertex="1" parent="1">
+          <mxGeometry x="770" y="390" width="140" height="50" as="geometry" />
+        </mxCell>
+        
+        <!-- Arrow: User enters creds to Google validates -->
+        <mxCell id="flow-8" value="" style="endArrow=classic;html=1;rounded=0;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" edge="1" parent="1" source="user-enters-creds" target="google-validates">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        
+        <!-- Decision: Valid credentials? -->
+        <mxCell id="decision-valid-creds" value="Valid&#xa;credentials?" style="rhombus;whiteSpace=wrap;html=1;strokeWidth=2;fillColor=#fff2cc;strokeColor=#d6b656;" vertex="1" parent="1">
+          <mxGeometry x="795" y="470" width="90" height="80" as="geometry" />
+        </mxCell>
+        
+        <!-- Arrow: Google validates to decision -->
+        <mxCell id="flow-9" value="" style="endArrow=classic;html=1;rounded=0;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" edge="1" parent="1" source="google-validates" target="decision-valid-creds">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        
+        <!-- Display error message (invalid credentials) -->
+        <mxCell id="google-error-msg" value="Display error&#xa;message" style="rounded=1;whiteSpace=wrap;html=1;absoluteArcSize=1;arcSize=14;strokeWidth=2;fillColor=#f8cecc;strokeColor=#b85450;" vertex="1" parent="1">
+          <mxGeometry x="920" y="485" width="100" height="50" as="geometry" />
+        </mxCell>
+        
+        <!-- Arrow: Decision No to error message -->
+        <mxCell id="flow-10" value="[No]" style="endArrow=classic;html=1;rounded=0;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;fontStyle=1" edge="1" parent="1" source="decision-valid-creds" target="google-error-msg">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        
+        <!-- Loop back arrow (retry) -->
+        <mxCell id="flow-retry" value="Retry" style="endArrow=classic;html=1;rounded=0;exitX=0.5;exitY=0;exitDx=0;exitDy=0;entryX=1;entryY=0.5;entryDx=0;entryDy=0;fontStyle=2;dashed=1;" edge="1" parent="1" source="google-error-msg" target="google-login-page">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="970" y="245" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        
+        <!-- User grants permissions -->
+        <mxCell id="user-grants-perms" value="Grant permissions&#xa;to the app" style="rounded=1;whiteSpace=wrap;html=1;absoluteArcSize=1;arcSize=14;strokeWidth=2;fillColor=#dae8fc;strokeColor=#6c8ebf;" vertex="1" parent="1">
+          <mxGeometry x="130" y="580" width="140" height="50" as="geometry" />
+        </mxCell>
+        
+        <!-- Arrow: Decision Yes to User grants permissions -->
+        <mxCell id="flow-11" value="[Yes]" style="endArrow=classic;html=1;rounded=0;exitX=0;exitY=1;exitDx=0;exitDy=0;entryX=1;entryY=0.5;entryDx=0;entryDy=0;fontStyle=1" edge="1" parent="1" source="decision-valid-creds" target="user-grants-perms">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="700" y="560" />
+              <mxPoint x="700" y="605" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        
+        <!-- Generate authorization code -->
+        <mxCell id="google-gen-auth-code" value="Generate&#xa;authorization code" style="rounded=1;whiteSpace=wrap;html=1;absoluteArcSize=1;arcSize=14;strokeWidth=2;fillColor=#fff2cc;strokeColor=#d6b656;" vertex="1" parent="1">
+          <mxGeometry x="770" y="580" width="140" height="50" as="geometry" />
+        </mxCell>
+        
+        <!-- Arrow: User grants perms to Google gen auth code -->
+        <mxCell id="flow-12" value="" style="endArrow=classic;html=1;rounded=0;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" edge="1" parent="1" source="user-grants-perms" target="google-gen-auth-code">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        
+        <!-- Redirect with auth code -->
+        <mxCell id="google-redirect-auth" value="Redirect back to&#xa;app with auth code" style="rounded=1;whiteSpace=wrap;html=1;absoluteArcSize=1;arcSize=14;strokeWidth=2;fillColor=#fff2cc;strokeColor=#d6b656;" vertex="1" parent="1">
+          <mxGeometry x="770" y="660" width="140" height="50" as="geometry" />
+        </mxCell>
+        
+        <!-- Arrow: Gen auth code to Redirect -->
+        <mxCell id="flow-13" value="" style="endArrow=classic;html=1;rounded=0;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" edge="1" parent="1" source="google-gen-auth-code" target="google-redirect-auth">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        
+        <!-- Service receives auth code -->
+        <mxCell id="service-receives-code" value="Receive authorization&#xa;code from Google" style="rounded=1;whiteSpace=wrap;html=1;absoluteArcSize=1;arcSize=14;strokeWidth=2;fillColor=#d5e8d4;strokeColor=#82b366;" vertex="1" parent="1">
+          <mxGeometry x="450" y="660" width="140" height="50" as="geometry" />
+        </mxCell>
+        
+        <!-- Arrow: Google redirect to Service receives -->
+        <mxCell id="flow-14" value="" style="endArrow=classic;html=1;rounded=0;exitX=0;exitY=0.5;exitDx=0;exitDy=0;entryX=1;entryY=0.5;entryDx=0;entryDy=0;" edge="1" parent="1" source="google-redirect-auth" target="service-receives-code">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        
+        <!-- Service exchanges code for token -->
+        <mxCell id="service-exchange-token" value="Exchange auth code&#xa;for access token" style="rounded=1;whiteSpace=wrap;html=1;absoluteArcSize=1;arcSize=14;strokeWidth=2;fillColor=#d5e8d4;strokeColor=#82b366;" vertex="1" parent="1">
+          <mxGeometry x="450" y="740" width="140" height="50" as="geometry" />
+        </mxCell>
+        
+        <!-- Arrow: Receives code to Exchange token -->
+        <mxCell id="flow-15" value="" style="endArrow=classic;html=1;rounded=0;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" edge="1" parent="1" source="service-receives-code" target="service-exchange-token">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        
+        <!-- Google provides access token (via service to Google) -->
+        <mxCell id="google-provide-token" value="Provide access&#xa;token" style="rounded=1;whiteSpace=wrap;html=1;absoluteArcSize=1;arcSize=14;strokeWidth=2;fillColor=#fff2cc;strokeColor=#d6b656;" vertex="1" parent="1">
+          <mxGeometry x="770" y="740" width="140" height="50" as="geometry" />
+        </mxCell>
+        
+        <!-- Arrow: Service exchange to Google provide token -->
+        <mxCell id="flow-15b" value="" style="endArrow=classic;html=1;rounded=0;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" edge="1" parent="1" source="service-exchange-token" target="google-provide-token">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        
+        <!-- Service sends token to Supabase -->
+        <mxCell id="service-send-supabase" value="Send token to&#xa;Supabase for validation" style="rounded=1;whiteSpace=wrap;html=1;absoluteArcSize=1;arcSize=14;strokeWidth=2;fillColor=#d5e8d4;strokeColor=#82b366;" vertex="1" parent="1">
+          <mxGeometry x="450" y="820" width="140" height="50" as="geometry" />
+        </mxCell>
+        
+        <!-- Arrow: Google provide token back to service send supabase -->
+        <mxCell id="flow-16" value="" style="endArrow=classic;html=1;rounded=0;exitX=0;exitY=1;exitDx=0;exitDy=0;entryX=1;entryY=0;entryDx=0;entryDy=0;" edge="1" parent="1" source="google-provide-token" target="service-send-supabase">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="650" y="800" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        
+        <!-- ===== SUPABASE ACTIVITIES ===== -->
+        <!-- Supabase validates token -->
+        <mxCell id="supabase-validate-token" value="Validate token" style="rounded=1;whiteSpace=wrap;html=1;absoluteArcSize=1;arcSize=14;strokeWidth=2;fillColor=#e1d5e7;strokeColor=#9673a6;" vertex="1" parent="1">
+          <mxGeometry x="1090" y="820" width="140" height="50" as="geometry" />
+        </mxCell>
+        
+        <!-- Arrow: Service sends to Supabase validates -->
+        <mxCell id="flow-17" value="" style="endArrow=classic;html=1;rounded=0;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" edge="1" parent="1" source="service-send-supabase" target="supabase-validate-token">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        
+        <!-- Decision: Token valid? -->
+        <mxCell id="decision-token-valid" value="Token&#xa;valid?" style="rhombus;whiteSpace=wrap;html=1;strokeWidth=2;fillColor=#e1d5e7;strokeColor=#9673a6;" vertex="1" parent="1">
+          <mxGeometry x="1115" y="895" width="90" height="80" as="geometry" />
+        </mxCell>
+        
+        <!-- Arrow: Supabase validate to decision -->
+        <mxCell id="flow-18" value="" style="endArrow=classic;html=1;rounded=0;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" edge="1" parent="1" source="supabase-validate-token" target="decision-token-valid">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        
+        <!-- Return error (invalid token) -->
+        <mxCell id="supabase-return-error" value="Return error" style="rounded=1;whiteSpace=wrap;html=1;absoluteArcSize=1;arcSize=14;strokeWidth=2;fillColor=#f8cecc;strokeColor=#b85450;" vertex="1" parent="1">
+          <mxGeometry x="1230" y="910" width="90" height="50" as="geometry" />
+        </mxCell>
+        
+        <!-- Arrow: Decision No to return error -->
+        <mxCell id="flow-19" value="[No]" style="endArrow=classic;html=1;rounded=0;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;fontStyle=1" edge="1" parent="1" source="decision-token-valid" target="supabase-return-error">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        
+        <!-- Display error to user -->
+        <mxCell id="service-display-error" value="Display error&#xa;to user" style="rounded=1;whiteSpace=wrap;html=1;absoluteArcSize=1;arcSize=14;strokeWidth=2;fillColor=#f8cecc;strokeColor=#b85450;" vertex="1" parent="1">
+          <mxGeometry x="450" y="910" width="140" height="50" as="geometry" />
+        </mxCell>
+        
+        <!-- Arrow: Return error to Display error -->
+        <mxCell id="flow-20" value="" style="endArrow=classic;html=1;rounded=0;exitX=0;exitY=1;exitDx=0;exitDy=0;entryX=1;entryY=0;entryDx=0;entryDy=0;" edge="1" parent="1" source="supabase-return-error" target="service-display-error">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="1230" y="980" />
+              <mxPoint x="650" y="980" />
+              <mxPoint x="650" y="910" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        
+        <!-- End node (error path) -->
+        <mxCell id="end-node-error" value="" style="ellipse;html=1;shape=endState;fillColor=#000000;strokeColor=#000000;strokeWidth=3;" vertex="1" parent="1">
+          <mxGeometry x="505" y="990" width="30" height="30" as="geometry" />
+        </mxCell>
+        
+        <!-- Arrow: Display error to End (error) -->
+        <mxCell id="flow-21" value="" style="endArrow=classic;html=1;rounded=0;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" edge="1" parent="1" source="service-display-error" target="end-node-error">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        
+        <!-- Create session token -->
+        <mxCell id="supabase-create-session" value="Create session&#xa;token" style="rounded=1;whiteSpace=wrap;html=1;absoluteArcSize=1;arcSize=14;strokeWidth=2;fillColor=#e1d5e7;strokeColor=#9673a6;" vertex="1" parent="1">
+          <mxGeometry x="1090" y="1000" width="140" height="50" as="geometry" />
+        </mxCell>
+        
+        <!-- Merge node after decision -->
+        <mxCell id="merge-token-decision" value="" style="rhombus;whiteSpace=wrap;html=1;strokeWidth=2;fillColor=#e1d5e7;strokeColor=#9673a6;" vertex="1" parent="1">
+          <mxGeometry x="1140" y="1070" width="40" height="40" as="geometry" />
+        </mxCell>
+        
+        <!-- Arrow: Decision Yes to Create session -->
+        <mxCell id="flow-22" value="[Yes]" style="endArrow=classic;html=1;rounded=0;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;fontStyle=1" edge="1" parent="1" source="decision-token-valid" target="supabase-create-session">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        
+        <!-- Arrow: Create session to Merge -->
+        <mxCell id="flow-23" value="" style="endArrow=classic;html=1;rounded=0;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" edge="1" parent="1" source="supabase-create-session" target="merge-token-decision">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        
+        <!-- Fork bar for parallel activities -->
+        <mxCell id="fork-bar" value="" style="shape=parallelMarker;whiteSpace=wrap;html=1;strokeWidth=2;fillColor=#000000;direction=south;" vertex="1" parent="1">
+          <mxGeometry x="700" y="1095" width="80" height="5" as="geometry" />
+        </mxCell>
+        
+        <!-- Arrow: Merge to Fork bar -->
+        <mxCell id="flow-24" value="Return session&#xa;token to service" style="endArrow=classic;html=1;rounded=0;exitX=0;exitY=0.5;exitDx=0;exitDy=0;entryX=1;entryY=0.5;entryDx=0;entryDy=0;labelPosition=center;verticalLabelPosition=top;align=center;verticalAlign=bottom;" edge="1" parent="1" source="merge-token-decision" target="fork-bar">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="850" y="1097" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        
+        <!-- Service stores session -->
+        <mxCell id="service-store-session" value="Store session" style="rounded=1;whiteSpace=wrap;html=1;absoluteArcSize=1;arcSize=14;strokeWidth=2;fillColor=#d5e8d4;strokeColor=#82b366;" vertex="1" parent="1">
+          <mxGeometry x="475" y="1125" width="120" height="40" as="geometry" />
+        </mxCell>
+        
+        <!-- Process user data -->
+        <mxCell id="supabase-process-data" value="Validate and process&#xa;user data" style="rounded=1;whiteSpace=wrap;html=1;absoluteArcSize=1;arcSize=14;strokeWidth=2;fillColor=#e1d5e7;strokeColor=#9673a6;" vertex="1" parent="1">
+          <mxGeometry x="1090" y="1120" width="140" height="50" as="geometry" />
+        </mxCell>
+        
+        <!-- Arrow: Fork to Store session -->
+        <mxCell id="flow-25a" value="" style="endArrow=classic;html=1;rounded=0;exitX=0;exitY=0.5;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" edge="1" parent="1" source="fork-bar" target="service-store-session">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="535" y="1097" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        
+        <!-- Arrow: Fork to Process data -->
+        <mxCell id="flow-25b" value="" style="endArrow=classic;html=1;rounded=0;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" edge="1" parent="1" source="fork-bar" target="supabase-process-data">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="1160" y="1097" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        
+        <!-- Join bar -->
+        <mxCell id="join-bar" value="" style="shape=parallelMarker;whiteSpace=wrap;html=1;strokeWidth=2;fillColor=#000000;direction=south;" vertex="1" parent="1">
+          <mxGeometry x="700" y="1195" width="80" height="5" as="geometry" />
+        </mxCell>
+        
+        <!-- Arrow: Store session to Join -->
+        <mxCell id="flow-26a" value="" style="endArrow=classic;html=1;rounded=0;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" edge="1" parent="1" source="service-store-session" target="join-bar">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="535" y="1197" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        
+        <!-- Arrow: Process data to Join -->
+        <mxCell id="flow-26b" value="" style="endArrow=classic;html=1;rounded=0;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=1;entryY=0.5;entryDx=0;entryDy=0;" edge="1" parent="1" source="supabase-process-data" target="join-bar">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="1160" y="1197" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        
+        <!-- User authenticated -->
+        <mxCell id="user-authenticated" value="User is&#xa;authenticated" style="rounded=1;whiteSpace=wrap;html=1;absoluteArcSize=1;arcSize=14;strokeWidth=2;fillColor=#dae8fc;strokeColor=#6c8ebf;" vertex="1" parent="1">
+          <mxGeometry x="130" y="1220" width="140" height="50" as="geometry" />
+        </mxCell>
+        
+        <!-- Arrow: Join to User authenticated -->
+        <mxCell id="flow-27" value="" style="endArrow=classic;html=1;rounded=0;exitX=0;exitY=0.5;exitDx=0;exitDy=0;entryX=1;entryY=0.5;entryDx=0;entryDy=0;" edge="1" parent="1" source="join-bar" target="user-authenticated">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="270" y="1197" />
+              <mxPoint x="270" y="1245" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        
+        <!-- End node (success path) -->
+        <mxCell id="end-node-success" value="" style="ellipse;html=1;shape=endState;fillColor=#000000;strokeColor=#000000;strokeWidth=3;" vertex="1" parent="1">
+          <mxGeometry x="185" y="1300" width="30" height="30" as="geometry" />
+        </mxCell>
+        
+        <!-- Arrow: User authenticated to End -->
+        <mxCell id="flow-28" value="" style="endArrow=classic;html=1;rounded=0;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" edge="1" parent="1" source="user-authenticated" target="end-node-success">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        
+        <!-- ===== NOTES/ANNOTATIONS ===== -->
+        <!-- Note: OAuth 2.0 Flow -->
+        <mxCell id="note-oauth" value="OAuth 2.0&#xa;Authorization Code&#xa;Flow" style="shape=note;whiteSpace=wrap;html=1;backgroundOutline=1;darkOpacity=0.05;fillColor=#ffffc0;strokeColor=#999966;size=14;fontStyle=2;fontSize=10;" vertex="1" parent="1">
+          <mxGeometry x="920" y="620" width="100" height="60" as="geometry" />
+        </mxCell>
+        
+        <!-- Note connector -->
+        <mxCell id="note-oauth-connector" value="" style="endArrow=none;dashed=1;html=1;rounded=0;exitX=0;exitY=0.5;exitDx=0;exitDy=0;entryX=1;entryY=0.5;entryDx=0;entryDy=0;strokeColor=#999966;" edge="1" parent="1" source="note-oauth" target="google-gen-auth-code">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        
+        <!-- Note: JWT Token -->
+        <mxCell id="note-jwt" value="JWT (JSON Web Token)&#xa;for secure session&#xa;management" style="shape=note;whiteSpace=wrap;html=1;backgroundOutline=1;darkOpacity=0.05;fillColor=#ffffc0;strokeColor=#999966;size=14;fontStyle=2;fontSize=10;" vertex="1" parent="1">
+          <mxGeometry x="1240" y="1000" width="110" height="60" as="geometry" />
+        </mxCell>
+        
+        <!-- Note connector JWT -->
+        <mxCell id="note-jwt-connector" value="" style="endArrow=none;dashed=1;html=1;rounded=0;exitX=0;exitY=0.5;exitDx=0;exitDy=0;entryX=1;entryY=0.5;entryDx=0;entryDy=0;strokeColor=#999966;" edge="1" parent="1" source="note-jwt" target="supabase-create-session">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        
+        <!-- Note: PKCE recommended -->
+        <mxCell id="note-pkce" value="PKCE (Proof Key for&#xa;Code Exchange)&#xa;recommended for&#xa;security" style="shape=note;whiteSpace=wrap;html=1;backgroundOutline=1;darkOpacity=0.05;fillColor=#ffffc0;strokeColor=#999966;size=14;fontStyle=2;fontSize=10;" vertex="1" parent="1">
+          <mxGeometry x="290" y="200" width="110" height="70" as="geometry" />
+        </mxCell>
+        
+        <!-- Note connector PKCE -->
+        <mxCell id="note-pkce-connector" value="" style="endArrow=none;dashed=1;html=1;rounded=0;exitX=0;exitY=0.5;exitDx=0;exitDy=0;entryX=1;entryY=0.5;entryDx=0;entryDy=0;strokeColor=#999966;" edge="1" parent="1" source="note-pkce" target="user-clicks-google">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        
+        <!-- Title -->
+        <mxCell id="diagram-title" value="UML Activity Diagram: Google Sign-in Authentication Flow" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontStyle=1;fontSize=16;" vertex="1" parent="1">
+          <mxGeometry x="480" y="5" width="400" height="30" as="geometry" />
+        </mxCell>
+        
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>

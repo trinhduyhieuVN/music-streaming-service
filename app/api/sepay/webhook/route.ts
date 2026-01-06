@@ -50,11 +50,30 @@ export async function POST(request: Request) {
 
     // Parse mã giao dịch từ nội dung chuyển khoản
     // Format: SPM{userId}{timestamp} hoặc SPY{userId}{timestamp}
+    // User ID có thể chứa dấu gạch ngang
     const content = payload.content.toUpperCase();
-    const transactionMatch = content.match(/SP[MY][A-Z0-9]+/);
+    
+    // Loại bỏ khoảng trắng và ký tự đặc biệt không cần thiết
+    const cleanContent = content.replace(/[\s]/g, '');
+    
+    console.log('Original content:', payload.content);
+    console.log('Clean content:', cleanContent);
+    
+    // Regex cập nhật để match cả dấu gạch ngang trong user ID
+    // SP[MY] = prefix cho Monthly/Yearly
+    // [A-Z0-9-]+ = phần còn lại bao gồm userId và timestamp
+    const transactionMatch = cleanContent.match(/SP[MY][A-Z0-9-]+/);
     
     if (!transactionMatch) {
       console.log('No transaction code found in content:', payload.content);
+      console.log('Regex pattern used: /SP[MY][A-Z0-9-]+/');
+      
+      // Thử tìm với pattern rộng hơn
+      const altMatch = cleanContent.match(/SP[A-Z0-9-]+/);
+      if (altMatch) {
+        console.log('Found alternative match:', altMatch[0]);
+      }
+      
       return NextResponse.json({ 
         success: true, 
         message: 'No transaction code found' 
@@ -65,20 +84,57 @@ export async function POST(request: Request) {
     console.log('Transaction code found:', transactionCode);
 
     // Tìm pending payment với transaction code này
-    const { data: payment, error: findError } = await supabaseAdmin
+    // Thử tìm exact match trước
+    let { data: payment, error: findError } = await supabaseAdmin
       .from('payments')
       .select('*')
       .eq('transaction_code', transactionCode)
       .eq('status', 'pending')
       .single();
 
+    // Nếu không tìm thấy, thử tìm với LIKE pattern (case insensitive)
     if (findError || !payment) {
+      console.log('Exact match not found, trying LIKE search for:', transactionCode);
+      
+      const { data: payments, error: likeError } = await supabaseAdmin
+        .from('payments')
+        .select('*')
+        .eq('status', 'pending')
+        .ilike('transaction_code', `%${transactionCode}%`);
+      
+      if (!likeError && payments && payments.length > 0) {
+        payment = payments[0];
+        console.log('Found payment via LIKE search:', payment.transaction_code);
+      } else {
+        // Thử tìm payment có transaction_code chứa trong content
+        const { data: allPending } = await supabaseAdmin
+          .from('payments')
+          .select('*')
+          .eq('status', 'pending');
+        
+        if (allPending) {
+          for (const p of allPending) {
+            // So sánh không phân biệt hoa thường
+            if (cleanContent.includes(p.transaction_code.toUpperCase())) {
+              payment = p;
+              console.log('Found payment via content search:', p.transaction_code);
+              break;
+            }
+          }
+        }
+      }
+    }
+
+    if (!payment) {
       console.log('Payment not found for code:', transactionCode, 'Error:', findError);
+      console.log('Clean content was:', cleanContent);
       return NextResponse.json({ 
         success: true, 
         message: 'Payment not found or already processed' 
       });
     }
+    
+    console.log('Found payment:', payment.id, 'Code:', payment.transaction_code);
 
     // Kiểm tra số tiền
     if (payload.transferAmount < payment.amount) {
@@ -134,11 +190,15 @@ export async function POST(request: Request) {
     }
 
     // Tạo hoặc cập nhật subscription
-    const { data: existingSub } = await supabaseAdmin
+    const { data: existingSub, error: subQueryError } = await supabaseAdmin
       .from('subscriptions')
       .select('*')
       .eq('user_id', payment.user_id)
       .single();
+
+    if (subQueryError && subQueryError.code !== 'PGRST116') {
+      console.error('Error querying subscription:', subQueryError);
+    }
 
     if (existingSub) {
       // Gia hạn subscription hiện tại
@@ -156,26 +216,50 @@ export async function POST(request: Request) {
         newEnd = periodEnd;
       }
 
-      await supabaseAdmin
+      const { error: updateSubError } = await supabaseAdmin
         .from('subscriptions')
         .update({
           status: 'active',
+          plan_id: payment.plan_id,
+          current_period_start: now.toISOString(),
           current_period_end: newEnd.toISOString(),
-          updated_at: new Date().toISOString()
         })
         .eq('id', existingSub.id);
+
+      if (updateSubError) {
+        console.error('Failed to update subscription:', updateSubError);
+        return NextResponse.json(
+          { success: false, message: 'Failed to update subscription' },
+          { status: 500 }
+        );
+      }
+
+      console.log('Subscription extended for user:', payment.user_id, 'New end:', newEnd.toISOString());
     } else {
-      // Tạo subscription mới
-      await supabaseAdmin
+      // Tạo subscription mới với UUID
+      const subscriptionId = crypto.randomUUID();
+      
+      const { error: insertSubError } = await supabaseAdmin
         .from('subscriptions')
         .insert({
+          id: subscriptionId,
           user_id: payment.user_id,
           status: 'active',
           plan_id: payment.plan_id,
-          current_period_start: new Date().toISOString(),
+          current_period_start: now.toISOString(),
           current_period_end: periodEnd.toISOString(),
-          created_at: new Date().toISOString()
+          created: now.toISOString(),
         });
+
+      if (insertSubError) {
+        console.error('Failed to create subscription:', insertSubError);
+        return NextResponse.json(
+          { success: false, message: 'Failed to create subscription' },
+          { status: 500 }
+        );
+      }
+
+      console.log('New subscription created for user:', payment.user_id, 'ID:', subscriptionId);
     }
 
     console.log('Payment processed successfully for user:', payment.user_id);

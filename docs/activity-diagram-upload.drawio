@@ -1,0 +1,316 @@
+<mxfile host="app.diagrams.net" modified="2026-01-06T00:00:00.000Z" agent="5.0" version="22.1.16" etag="draw.io">
+  <diagram name="Upload Song Activity" id="activity-upload">
+    <mxGraphModel dx="1434" dy="844" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        
+        <!-- Swimlane: ARTIST/ADMIN -->
+        <mxCell id="swimlane-artist" value="Artist / Admin" style="swimlane;startSize=40;fillColor=#ffffff;strokeColor=#000000;fontStyle=1;fontSize=14;" parent="1" vertex="1">
+          <mxGeometry x="40" y="40" width="280" height="1100" as="geometry" />
+        </mxCell>
+        
+        <!-- Start Point -->
+        <mxCell id="start" value="" style="ellipse;whiteSpace=wrap;html=1;aspect=fixed;fillColor=#000000;strokeColor=#000000;" parent="swimlane-artist" vertex="1">
+          <mxGeometry x="125" y="60" width="30" height="30" as="geometry" />
+        </mxCell>
+        
+        <!-- Click + Upload button -->
+        <mxCell id="user-click-upload" value="Click &quot;+&quot; Upload button" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#000000;" parent="swimlane-artist" vertex="1">
+          <mxGeometry x="65" y="120" width="150" height="60" as="geometry" />
+        </mxCell>
+        
+        <!-- Arrow: start to click -->
+        <mxCell id="arrow-start-click" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#000000;endArrow=classic;" parent="swimlane-artist" source="start" target="user-click-upload" edge="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        
+        <!-- Fill song information -->
+        <mxCell id="user-fill-info" value="Fill song information&#xa;(title, artist, genre)" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#000000;" parent="swimlane-artist" vertex="1">
+          <mxGeometry x="65" y="340" width="150" height="60" as="geometry" />
+        </mxCell>
+        
+        <!-- Select song file -->
+        <mxCell id="user-select-song" value="Select song file (.mp3)" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#000000;" parent="swimlane-artist" vertex="1">
+          <mxGeometry x="65" y="440" width="150" height="60" as="geometry" />
+        </mxCell>
+        
+        <!-- Arrow: fill to select song -->
+        <mxCell id="arrow-fill-song" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#000000;endArrow=classic;" parent="swimlane-artist" source="user-fill-info" target="user-select-song" edge="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        
+        <!-- Select cover image -->
+        <mxCell id="user-select-image" value="Select cover image" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#000000;" parent="swimlane-artist" vertex="1">
+          <mxGeometry x="65" y="540" width="150" height="60" as="geometry" />
+        </mxCell>
+        
+        <!-- Arrow: song to image -->
+        <mxCell id="arrow-song-image" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#000000;endArrow=classic;" parent="swimlane-artist" source="user-select-song" target="user-select-image" edge="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        
+        <!-- Click Create button -->
+        <mxCell id="user-click-create" value="Click &quot;Create&quot; button" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#000000;" parent="swimlane-artist" vertex="1">
+          <mxGeometry x="65" y="640" width="150" height="60" as="geometry" />
+        </mxCell>
+        
+        <!-- Arrow: image to create -->
+        <mxCell id="arrow-image-create" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#000000;endArrow=classic;" parent="swimlane-artist" source="user-select-image" target="user-click-create" edge="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        
+        <!-- View uploaded song in library -->
+        <mxCell id="user-view-library" value="View uploaded song&#xa;in library" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#000000;" parent="swimlane-artist" vertex="1">
+          <mxGeometry x="65" y="1010" width="150" height="60" as="geometry" />
+        </mxCell>
+        
+        <!-- Swimlane: MUSIC STREAM SERVICE -->
+        <mxCell id="swimlane-system" value="Music Stream Service" style="swimlane;startSize=40;fillColor=#f5f5f5;strokeColor=#000000;fontStyle=1;fontSize=14;" parent="1" vertex="1">
+          <mxGeometry x="320" y="40" width="460" height="1100" as="geometry" />
+        </mxCell>
+        
+        <!-- Check user logged in -->
+        <mxCell id="system-check-user" value="Check user logged in?&#xa;(useUser hook)" style="rhombus;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#000000;" parent="swimlane-system" vertex="1">
+          <mxGeometry x="60" y="110" width="140" height="80" as="geometry" />
+        </mxCell>
+        
+        <!-- Show Auth Modal -->
+        <mxCell id="system-auth-modal" value="Show Auth Modal" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#000000;" parent="swimlane-system" vertex="1">
+          <mxGeometry x="270" y="120" width="140" height="60" as="geometry" />
+        </mxCell>
+        
+        <!-- Arrow: check no -->
+        <mxCell id="arrow-check-no" value="No" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#000000;endArrow=classic;" parent="swimlane-system" source="system-check-user" target="system-auth-modal" edge="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        
+        <!-- Check admin permission -->
+        <mxCell id="system-check-admin" value="Check admin&#xa;permission?&#xa;(useIsAdmin)" style="rhombus;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#000000;" parent="swimlane-system" vertex="1">
+          <mxGeometry x="60" y="230" width="140" height="90" as="geometry" />
+        </mxCell>
+        
+        <!-- Arrow: user yes -->
+        <mxCell id="arrow-user-yes" value="Yes" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#000000;endArrow=classic;" parent="swimlane-system" source="system-check-user" target="system-check-admin" edge="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        
+        <!-- Show Access Denied -->
+        <mxCell id="system-access-denied" value="Show &quot;Access Denied&quot;&#xa;message" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#000000;" parent="swimlane-system" vertex="1">
+          <mxGeometry x="270" y="245" width="140" height="60" as="geometry" />
+        </mxCell>
+        
+        <!-- Arrow: admin no -->
+        <mxCell id="arrow-admin-no" value="No" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#000000;endArrow=classic;" parent="swimlane-system" source="system-check-admin" target="system-access-denied" edge="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        
+        <!-- Open UploadModal -->
+        <mxCell id="system-open-modal" value="Open UploadModal&#xa;(useUploadModal.onOpen)" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#000000;" parent="swimlane-system" vertex="1">
+          <mxGeometry x="50" y="360" width="160" height="60" as="geometry" />
+        </mxCell>
+        
+        <!-- Arrow: admin yes -->
+        <mxCell id="arrow-admin-yes" value="Yes" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#000000;endArrow=classic;" parent="swimlane-system" source="system-check-admin" target="system-open-modal" edge="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        
+        <!-- Display upload form -->
+        <mxCell id="system-display-form" value="Display upload form&#xa;(react-hook-form)" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#000000;" parent="swimlane-system" vertex="1">
+          <mxGeometry x="250" y="360" width="160" height="60" as="geometry" />
+        </mxCell>
+        
+        <!-- Arrow: modal to form -->
+        <mxCell id="arrow-modal-form" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#000000;endArrow=classic;" parent="swimlane-system" source="system-open-modal" target="system-display-form" edge="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        
+        <!-- Validate all fields -->
+        <mxCell id="system-validate" value="Validate all fields&#xa;(required fields)" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#000000;" parent="swimlane-system" vertex="1">
+          <mxGeometry x="50" y="720" width="160" height="60" as="geometry" />
+        </mxCell>
+        
+        <!-- Decision: All fields valid? -->
+        <mxCell id="decision-valid" value="All fields&#xa;valid?" style="rhombus;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#000000;" parent="swimlane-system" vertex="1">
+          <mxGeometry x="270" y="705" width="120" height="90" as="geometry" />
+        </mxCell>
+        
+        <!-- Arrow: validate to decision -->
+        <mxCell id="arrow-validate-decision" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=h1;strokeColor=#000000;endArrow=classic;" parent="swimlane-system" source="system-validate" target="decision-valid" edge="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        
+        <!-- Show Missing fields error -->
+        <mxCell id="system-error-missing" value="Show &quot;Missing fields&quot;&#xa;error" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#000000;" parent="swimlane-system" vertex="1">
+          <mxGeometry x="270" y="600" width="140" height="60" as="geometry" />
+        </mxCell>
+        
+        <!-- Arrow: fields invalid -->
+        <mxCell id="arrow-invalid" value="No" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#000000;endArrow=classic;" parent="swimlane-system" source="decision-valid" target="system-error-missing" edge="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        
+        <!-- findOrCreateArtist() -->
+        <mxCell id="system-find-artist" value="findOrCreateArtist()&#xa;(check artists table)" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#000000;" parent="swimlane-system" vertex="1">
+          <mxGeometry x="50" y="830" width="160" height="60" as="geometry" />
+        </mxCell>
+        
+        <!-- Arrow: valid yes -->
+        <mxCell id="arrow-valid-yes" value="Yes" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#000000;endArrow=classic;" parent="swimlane-system" source="decision-valid" target="system-find-artist" edge="1">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="250" y="750" />
+              <mxPoint x="250" y="860" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        
+        <!-- Upload song to Supabase Storage -->
+        <mxCell id="system-upload-song" value="Upload song to&#xa;Supabase Storage (Songs bucket)" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#000000;" parent="swimlane-system" vertex="1">
+          <mxGeometry x="250" y="830" width="160" height="60" as="geometry" />
+        </mxCell>
+        
+        <!-- Arrow: artist to upload song (parallel) -->
+        <mxCell id="arrow-artist-song" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#000000;endArrow=classic;" parent="swimlane-system" source="system-find-artist" target="system-upload-song" edge="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        
+        <!-- Decision: Song upload success? -->
+        <mxCell id="decision-song-upload" value="Song upload&#xa;success?" style="rhombus;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#000000;" parent="swimlane-system" vertex="1">
+          <mxGeometry x="70" y="930" width="120" height="90" as="geometry" />
+        </mxCell>
+        
+        <!-- Arrow: upload to decision -->
+        <mxCell id="arrow-upload-decision" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#000000;endArrow=classic;" parent="swimlane-system" source="system-upload-song" target="decision-song-upload" edge="1">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="330" y="920" />
+              <mxPoint x="240" y="920" />
+              <mxPoint x="240" y="975" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        
+        <!-- Show Failed song upload -->
+        <mxCell id="system-error-song" value="Show &quot;Failed song&#xa;upload&quot; error" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#000000;" parent="swimlane-system" vertex="1">
+          <mxGeometry x="60" y="830" width="120" height="60" as="geometry" />
+        </mxCell>
+        
+        <!-- Arrow: song failed -->
+        <mxCell id="arrow-song-fail" value="Failed" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#000000;endArrow=classic;" parent="swimlane-system" source="decision-song-upload" target="system-error-song" edge="1">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="40" y="975" />
+              <mxPoint x="40" y="860" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        
+        <!-- Upload image to Supabase Storage -->
+        <mxCell id="system-upload-image" value="Upload image to&#xa;Supabase Storage&#xa;(image bucket)" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#000000;" parent="swimlane-system" vertex="1">
+          <mxGeometry x="250" y="945" width="150" height="60" as="geometry" />
+        </mxCell>
+        
+        <!-- Arrow: song success -->
+        <mxCell id="arrow-song-success" value="Success" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#000000;endArrow=classic;" parent="swimlane-system" source="decision-song-upload" target="system-upload-image" edge="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        
+        <!-- Decision: Image upload success? -->
+        <mxCell id="decision-image-upload" value="Image upload&#xa;success?" style="rhombus;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#000000;" parent="swimlane-system" vertex="1">
+          <mxGeometry x="265" y="1030" width="120" height="60" as="geometry" />
+        </mxCell>
+        
+        <!-- Arrow: upload image to decision -->
+        <mxCell id="arrow-image-decision" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#000000;endArrow=classic;" parent="swimlane-system" source="system-upload-image" target="decision-image-upload" edge="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        
+        <!-- Show Failed image upload -->
+        <mxCell id="system-error-image" value="Show &quot;Failed image&#xa;upload&quot; error" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#000000;" parent="swimlane-system" vertex="1">
+          <mxGeometry x="60" y="1030" width="130" height="60" as="geometry" />
+        </mxCell>
+        
+        <!-- Arrow: image failed -->
+        <mxCell id="arrow-image-fail" value="Failed" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#000000;endArrow=classic;" parent="swimlane-system" source="decision-image-upload" target="system-error-image" edge="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        
+        <!-- Create record in songs table -->
+        <mxCell id="system-create-record" value="Create record in&#xa;songs table&#xa;(with artist_id, title,&#xa;author, paths, genre)" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#000000;" parent="swimlane-system" vertex="1">
+          <mxGeometry x="40" y="450" width="160" height="90" as="geometry" />
+        </mxCell>
+        
+        <!-- Arrow: image success to create record -->
+        <mxCell id="arrow-image-success" value="Success" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#000000;endArrow=classic;" parent="swimlane-system" source="decision-image-upload" target="system-create-record" edge="1">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="20" y="1060" />
+              <mxPoint x="20" y="495" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        
+        <!-- Close modal & toast success -->
+        <mxCell id="system-close-success" value="Close modal &amp;&#xa;Show success toast&#xa;(refresh router)" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#000000;" parent="swimlane-system" vertex="1">
+          <mxGeometry x="240" y="465" width="160" height="60" as="geometry" />
+        </mxCell>
+        
+        <!-- Arrow: create to close -->
+        <mxCell id="arrow-create-close" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#000000;endArrow=classic;" parent="swimlane-system" source="system-create-record" target="system-close-success" edge="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        
+        <!-- End Point -->
+        <mxCell id="end" value="" style="ellipse;whiteSpace=wrap;html=1;aspect=fixed;fillColor=#000000;strokeColor=#000000;" parent="swimlane-system" vertex="1">
+          <mxGeometry x="305" y="555" width="30" height="30" as="geometry" />
+        </mxCell>
+        
+        <!-- Arrow: close to end -->
+        <mxCell id="arrow-close-end" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#000000;endArrow=classic;" parent="swimlane-system" source="system-close-success" target="end" edge="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        
+        <!-- Cross-swimlane arrows -->
+        
+        <!-- Arrow: user click to system check -->
+        <mxCell id="arrow-click-check" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#000000;endArrow=classic;" parent="1" source="user-click-upload" target="system-check-user" edge="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        
+        <!-- Arrow: display form to user fill -->
+        <mxCell id="arrow-form-fill" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#000000;endArrow=classic;" parent="1" source="system-display-form" target="user-fill-info" edge="1">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="540" y="390" />
+              <mxPoint x="540" y="330" />
+              <mxPoint x="300" y="330" />
+              <mxPoint x="300" y="370" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        
+        <!-- Arrow: user create to system validate -->
+        <mxCell id="arrow-create-validate" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#000000;endArrow=classic;" parent="1" source="user-click-create" target="system-validate" edge="1">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="300" y="710" />
+              <mxPoint x="300" y="760" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        
+        <!-- Arrow: close success to user view -->
+        <mxCell id="arrow-success-view" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#000000;endArrow=classic;" parent="1" source="system-close-success" target="user-view-library" edge="1">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="740" y="535" />
+              <mxPoint x="740" y="1040" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>

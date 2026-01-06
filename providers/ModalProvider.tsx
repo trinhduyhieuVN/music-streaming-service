@@ -7,6 +7,7 @@ import UploadModal from '@/components/UploadModal';
 import SubscribeModal from '@/components/SubscribeModalSepay';
 import PlaylistModal from "@/components/PlaylistModal";
 import EditSongModal from "@/components/EditSongModal";
+import AddToPlaylistModal from "@/components/AddToPlaylistModal";
 
 const ModalProvider = () => {
   const [isMounted, setIsMounted] = useState(false);
@@ -26,6 +27,7 @@ const ModalProvider = () => {
       <UploadModal />
       <PlaylistModal />
       <EditSongModal />
+      <AddToPlaylistModal />
     </>
   );
 }

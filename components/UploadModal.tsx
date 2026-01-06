@@ -10,6 +10,7 @@ import { useRouter } from "next/navigation";
 import useUploadModal from '@/hooks/useUploadModal';
 import { useUser } from "@/hooks/useUser";
 import { GENRE_NAMES } from '@/constants/genres';
+import useIsAdmin from "@/hooks/useIsAdmin";
 
 import Modal from './Modal';
 import Input from './Input';
@@ -22,6 +23,7 @@ const UploadModal = () => {
   const supabaseClient = useSupabaseClient();
   const { user } = useUser();
   const router = useRouter();
+  const { isAdmin } = useIsAdmin();
 
   const {
     register,
@@ -42,6 +44,22 @@ const UploadModal = () => {
       reset();
       uploadModal.onClose();
     }
+  }
+
+  // Only admin can upload
+  if (!isAdmin) {
+    return (
+      <Modal
+        title="Access Denied"
+        description="You don't have permission to upload songs."
+        isOpen={uploadModal.isOpen}
+        onChange={onChange}
+      >
+        <div className="text-center py-4">
+          <p className="text-neutral-400">Only administrators can upload songs.</p>
+        </div>
+      </Modal>
+    );
   }
 
   // Hàm tìm hoặc tạo artist mới
